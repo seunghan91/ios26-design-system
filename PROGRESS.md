@@ -89,21 +89,63 @@
 
 ## Phase 5: Pages
 
-### iPhone Examples ✅ DONE
-| 파일 | 줄 수 |
-|------|-------|
-| `iphone-examples/home-feed.md` | 436 |
-| `iphone-examples/settings-screen.md` | 459 |
-| `iphone-examples/detail-view.md` | 438 |
-| `iphone-examples/sheet-form.md` | 469 |
-| `iphone-examples/alert-flow.md` | 619 |
+### iPhone Examples ✅ FULLY COMPLETE (25개)
 
-### iPad Examples ✅ DONE
-| 파일 | 줄 수 |
-|------|-------|
-| `ipad-examples/ipad-split-view.md` | 401 |
-| `ipad-examples/ipad-popover-menu.md` | 468 |
-| `ipad-examples/ipad-multitasking.md` | 582 |
+| 파일 | 비고 |
+|------|------|
+| `iphone-examples/activity-view.md` | Share sheet (app grid + action rows) |
+| `iphone-examples/action-sheet.md` | Bottom action sheet + cancel |
+| `iphone-examples/alert-flow.md` | Alert side-by-side / stacked |
+| `iphone-examples/color-picker.md` | Spectrum + sliders + hex |
+| `iphone-examples/context-menu.md` | Long-press preview + menu |
+| `iphone-examples/control-center.md` | Toggle grid + media + sliders |
+| `iphone-examples/detail-view.md` | Detail screen recipe |
+| `iphone-examples/empty-states.md` | 3 variants (icon/text/button) |
+| `iphone-examples/face-id.md` | Authenticating + Success |
+| `iphone-examples/home-feed.md` | Feed screen recipe |
+| `iphone-examples/home-screen.md` | App grid + dock + widgets |
+| `iphone-examples/keyboard.md` | 5 variants (text/numeric/emoji/find) |
+| `iphone-examples/list.md` | Inset / Full Width / Section Headers |
+| `iphone-examples/lock-screen.md` | Time + widgets + Dynamic Island |
+| `iphone-examples/menus.md` | Edit Menu + Standard Menu |
+| `iphone-examples/notifications.md` | Collapsed stack + Expanded |
+| `iphone-examples/picker.md` | Inline wheel + Compact date |
+| `iphone-examples/settings-screen.md` | Settings screen recipe |
+| `iphone-examples/sheet-form.md` | Sheet form recipe |
+| `iphone-examples/sheets.md` | Fullscreen / Stack / Inspector |
+| `iphone-examples/slider-stepper.md` | Slider + Stepper in list |
+| `iphone-examples/tab-bar.md` | Standard + Split Search |
+| `iphone-examples/text-fields.md` | Plain / Secure / Search / Multiline |
+| `iphone-examples/toolbars.md` | Top 5 + Bottom 3 variants |
+| `iphone-examples/widgets.md` | Small / Medium / Large + Smart Stack |
+
+### iPad Examples ✅ FULLY COMPLETE (23개)
+
+| 파일 | 비고 |
+|------|------|
+| `ipad-examples/ipad-action-sheet.md` | Popover presentation (not bottom) |
+| `ipad-examples/ipad-activity-view.md` | Share sheet as popover |
+| `ipad-examples/ipad-alert.md` | Standard + with keyboard |
+| `ipad-examples/ipad-color-picker.md` | Wide layout spectrum + sliders |
+| `ipad-examples/ipad-context-menu.md` | Long-press + right-click |
+| `ipad-examples/ipad-control-center.md` | Larger module grid landscape |
+| `ipad-examples/ipad-home-screen.md` | 76pt icon grid + App Library |
+| `ipad-examples/ipad-home-screen-quick-actions.md` | App icon context menu |
+| `ipad-examples/ipad-keyboard.md` | Full-width + Split + Floating |
+| `ipad-examples/ipad-list.md` | Wide rows + sidebar + drag-drop |
+| `ipad-examples/ipad-lock-screen.md` | Centered time + widget areas |
+| `ipad-examples/ipad-menus.md` | Edit Menu + Submenu |
+| `ipad-examples/ipad-multitasking.md` | Split View + Slide Over |
+| `ipad-examples/ipad-notifications.md` | 600pt centered cards |
+| `ipad-examples/ipad-popover.md` | 4 arrow directions + content |
+| `ipad-examples/ipad-popover-menu.md` | Popover menu recipe |
+| `ipad-examples/ipad-sheets.md` | Form Sheet centered card |
+| `ipad-examples/ipad-sidebar.md` | Standard + Multi-level |
+| `ipad-examples/ipad-split-view.md` | Split view recipe |
+| `ipad-examples/ipad-tab-bars.md` | Top tab bar + Search |
+| `ipad-examples/ipad-toolbars.md` | 4 top toolbar variants |
+| `ipad-examples/ipad-widgets.md` | 4 sizes (incl. Extra Large) |
+| `ipad-examples/ipad-window.md` | Stage Manager windowed mode |
 
 ---
 
@@ -141,3 +183,4 @@
 - 2026-03-28: Phase 3 완료 — 5개 템플릿 (standard-screen, sheet-overlay, navigation-stack, tab-bar-layout, alert-modal)
 - 2026-03-28: Phase 4 완료 — 5개 섹션 스펙 (status-bar, navigation-region, content-region, overlay-region, system-region)
 - 2026-03-28: Phase 5 완료 — iPhone 5개 + iPad 3개 페이지 레시피 (총 3,872줄)
+- 2026-03-28: Phase 5 보강 완료 — iPhone 25개 + iPad 23개 (Figma Examples 전체 커버)
