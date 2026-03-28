@@ -1,0 +1,336 @@
+/* ==========================================================================
+   iOS 26 Typography — Svelte 5 + Inertia.js + Rails
+   ==========================================================================
+   SF Pro type scale with all 11 levels, 4 variants each.
+   Depends on tokens.css for custom property values.
+
+   Usage:
+     <h1 class="ios-large-title">Page Title</h1>
+     <p class="ios-body">Content text</p>
+     <p class="ios-body ios-emphasized">Bold content</p>
+     <span class="ios-caption1">Metadata</span>
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Base: Apply system font to all iOS typography
+   -------------------------------------------------------------------------- */
+.ios-type,
+[class^="ios-large-title"],
+[class^="ios-title"],
+[class^="ios-headline"],
+[class^="ios-body"],
+[class^="ios-callout"],
+[class^="ios-subheadline"],
+[class^="ios-footnote"],
+[class^="ios-caption"] {
+  font-family: var(--ios-font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+
+/* --------------------------------------------------------------------------
+   Large Title — 34/41, Regular (400) | Emphasized Bold (700)
+   -------------------------------------------------------------------------- */
+.ios-large-title {
+  font-size: var(--ios-type-large-title-size);
+  line-height: var(--ios-type-large-title-lh);
+  letter-spacing: var(--ios-type-large-title-ls);
+  font-weight: var(--ios-type-large-title-weight);
+}
+
+.ios-large-title.ios-emphasized {
+  font-weight: var(--ios-type-large-title-weight-em);
+}
+
+.ios-large-title.ios-italic {
+  font-style: italic;
+}
+
+.ios-large-title.ios-emphasized.ios-italic {
+  font-weight: var(--ios-type-large-title-weight-em);
+  font-style: italic;
+}
+
+.ios-large-title.ios-loose {
+  line-height: var(--ios-type-large-title-lh-loose);
+}
+
+
+/* --------------------------------------------------------------------------
+   Title 1 — 28/34, Regular (400) | Emphasized Bold (700)
+   -------------------------------------------------------------------------- */
+.ios-title1 {
+  font-size: var(--ios-type-title1-size);
+  line-height: var(--ios-type-title1-lh);
+  letter-spacing: var(--ios-type-title1-ls);
+  font-weight: var(--ios-type-title1-weight);
+}
+
+.ios-title1.ios-emphasized {
+  font-weight: var(--ios-type-title1-weight-em);
+}
+
+.ios-title1.ios-italic {
+  font-style: italic;
+}
+
+.ios-title1.ios-emphasized.ios-italic {
+  font-weight: var(--ios-type-title1-weight-em);
+  font-style: italic;
+}
+
+.ios-title1.ios-loose {
+  line-height: var(--ios-type-title1-lh-loose);
+}
+
+
+/* --------------------------------------------------------------------------
+   Title 2 — 22/28, Regular (400) | Emphasized Bold (700)
+   -------------------------------------------------------------------------- */
+.ios-title2 {
+  font-size: var(--ios-type-title2-size);
+  line-height: var(--ios-type-title2-lh);
+  letter-spacing: var(--ios-type-title2-ls);
+  font-weight: var(--ios-type-title2-weight);
+}
+
+.ios-title2.ios-emphasized {
+  font-weight: var(--ios-type-title2-weight-em);
+}
+
+.ios-title2.ios-italic {
+  font-style: italic;
+}
+
+.ios-title2.ios-emphasized.ios-italic {
+  font-weight: var(--ios-type-title2-weight-em);
+  font-style: italic;
+}
+
+.ios-title2.ios-loose {
+  line-height: var(--ios-type-title2-lh-loose);
+}
+
+
+/* --------------------------------------------------------------------------
+   Title 3 — 20/25, Regular (400) | Emphasized Semibold (600)
+   -------------------------------------------------------------------------- */
+.ios-title3 {
+  font-size: var(--ios-type-title3-size);
+  line-height: var(--ios-type-title3-lh);
+  letter-spacing: var(--ios-type-title3-ls);
+  font-weight: var(--ios-type-title3-weight);
+}
+
+.ios-title3.ios-emphasized {
+  font-weight: var(--ios-type-title3-weight-em);
+}
+
+.ios-title3.ios-italic {
+  font-style: italic;
+}
+
+.ios-title3.ios-emphasized.ios-italic {
+  font-weight: var(--ios-type-title3-weight-em);
+  font-style: italic;
+}
+
+.ios-title3.ios-loose {
+  line-height: var(--ios-type-title3-lh-loose);
+}
+
+
+/* --------------------------------------------------------------------------
+   Headline — 17/22, Semibold (600) only
+   -------------------------------------------------------------------------- */
+.ios-headline {
+  font-size: var(--ios-type-headline-size);
+  line-height: var(--ios-type-headline-lh);
+  letter-spacing: var(--ios-type-headline-ls);
+  font-weight: var(--ios-type-headline-weight);
+}
+
+.ios-headline.ios-italic {
+  font-style: italic;
+}
+
+.ios-headline.ios-loose {
+  line-height: var(--ios-type-headline-lh-loose);
+}
+
+
+/* --------------------------------------------------------------------------
+   Body — 17/22, Regular (400) | Emphasized Semibold (600)
+   -------------------------------------------------------------------------- */
+.ios-body {
+  font-size: var(--ios-type-body-size);
+  line-height: var(--ios-type-body-lh);
+  letter-spacing: var(--ios-type-body-ls);
+  font-weight: var(--ios-type-body-weight);
+}
+
+.ios-body.ios-emphasized {
+  font-weight: var(--ios-type-body-weight-em);
+}
+
+.ios-body.ios-italic {
+  font-style: italic;
+}
+
+.ios-body.ios-emphasized.ios-italic {
+  font-weight: var(--ios-type-body-weight-em);
+  font-style: italic;
+}
+
+.ios-body.ios-loose {
+  line-height: var(--ios-type-body-lh-loose);
+}
+
+
+/* --------------------------------------------------------------------------
+   Callout — 16/21, Regular (400) | Emphasized Semibold (600)
+   -------------------------------------------------------------------------- */
+.ios-callout {
+  font-size: var(--ios-type-callout-size);
+  line-height: var(--ios-type-callout-lh);
+  letter-spacing: var(--ios-type-callout-ls);
+  font-weight: var(--ios-type-callout-weight);
+}
+
+.ios-callout.ios-emphasized {
+  font-weight: var(--ios-type-callout-weight-em);
+}
+
+.ios-callout.ios-italic {
+  font-style: italic;
+}
+
+.ios-callout.ios-emphasized.ios-italic {
+  font-weight: var(--ios-type-callout-weight-em);
+  font-style: italic;
+}
+
+.ios-callout.ios-loose {
+  line-height: var(--ios-type-callout-lh-loose);
+}
+
+
+/* --------------------------------------------------------------------------
+   Subheadline — 15/20, Regular (400) | Emphasized Semibold (600)
+   -------------------------------------------------------------------------- */
+.ios-subheadline {
+  font-size: var(--ios-type-subheadline-size);
+  line-height: var(--ios-type-subheadline-lh);
+  letter-spacing: var(--ios-type-subheadline-ls);
+  font-weight: var(--ios-type-subheadline-weight);
+}
+
+.ios-subheadline.ios-emphasized {
+  font-weight: var(--ios-type-subheadline-weight-em);
+}
+
+.ios-subheadline.ios-italic {
+  font-style: italic;
+}
+
+.ios-subheadline.ios-emphasized.ios-italic {
+  font-weight: var(--ios-type-subheadline-weight-em);
+  font-style: italic;
+}
+
+
+/* --------------------------------------------------------------------------
+   Footnote — 13/18, Regular (400) | Emphasized Semibold (600)
+   -------------------------------------------------------------------------- */
+.ios-footnote {
+  font-size: var(--ios-type-footnote-size);
+  line-height: var(--ios-type-footnote-lh);
+  letter-spacing: var(--ios-type-footnote-ls);
+  font-weight: var(--ios-type-footnote-weight);
+}
+
+.ios-footnote.ios-emphasized {
+  font-weight: var(--ios-type-footnote-weight-em);
+}
+
+.ios-footnote.ios-italic {
+  font-style: italic;
+}
+
+.ios-footnote.ios-emphasized.ios-italic {
+  font-weight: var(--ios-type-footnote-weight-em);
+  font-style: italic;
+}
+
+
+/* --------------------------------------------------------------------------
+   Caption 1 — 12/16, Regular (400) | Emphasized Medium (500)
+   -------------------------------------------------------------------------- */
+.ios-caption1 {
+  font-size: var(--ios-type-caption1-size);
+  line-height: var(--ios-type-caption1-lh);
+  letter-spacing: var(--ios-type-caption1-ls);
+  font-weight: var(--ios-type-caption1-weight);
+}
+
+.ios-caption1.ios-emphasized {
+  font-weight: var(--ios-type-caption1-weight-em);
+}
+
+.ios-caption1.ios-italic {
+  font-style: italic;
+}
+
+.ios-caption1.ios-emphasized.ios-italic {
+  font-weight: var(--ios-type-caption1-weight-em);
+  font-style: italic;
+}
+
+
+/* --------------------------------------------------------------------------
+   Caption 2 — 11/13, Regular (400) | Emphasized Semibold (600)
+   -------------------------------------------------------------------------- */
+.ios-caption2 {
+  font-size: var(--ios-type-caption2-size);
+  line-height: var(--ios-type-caption2-lh);
+  letter-spacing: var(--ios-type-caption2-ls);
+  font-weight: var(--ios-type-caption2-weight);
+}
+
+.ios-caption2.ios-emphasized {
+  font-weight: var(--ios-type-caption2-weight-em);
+}
+
+.ios-caption2.ios-italic {
+  font-style: italic;
+}
+
+.ios-caption2.ios-emphasized.ios-italic {
+  font-weight: var(--ios-type-caption2-weight-em);
+  font-style: italic;
+}
+
+
+/* --------------------------------------------------------------------------
+   Semantic Aliases — Map iOS roles to HTML elements
+   --------------------------------------------------------------------------
+   Apply these to your Svelte layout for automatic type scaling.
+   -------------------------------------------------------------------------- */
+.ios-page h1 { font-size: var(--ios-type-large-title-size); line-height: var(--ios-type-large-title-lh); letter-spacing: var(--ios-type-large-title-ls); font-weight: var(--ios-type-large-title-weight-em); }
+.ios-page h2 { font-size: var(--ios-type-title1-size); line-height: var(--ios-type-title1-lh); letter-spacing: var(--ios-type-title1-ls); font-weight: var(--ios-type-title1-weight-em); }
+.ios-page h3 { font-size: var(--ios-type-title2-size); line-height: var(--ios-type-title2-lh); letter-spacing: var(--ios-type-title2-ls); font-weight: var(--ios-type-title2-weight-em); }
+.ios-page h4 { font-size: var(--ios-type-title3-size); line-height: var(--ios-type-title3-lh); letter-spacing: var(--ios-type-title3-ls); font-weight: var(--ios-type-title3-weight-em); }
+.ios-page h5 { font-size: var(--ios-type-headline-size); line-height: var(--ios-type-headline-lh); letter-spacing: var(--ios-type-headline-ls); font-weight: var(--ios-type-headline-weight); }
+.ios-page p  { font-size: var(--ios-type-body-size); line-height: var(--ios-type-body-lh); letter-spacing: var(--ios-type-body-ls); font-weight: var(--ios-type-body-weight); }
+.ios-page small { font-size: var(--ios-type-footnote-size); line-height: var(--ios-type-footnote-lh); letter-spacing: var(--ios-type-footnote-ls); font-weight: var(--ios-type-footnote-weight); }
+
+
+/* --------------------------------------------------------------------------
+   Color integration — Apply label colors to type
+   -------------------------------------------------------------------------- */
+.ios-text-primary   { color: var(--ios-label-primary); }
+.ios-text-secondary { color: var(--ios-label-secondary); }
+.ios-text-tertiary  { color: var(--ios-label-tertiary); }
+.ios-text-quaternary { color: var(--ios-label-quaternary); }

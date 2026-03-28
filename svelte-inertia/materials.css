@@ -1,0 +1,246 @@
+/* ==========================================================================
+   iOS 26 Materials — Liquid Glass & Blur Effects
+   ==========================================================================
+   Svelte 5 + Inertia.js + Rails
+   Depends on tokens.css for custom property values.
+
+   Usage:
+     <div class="ios-glass">Liquid Glass panel</div>
+     <div class="ios-glass-medium">Medium glass bar</div>
+     <nav class="ios-blur-regular">Blurred navigation</nav>
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Liquid Glass — Regular (Large)
+   --------------------------------------------------------------------------
+   Primary iOS 26 material. Use for floating panels, toolbars, prominent UI.
+   -------------------------------------------------------------------------- */
+.ios-glass,
+.ios-glass-large {
+  background: var(--ios-glass-bg);
+  border-radius: var(--ios-glass-radius-large);
+  box-shadow: 0 0 var(--ios-glass-shadow-blur) rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 0.5px solid rgba(255, 255, 255, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Tint overlay for dark mode glass */
+.ios-glass::after,
+.ios-glass-large::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ios-glass-tint);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+
+/* --------------------------------------------------------------------------
+   Liquid Glass — Medium
+   --------------------------------------------------------------------------
+   Use for secondary floating bars, action bars, compact toolbars.
+   -------------------------------------------------------------------------- */
+.ios-glass-medium {
+  background: var(--ios-glass-bg-medium);
+  border-radius: var(--ios-glass-radius-medium);
+  box-shadow: 0 0 var(--ios-glass-shadow-blur) rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.ios-glass-medium::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ios-glass-tint);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+
+/* --------------------------------------------------------------------------
+   Liquid Glass — Small (Default)
+   --------------------------------------------------------------------------
+   Use for buttons, chips, small interactive elements.
+   -------------------------------------------------------------------------- */
+.ios-glass-small {
+  background: var(--ios-glass-bg-small);
+  border-radius: var(--ios-glass-radius-small);
+  box-shadow: 0 0 var(--ios-glass-shadow-blur) rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 0.5px solid var(--ios-glass-border-small);
+  position: relative;
+  overflow: hidden;
+}
+
+.ios-glass-small::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ios-glass-tint);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+
+/* --------------------------------------------------------------------------
+   Liquid Glass — Small Primary
+   --------------------------------------------------------------------------
+   Use for primary action buttons with blue icon accent.
+   -------------------------------------------------------------------------- */
+.ios-glass-small-primary {
+  background: var(--ios-glass-bg-small-primary);
+  border-radius: var(--ios-glass-radius-small);
+  box-shadow: 0 0 var(--ios-glass-shadow-blur) rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  color: var(--ios-glass-icon-primary);
+}
+
+
+/* --------------------------------------------------------------------------
+   Liquid Glass — Clear
+   --------------------------------------------------------------------------
+   Minimal glass effect. Use for subtle overlays, inactive states.
+   -------------------------------------------------------------------------- */
+.ios-glass-clear {
+  background: var(--ios-glass-clear-bg);
+  border-radius: var(--ios-glass-radius-clear);
+  box-shadow: 0 0 var(--ios-glass-shadow-blur) rgba(0, 0, 0, 0.02);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+}
+
+
+/* --------------------------------------------------------------------------
+   Background Blur Materials
+   --------------------------------------------------------------------------
+   System-level blur effects for navigation bars, tab bars, overlays.
+   -------------------------------------------------------------------------- */
+
+/* Chrome — 75% opacity, 50px blur. Heaviest material. */
+.ios-blur-chrome {
+  background: var(--ios-blur-chrome-bg);
+  backdrop-filter: blur(var(--ios-blur-chrome)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--ios-blur-chrome)) saturate(180%);
+}
+
+/* Thick — 84% opacity, 100px blur. Dense overlay. */
+.ios-blur-thick {
+  background: var(--ios-blur-thick-bg);
+  backdrop-filter: blur(var(--ios-blur-thick)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--ios-blur-thick)) saturate(180%);
+}
+
+/* Regular — 60% opacity, 100px blur. Default system material. */
+.ios-blur-regular {
+  background: var(--ios-blur-regular-bg);
+  backdrop-filter: blur(var(--ios-blur-regular)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--ios-blur-regular)) saturate(180%);
+}
+
+/* Thin — 40% opacity, 100px blur. Lighter material. */
+.ios-blur-thin {
+  background: var(--ios-blur-thin-bg);
+  backdrop-filter: blur(var(--ios-blur-thin)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--ios-blur-thin)) saturate(150%);
+}
+
+/* Ultrathin — 3% opacity, 100px blur. Barely visible material. */
+.ios-blur-ultrathin {
+  background: var(--ios-blur-ultrathin-bg);
+  backdrop-filter: blur(var(--ios-blur-ultrathin)) saturate(120%);
+  -webkit-backdrop-filter: blur(var(--ios-blur-ultrathin)) saturate(120%);
+}
+
+
+/* --------------------------------------------------------------------------
+   Scroll Edge Effects
+   --------------------------------------------------------------------------
+   Apply to scrollable containers for iOS-style fade edges.
+   -------------------------------------------------------------------------- */
+
+/* Soft edge — gradient fade + blur */
+.ios-scroll-edge-soft-top {
+  mask-image: linear-gradient(to bottom, transparent 0%, black 60px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 60px);
+}
+
+.ios-scroll-edge-soft-bottom {
+  mask-image: linear-gradient(to top, transparent 0%, black 60px);
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 60px);
+}
+
+.ios-scroll-edge-soft-both {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 60px,
+    black calc(100% - 60px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 60px,
+    black calc(100% - 60px),
+    transparent 100%
+  );
+}
+
+/* Hard edge — sharp boundary + blur */
+.ios-scroll-edge-hard-top::before {
+  content: "";
+  position: sticky;
+  top: 0;
+  display: block;
+  height: 1px;
+  background: var(--ios-separator-opaque);
+  backdrop-filter: blur(var(--ios-scroll-edge-hard-blur));
+  -webkit-backdrop-filter: blur(var(--ios-scroll-edge-hard-blur));
+  z-index: 1;
+}
+
+
+/* --------------------------------------------------------------------------
+   Overlay Dimming
+   --------------------------------------------------------------------------
+   Use behind sheets, alerts, and modals.
+   -------------------------------------------------------------------------- */
+.ios-overlay-dim {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.ios-overlay-dim-alert {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+
+/* --------------------------------------------------------------------------
+   Utility: Glass with interaction states
+   -------------------------------------------------------------------------- */
+.ios-glass-interactive {
+  cursor: pointer;
+  transition:
+    transform var(--ios-duration-fast) var(--ios-easing-default),
+    box-shadow var(--ios-duration-fast) var(--ios-easing-default);
+}
+
+.ios-glass-interactive:hover {
+  box-shadow: 0 0 calc(var(--ios-glass-shadow-blur) * 1.2) rgba(0, 0, 0, 0.1);
+}
+
+.ios-glass-interactive:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 calc(var(--ios-glass-shadow-blur) * 0.8) rgba(0, 0, 0, 0.06);
+}

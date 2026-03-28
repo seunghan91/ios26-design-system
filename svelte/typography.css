@@ -1,0 +1,300 @@
+/* ==========================================================================
+   iOS 26 Typography — Type Scale Classes
+   All 11 text styles with emphasized, italic, and loose modifiers
+   Requires: tokens.css
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   Base Type Styles
+   -------------------------------------------------------------------------- */
+
+.text-large-title {
+  font-family: var(--font-family);
+  font-size: var(--text-large-title);
+  line-height: var(--lh-large-title);
+  letter-spacing: var(--ls-large-title);
+  font-weight: var(--weight-regular);
+  font-style: normal;
+}
+
+.text-title1 {
+  font-family: var(--font-family);
+  font-size: var(--text-title1);
+  line-height: var(--lh-title1);
+  letter-spacing: var(--ls-title1);
+  font-weight: var(--weight-regular);
+  font-style: normal;
+}
+
+.text-title2 {
+  font-family: var(--font-family);
+  font-size: var(--text-title2);
+  line-height: var(--lh-title2);
+  letter-spacing: var(--ls-title2);
+  font-weight: var(--weight-regular);
+  font-style: normal;
+}
+
+.text-title3 {
+  font-family: var(--font-family);
+  font-size: var(--text-title3);
+  line-height: var(--lh-title3);
+  letter-spacing: var(--ls-title3);
+  font-weight: var(--weight-regular);
+  font-style: normal;
+}
+
+.text-headline {
+  font-family: var(--font-family);
+  font-size: var(--text-headline);
+  line-height: var(--lh-headline);
+  letter-spacing: var(--ls-headline);
+  font-weight: var(--weight-semibold);
+  font-style: normal;
+}
+
+.text-body {
+  font-family: var(--font-family);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  font-weight: var(--weight-regular);
+  font-style: normal;
+}
+
+.text-callout {
+  font-family: var(--font-family);
+  font-size: var(--text-callout);
+  line-height: var(--lh-callout);
+  letter-spacing: var(--ls-callout);
+  font-weight: var(--weight-regular);
+  font-style: normal;
+}
+
+.text-subheadline {
+  font-family: var(--font-family);
+  font-size: var(--text-subheadline);
+  line-height: var(--lh-subheadline);
+  letter-spacing: var(--ls-subheadline);
+  font-weight: var(--weight-regular);
+  font-style: normal;
+}
+
+.text-footnote {
+  font-family: var(--font-family);
+  font-size: var(--text-footnote);
+  line-height: var(--lh-footnote);
+  letter-spacing: var(--ls-footnote);
+  font-weight: var(--weight-regular);
+  font-style: normal;
+}
+
+.text-caption1 {
+  font-family: var(--font-family);
+  font-size: var(--text-caption1);
+  line-height: var(--lh-caption1);
+  letter-spacing: var(--ls-caption1);
+  font-weight: var(--weight-regular);
+  font-style: normal;
+}
+
+.text-caption2 {
+  font-family: var(--font-family);
+  font-size: var(--text-caption2);
+  line-height: var(--lh-caption2);
+  letter-spacing: var(--ls-caption2);
+  font-weight: var(--weight-regular);
+  font-style: normal;
+}
+
+
+/* --------------------------------------------------------------------------
+   Emphasized Modifier
+   Applies the emphasized (bold/semibold) weight for each style.
+   Usage: <p class="text-body emphasized">
+   -------------------------------------------------------------------------- */
+
+.text-large-title.emphasized {
+  font-weight: var(--weight-bold);
+}
+
+.text-title1.emphasized {
+  font-weight: var(--weight-bold);
+}
+
+.text-title2.emphasized {
+  font-weight: var(--weight-bold);
+}
+
+.text-title3.emphasized {
+  font-weight: var(--weight-semibold);
+}
+
+/* Headline is already semibold; emphasized has no additional effect */
+.text-headline.emphasized {
+  font-weight: var(--weight-semibold);
+}
+
+.text-body.emphasized {
+  font-weight: var(--weight-semibold);
+}
+
+.text-callout.emphasized {
+  font-weight: var(--weight-semibold);
+}
+
+.text-subheadline.emphasized {
+  font-weight: var(--weight-semibold);
+}
+
+.text-footnote.emphasized {
+  font-weight: var(--weight-semibold);
+}
+
+.text-caption1.emphasized {
+  font-weight: var(--weight-medium);
+}
+
+.text-caption2.emphasized {
+  font-weight: var(--weight-semibold);
+}
+
+
+/* --------------------------------------------------------------------------
+   Italic Modifier
+   Usage: <p class="text-body italic">
+   -------------------------------------------------------------------------- */
+
+.text-large-title.italic,
+.text-title1.italic,
+.text-title2.italic,
+.text-title3.italic,
+.text-headline.italic,
+.text-body.italic,
+.text-callout.italic,
+.text-subheadline.italic,
+.text-footnote.italic,
+.text-caption1.italic,
+.text-caption2.italic {
+  font-style: italic;
+}
+
+
+/* --------------------------------------------------------------------------
+   Emphasized + Italic (compound modifier)
+   Usage: <p class="text-body emphasized italic">
+   -------------------------------------------------------------------------- */
+
+.text-large-title.emphasized.italic {
+  font-weight: var(--weight-bold);
+  font-style: italic;
+}
+
+.text-title1.emphasized.italic {
+  font-weight: var(--weight-bold);
+  font-style: italic;
+}
+
+.text-title2.emphasized.italic {
+  font-weight: var(--weight-bold);
+  font-style: italic;
+}
+
+.text-title3.emphasized.italic {
+  font-weight: var(--weight-semibold);
+  font-style: italic;
+}
+
+.text-headline.emphasized.italic {
+  font-weight: var(--weight-semibold);
+  font-style: italic;
+}
+
+.text-body.emphasized.italic {
+  font-weight: var(--weight-semibold);
+  font-style: italic;
+}
+
+.text-callout.emphasized.italic {
+  font-weight: var(--weight-semibold);
+  font-style: italic;
+}
+
+.text-subheadline.emphasized.italic {
+  font-weight: var(--weight-semibold);
+  font-style: italic;
+}
+
+.text-footnote.emphasized.italic {
+  font-weight: var(--weight-semibold);
+  font-style: italic;
+}
+
+.text-caption1.emphasized.italic {
+  font-weight: var(--weight-medium);
+  font-style: italic;
+}
+
+.text-caption2.emphasized.italic {
+  font-weight: var(--weight-semibold);
+  font-style: italic;
+}
+
+
+/* --------------------------------------------------------------------------
+   Loose Leading Modifier
+   Adds +2px line-height for multiline text blocks.
+   Only applicable to Large Title through Callout (7 styles).
+   Usage: <p class="text-body text-loose">
+   -------------------------------------------------------------------------- */
+
+.text-large-title.text-loose {
+  line-height: var(--lh-large-title-loose);
+}
+
+.text-title1.text-loose {
+  line-height: var(--lh-title1-loose);
+}
+
+.text-title2.text-loose {
+  line-height: var(--lh-title2-loose);
+}
+
+.text-title3.text-loose {
+  line-height: var(--lh-title3-loose);
+}
+
+.text-headline.text-loose {
+  line-height: var(--lh-headline-loose);
+}
+
+.text-body.text-loose {
+  line-height: var(--lh-body-loose);
+}
+
+.text-callout.text-loose {
+  line-height: var(--lh-callout-loose);
+}
+
+
+/* --------------------------------------------------------------------------
+   Semantic Color Utilities
+   Apply label colors to text.
+   -------------------------------------------------------------------------- */
+
+.text-primary {
+  color: var(--label-primary);
+}
+
+.text-secondary {
+  color: var(--label-secondary);
+}
+
+.text-tertiary {
+  color: var(--label-tertiary);
+}
+
+.text-quaternary {
+  color: var(--label-quaternary);
+}

@@ -1,0 +1,157 @@
+{
+  "_reference": {
+    "source": "Apple HIG (iOS 26) + Figma iOS 26 Community Kit",
+    "extracted": "2026-03-28",
+    "plan": "../PLAN.md",
+    "inventory": "../../figma-ios26-pages.md",
+    "note": "Figma MCP cannot export animation curves. These values are derived from Apple HIG, WWDC 25 sessions, and measured approximations.",
+    "wwdcReferences": [
+      "WWDC25: What's new in UIKit",
+      "WWDC25: Liquid Glass — a new material for Apple platforms",
+      "WWDC23: Animate with springs"
+    ]
+  },
+  "duration": {
+    "instant": 0,
+    "micro": 0.1,
+    "fast": 0.2,
+    "normal": 0.3,
+    "slow": 0.4,
+    "xslow": 0.5,
+    "semantic": {
+      "tabTransition": 0.3,
+      "sheetPresent": 0.5,
+      "sheetDismiss": 0.3,
+      "alertPresent": 0.2,
+      "alertDismiss": 0.15,
+      "contextMenuOpen": 0.25,
+      "contextMenuClose": 0.15,
+      "notificationSlide": 0.4,
+      "liquidGlassMorph": 0.35,
+      "liquidGlassTabIndicator": 0.45,
+      "pageTransition": 0.35,
+      "listRowSwipe": 0.2,
+      "keyboardSlide": 0.25
+    }
+  },
+  "easing": {
+    "linear": "linear",
+    "easeIn": "cubic-bezier(0.42, 0, 1.0, 1.0)",
+    "easeOut": "cubic-bezier(0.0, 0, 0.58, 1.0)",
+    "easeInOut": "cubic-bezier(0.42, 0, 0.58, 1.0)",
+    "appleDefault": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+    "appleEaseIn": "cubic-bezier(0.42, 0, 1.0, 1.0)",
+    "appleEaseOut": "cubic-bezier(0.0, 0, 0.6, 1.0)",
+    "spring": {
+      "note": "CSS spring approximation. Native: UISpringTimingParameters",
+      "snappy": "cubic-bezier(0.34, 1.56, 0.64, 1.0)",
+      "bouncy": "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+      "gentle": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      "stiff": "cubic-bezier(0.5, 0, 0.75, 0)"
+    }
+  },
+  "spring": {
+    "note": "iOS native spring parameters for UISpringTimingParameters / SwiftUI spring(). Not directly usable in CSS/Flutter — see easing.spring for approximations.",
+    "defaultResponse": 0.55,
+    "defaultDampingRatio": 0.825,
+    "presets": {
+      "snappy": {
+        "response": 0.3,
+        "dampingRatio": 0.8,
+        "useCase": "Tab bar indicator, buttons"
+      },
+      "bouncy": {
+        "response": 0.5,
+        "dampingRatio": 0.65,
+        "useCase": "App icon launch, notification"
+      },
+      "gentle": {
+        "response": 0.55,
+        "dampingRatio": 0.825,
+        "useCase": "Sheet present, page transition"
+      },
+      "stiff": {
+        "response": 0.25,
+        "dampingRatio": 1.0,
+        "useCase": "Alert, menu (no bounce)"
+      }
+    }
+  },
+  "liquidGlass": {
+    "tabIndicator": {
+      "description": "물방울 탭 인디케이터 morphing animation",
+      "duration": 0.45,
+      "spring": "snappy",
+      "cssApprox": "cubic-bezier(0.34, 1.56, 0.64, 1.0)",
+      "properties": ["width", "height", "border-radius", "transform", "backdrop-filter"],
+      "note": "The tab indicator stretches in the direction of travel before snapping to target. Achieved via keyframe: 0% -> 50% (stretched) -> 100% (target shape). backdrop-filter: blur(7px) throughout."
+    },
+    "morph": {
+      "description": "Liquid Glass morphing between states",
+      "duration": 0.35,
+      "spring": "gentle",
+      "cssApprox": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      "note": "Fluid shape transition. cornerRadius animates with position."
+    },
+    "appear": {
+      "description": "Liquid Glass element appearing",
+      "duration": 0.3,
+      "spring": "snappy",
+      "properties": ["opacity", "scale", "backdrop-filter"],
+      "from": { "opacity": 0, "scale": 0.85, "blur": 0 },
+      "to": { "opacity": 1, "scale": 1, "blur": 7 }
+    },
+    "fluidKeyframes": {
+      "description": "CSS @keyframes for blob-like tab indicator movement",
+      "note": "The indicator morphs into a 'stretched pill' at 40% of the travel, then snaps to final position. Border-radius stays at 9999px throughout.",
+      "example": "@keyframes liquid-tab-move { 0% { width: 64px; } 40% { width: 80px; border-radius: 9999px; } 100% { width: 64px; } }"
+    }
+  },
+  "transitions": {
+    "push": {
+      "description": "Navigation push (new screen slides in from right)",
+      "enter": { "from": "translateX(100%)", "to": "translateX(0)", "duration": 0.35, "easing": "appleEaseOut" },
+      "exit": { "from": "translateX(0)", "to": "translateX(-30%)", "duration": 0.35, "easing": "appleEaseOut", "opacity": { "from": 1, "to": 0.8 } }
+    },
+    "pop": {
+      "description": "Navigation pop (current screen slides out to right)",
+      "enter": { "from": "translateX(-30%)", "to": "translateX(0)", "duration": 0.35, "easing": "appleEaseOut", "opacity": { "from": 0.8, "to": 1 } },
+      "exit": { "from": "translateX(0)", "to": "translateX(100%)", "duration": 0.35, "easing": "appleEaseOut" }
+    },
+    "modal": {
+      "description": "Modal sheet present/dismiss",
+      "present": { "from": "translateY(100%)", "to": "translateY(0)", "duration": 0.5, "easing": "spring.gentle" },
+      "dismiss": { "from": "translateY(0)", "to": "translateY(100%)", "duration": 0.3, "easing": "appleEaseIn" }
+    },
+    "fade": {
+      "description": "Simple opacity fade (alerts, overlays)",
+      "in": { "from": 0, "to": 1, "duration": 0.2, "easing": "easeOut" },
+      "out": { "from": 1, "to": 0, "duration": 0.15, "easing": "easeIn" }
+    },
+    "scale": {
+      "description": "Scale + fade (context menus, popovers)",
+      "in": { "from": { "scale": 0.85, "opacity": 0 }, "to": { "scale": 1, "opacity": 1 }, "duration": 0.25, "easing": "spring.snappy" },
+      "out": { "from": { "scale": 1, "opacity": 1 }, "to": { "scale": 0.85, "opacity": 0 }, "duration": 0.15, "easing": "easeIn" }
+    }
+  },
+  "frameworkMappings": {
+    "flutter": {
+      "note": "Use CurvedAnimation + custom Spring curve. For Liquid Glass, use AnimatedContainer with custom Curve.",
+      "springGentle": "SpringDescription(mass: 1, stiffness: 130, damping: 18)",
+      "springSnappy": "SpringDescription(mass: 1, stiffness: 220, damping: 20)",
+      "liquidGlassBlur": "BackdropFilter(filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7))"
+    },
+    "svelte": {
+      "note": "Use svelte/transition with custom easing, or CSS custom properties.",
+      "spring": "import { spring } from 'svelte/motion'; spring(value, { stiffness: 0.2, damping: 0.8 })",
+      "liquidGlassBlur": "backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px);"
+    },
+    "css": {
+      "tabIndicatorTransition": "width 0.45s cubic-bezier(0.34, 1.56, 0.64, 1.0), transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1.0), border-radius 0.45s cubic-bezier(0.34, 1.56, 0.64, 1.0)",
+      "sheetTransition": "transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      "backdropBlurSmall": "backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px);",
+      "backdropBlurMedium": "backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);",
+      "backdropBlurLarge": "backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);"
+    }
+  }
+}

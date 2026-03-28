@@ -1,0 +1,121 @@
+{
+  "_reference": {
+    "source": "Figma iOS & iPadOS 26 Community Kit (pDmGXdYu2k8xlf1SQoU9PW)",
+    "extracted": "2026-03-27",
+    "plan": "../PLAN.md",
+    "inventory": "../../figma-ios26-pages.md",
+    "note": "Figma MCP is last resort. Use this file as primary reference."
+  },
+  "accents": {
+    "red": { "light": "#ff383c", "dark": "#ff4245", "icLight": "#e9152d", "icDark": "#ff6165" },
+    "orange": { "light": "#ff8d28", "dark": "#ff9230", "icLight": "#c55300", "icDark": "#ffa056" },
+    "yellow": { "light": "#ffcc00", "dark": "#ffd600", "icLight": "#a16a00", "icDark": "#fedf43" },
+    "green": { "light": "#34c759", "dark": "#30d158", "icLight": "#008932", "icDark": "#4ae968" },
+    "mint": { "light": "#00c8b3", "dark": "#00dac3", "icLight": "#008575", "icDark": "#54dfcb" },
+    "teal": { "light": "#00c3d0", "dark": "#00d2e0", "icLight": "#008198", "icDark": "#3bddec" },
+    "cyan": { "light": "#00c0e8", "dark": "#3cd3fe", "icLight": "#007eae", "icDark": "#6dd9ff" },
+    "blue": { "light": "#0088ff", "dark": "#0091ff", "icLight": "#1e6ef4", "icDark": "#5cb8ff" },
+    "indigo": { "light": "#6155f5", "dark": "#6d7cff", "icLight": "#564ade", "icDark": "#a7aaff" },
+    "purple": { "light": "#cb30e0", "dark": "#db34f2", "icLight": "#b02fc2", "icDark": "#ea8dff" },
+    "pink": { "light": "#ff2d55", "dark": "#ff375f", "icLight": "#e7124d", "icDark": "#ff8ac4" },
+    "brown": { "light": "#ac7f5e", "dark": "#b78a66", "icLight": "#956d51", "icDark": "#dba679" }
+  },
+  "labels": {
+    "primary": { "light": { "hex": "#000000", "a": 1 }, "dark": { "hex": "#ffffff", "a": 1 }, "icLight": { "hex": "#000000", "a": 1 }, "icDark": { "hex": "#ffffff", "a": 1 } },
+    "secondary": { "light": { "hex": "#3c3c43", "a": 0.6 }, "dark": { "hex": "#ebebf5", "a": 0.7 }, "icLight": { "hex": "#3c3c43", "a": 0.8 }, "icDark": { "hex": "#ebebf5", "a": 0.7 } },
+    "tertiary": { "light": { "hex": "#3c3c43", "a": 0.3 }, "dark": { "hex": "#ebebf5", "a": 0.3 }, "icLight": { "hex": "#3c3c43", "a": 0.7 }, "icDark": { "hex": "#ebebf5", "a": 0.55 } },
+    "quaternary": { "light": { "hex": "#3c3c43", "a": 0.18 }, "dark": { "hex": "#ebebf5", "a": 0.16 }, "icLight": { "hex": "#3c3c43", "a": 0.55 }, "icDark": { "hex": "#ebebf5", "a": 0.4 } }
+  },
+  "labelsVibrant": {
+    "primary": { "light": "#1a1a1a", "dark": "#f5f5f5", "icLight": "#000000", "icDark": "#ffffff" },
+    "secondary": { "light": "#727272", "dark": "#8a8a8a", "icLight": "#999999", "icDark": "#8a8a8a" },
+    "tertiary": { "light": "#bfbfbf", "dark": "#404040", "icLight": "#bfbfbf", "icDark": "#404040" },
+    "quaternary": { "light": "#d9d9d9", "dark": "#262626", "icLight": "#d9d9d9", "icDark": "#262626" }
+  },
+  "labelsVibrantControls": {
+    "primary": { "light": "#1a1a1a", "dark": "#f5f5f5", "icLight": "#000000", "icDark": "#ffffff" },
+    "secondary": { "light": "#727272", "dark": "#8a8a8a", "icLight": "#727272", "icDark": "#8a8a8a" },
+    "tertiary": { "light": "#bfbfbf", "dark": "#404040", "icLight": "#bfbfbf", "icDark": "#404040" }
+  },
+  "backgrounds": {
+    "primary": { "light": "#ffffff", "dark": "#000000", "icLight": "#ffffff", "icDark": "#000000" },
+    "secondary": { "light": "#f2f2f7", "dark": "#1c1c1e", "icLight": "#ebebef", "icDark": "#242426" },
+    "tertiary": { "light": "#ffffff", "dark": "#2c2c2e", "icLight": "#ffffff", "icDark": "#363638" },
+    "primaryElevated": { "light": "#ffffff", "dark": "#1c1c1e", "icLight": "#ffffff", "icDark": "#242426" },
+    "secondaryElevated": { "light": "#f2f2f7", "dark": "#2c2c2e", "icLight": "#ebebef", "icDark": "#363638" },
+    "tertiaryElevated": { "light": "#ffffff", "dark": "#3a3a3c", "icLight": "#ffffff", "icDark": "#3a3a3c" }
+  },
+  "backgroundsGrouped": {
+    "primary": { "light": "#f2f2f7", "dark": "#000000", "icLight": "#ebebef", "icDark": "#000000" },
+    "secondary": { "light": "#ffffff", "dark": "#1c1c1e", "icLight": "#ffffff", "icDark": "#242426" },
+    "tertiary": { "light": "#f2f2f7", "dark": "#2c2c2e", "icLight": "#ebebef", "icDark": "#363638" },
+    "primaryElevated": { "light": "#f2f2f7", "dark": "#1c1c1e", "icLight": "#ebebef", "icDark": "#242426" },
+    "secondaryElevated": { "light": "#ffffff", "dark": "#2c2c2e", "icLight": "#ffffff", "icDark": "#363638" },
+    "tertiaryElevated": { "light": "#f2f2f7", "dark": "#3a3a3c", "icLight": "#ebebef", "icDark": "#3a3a3c" }
+  },
+  "fills": {
+    "primary": { "light": { "hex": "#787878", "a": 0.2 }, "dark": { "hex": "#787880", "a": 0.36 }, "icLight": { "hex": "#787878", "a": 0.28 }, "icDark": { "hex": "#787880", "a": 0.44 } },
+    "secondary": { "light": { "hex": "#787880", "a": 0.16 }, "dark": { "hex": "#787880", "a": 0.32 }, "icLight": { "hex": "#787880", "a": 0.24 }, "icDark": { "hex": "#787880", "a": 0.4 } },
+    "tertiary": { "light": { "hex": "#767680", "a": 0.12 }, "dark": { "hex": "#767680", "a": 0.24 }, "icLight": { "hex": "#767680", "a": 0.2 }, "icDark": { "hex": "#767680", "a": 0.32 } },
+    "quaternary": { "light": { "hex": "#747480", "a": 0.08 }, "dark": { "hex": "#767680", "a": 0.18 }, "icLight": { "hex": "#747480", "a": 0.16 }, "icDark": { "hex": "#767680", "a": 0.26 } }
+  },
+  "fillsVibrant": {
+    "primary": { "light": "#cccccc", "dark": "#333333" },
+    "secondary": { "light": "#e0e0e0", "dark": "#1f1f1f" },
+    "tertiary": { "light": "#ededed", "dark": "#121212" }
+  },
+  "grays": {
+    "black": "#000000",
+    "gray": { "light": "#8e8e93", "dark": "#8e8e93", "icLight": "#6c6c70", "icDark": "#aeaeb2" },
+    "gray2": { "light": "#aeaeb2", "dark": "#636366", "icLight": "#aeaeb2", "icDark": "#545456" },
+    "gray3": { "light": "#c7c7cc", "dark": "#48484a", "icLight": "#c7c7cb", "icDark": "#444446" },
+    "gray4": { "light": "#d1d1d6", "dark": "#3a3a3c", "icLight": "#d1d1d5", "icDark": "#363638" },
+    "gray5": { "light": "#e5e5ea", "dark": "#2c2c2e", "icLight": "#e5e5e9", "icDark": "#242426" },
+    "gray6": { "light": "#f2f2f7", "dark": "#1c1c1e", "icLight": "#f2f2f6", "icDark": "#000000" },
+    "white": "#ffffff"
+  },
+  "separators": {
+    "opaque": { "light": "#c6c6c8", "dark": "#38383a" },
+    "nonOpaque": { "light": { "hex": "#000000", "a": 0.12 }, "dark": { "hex": "#ffffff", "a": 0.17 } },
+    "vibrant": { "light": "#e6e6e6", "dark": "#1a1a1a" }
+  },
+  "overlays": {
+    "default": { "light": { "hex": "#000000", "a": 0.2 }, "dark": { "hex": "#000000", "a": 0.48 } },
+    "activityView": { "light": { "hex": "#000000", "a": 0.2 }, "dark": { "hex": "#000000", "a": 0.29 } },
+    "alert": { "light": { "hex": "#29293a", "a": 0.23 }, "dark": { "hex": "#121212", "a": 0.56 } }
+  },
+  "miscellaneous": {
+    "buttons": {
+      "labelDestructiveDisabled": { "light": { "hex": "#ff383c", "a": 0.5 }, "dark": { "hex": "#ff4245", "a": 0.5 } },
+      "bgDestructiveProminent": { "light": { "hex": "#ff383c", "a": 0.2 }, "dark": { "hex": "#ff4245", "a": 0.2 } },
+      "bgDestructive": { "light": { "hex": "#ff383c", "a": 0.14 }, "dark": { "hex": "#ff4245", "a": 0.14 } }
+    },
+    "tabUnselected": { "light": "#999999", "dark": "#7e7e7e" },
+    "tabBarSelection": { "dark": "#ffffff" },
+    "segmentedControlSelectedFill": { "light": { "hex": "#ffffff", "a": 1 }, "dark": { "hex": "#ffffff", "a": 0.27 } },
+    "textField": {
+      "bg": { "light": "#ffffff", "dark": "#000000" },
+      "outline": { "light": { "hex": "#3c3c43", "a": 0.29 }, "dark": { "hex": "#ebebf5", "a": 0.3 } }
+    },
+    "sidebar": {
+      "fillSelected": { "light": "#ffffff", "dark": { "hex": "#8e8e93", "a": 0.25 } },
+      "shadowDragOver": { "light": { "hex": "#000000", "a": 0.2 }, "dark": { "hex": "#000000", "a": 0.9 } }
+    },
+    "toggle": {
+      "axLabelOff": { "light": "#b3b3b3", "dark": "#a6a6a6", "icLight": "#ffffff", "icDark": "#ffffff" }
+    },
+    "windowControls": {
+      "close": "#ff5f57",
+      "minimize": "#febc2f",
+      "maximize": "#27c840",
+      "bgInactive": { "light": { "hex": "#000000", "a": 0.05 }, "dark": { "hex": "#ffffff", "a": 0.05 } }
+    },
+    "keyboards": {
+      "emojiMic": { "light": { "hex": "#222b59", "a": 0.63 }, "dark": { "hex": "#ffffff", "a": 0.73 } },
+      "glyphsPrimary": { "light": "#595959", "dark": "#a6a6a6" },
+      "glyphsSecondary": { "light": "#b3b3b3", "dark": "#4d4d4d" },
+      "keys": { "light": "#141414", "dark": "#454545" }
+    },
+    "windowGrabber": { "light": "#000000", "dark": "#ffffff" }
+  }
+}

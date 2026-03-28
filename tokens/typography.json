@@ -1,0 +1,202 @@
+{
+  "_reference": {
+    "source": "Figma iOS & iPadOS 26 Community Kit (pDmGXdYu2k8xlf1SQoU9PW)",
+    "extracted": "2026-03-27",
+    "plan": "../PLAN.md",
+    "inventory": "../../figma-ios26-pages.md",
+    "note": "Figma MCP is last resort. Use this file as primary reference."
+  },
+  "fontFamily": "SF Pro",
+  "fallback": "-apple-system, system-ui, sans-serif",
+  "styles": {
+    "largeTitle": {
+      "fontSize": 34,
+      "lineHeight": 41,
+      "letterSpacing": 0.4,
+      "regular": "Regular",
+      "emphasized": "Bold",
+      "looseLineHeight": 43
+    },
+    "title1": {
+      "fontSize": 28,
+      "lineHeight": 34,
+      "letterSpacing": 0.38,
+      "regular": "Regular",
+      "emphasized": "Bold",
+      "looseLineHeight": 36
+    },
+    "title2": {
+      "fontSize": 22,
+      "lineHeight": 28,
+      "letterSpacing": -0.26,
+      "regular": "Regular",
+      "emphasized": "Bold",
+      "looseLineHeight": 30
+    },
+    "title3": {
+      "fontSize": 20,
+      "lineHeight": 25,
+      "letterSpacing": -0.45,
+      "regular": "Regular",
+      "emphasized": "Semibold",
+      "looseLineHeight": 27
+    },
+    "headline": {
+      "fontSize": 17,
+      "lineHeight": 22,
+      "letterSpacing": -0.43,
+      "regular": "Semibold",
+      "italic": "Semibold Italic",
+      "looseLineHeight": 24
+    },
+    "body": {
+      "fontSize": 17,
+      "lineHeight": 22,
+      "letterSpacing": -0.43,
+      "regular": "Regular",
+      "emphasized": "Semibold",
+      "italic": "Regular Italic",
+      "emphasizedItalic": "Semibold Italic",
+      "looseLineHeight": 24
+    },
+    "callout": {
+      "fontSize": 16,
+      "lineHeight": 21,
+      "letterSpacing": -0.31,
+      "regular": "Regular",
+      "emphasized": "Semibold",
+      "italic": "Regular Italic",
+      "emphasizedItalic": "Semibold Italic",
+      "looseLineHeight": 23
+    },
+    "subheadline": {
+      "fontSize": 15,
+      "lineHeight": 20,
+      "letterSpacing": -0.23,
+      "regular": "Regular",
+      "emphasized": "Semibold",
+      "italic": "Regular Italic",
+      "emphasizedItalic": "Semibold Italic"
+    },
+    "footnote": {
+      "fontSize": 13,
+      "lineHeight": 18,
+      "letterSpacing": -0.08,
+      "regular": "Regular",
+      "emphasized": "Semibold",
+      "italic": "Regular Italic",
+      "emphasizedItalic": "Semibold Italic"
+    },
+    "caption1": {
+      "fontSize": 12,
+      "lineHeight": 16,
+      "letterSpacing": 0,
+      "regular": "Regular",
+      "emphasized": "Medium",
+      "italic": "Regular Italic",
+      "emphasizedItalic": "Medium Italic"
+    },
+    "caption2": {
+      "fontSize": 11,
+      "lineHeight": 13,
+      "letterSpacing": 0.06,
+      "regular": "Regular",
+      "emphasized": "Semibold",
+      "italic": "Regular Italic",
+      "emphasizedItalic": "Semibold Italic"
+    }
+  },
+  "dynamicType": {
+    "xSmall": {
+      "caption2": 11,
+      "caption1": 11,
+      "footnote": 12,
+      "subheadline": 14,
+      "callout": 14,
+      "body": 14,
+      "headline": 14,
+      "title3": 17,
+      "title2": 19,
+      "title1": 25,
+      "largeTitle": 31
+    },
+    "small": {
+      "caption2": 11,
+      "caption1": 11,
+      "footnote": 12,
+      "subheadline": 14,
+      "callout": 15,
+      "body": 15,
+      "headline": 15,
+      "title3": 18,
+      "title2": 20,
+      "title1": 26,
+      "largeTitle": 32
+    },
+    "medium": {
+      "caption2": 11,
+      "caption1": 11,
+      "footnote": 12,
+      "subheadline": 14,
+      "callout": 15,
+      "body": 16,
+      "headline": 16,
+      "title3": 19,
+      "title2": 21,
+      "title1": 27,
+      "largeTitle": 33
+    },
+    "large": {
+      "caption2": 11,
+      "caption1": 12,
+      "footnote": 13,
+      "subheadline": 15,
+      "callout": 16,
+      "body": 17,
+      "headline": 17,
+      "title3": 20,
+      "title2": 22,
+      "title1": 28,
+      "largeTitle": 34
+    },
+    "xLarge": {
+      "caption2": 11,
+      "caption1": 13,
+      "footnote": 14,
+      "subheadline": 16,
+      "callout": 17,
+      "body": 19,
+      "headline": 19,
+      "title3": 22,
+      "title2": 24,
+      "title1": 30,
+      "largeTitle": 36
+    },
+    "xxLarge": {
+      "caption2": 12,
+      "caption1": 14,
+      "footnote": 15,
+      "subheadline": 17,
+      "callout": 19,
+      "body": 21,
+      "headline": 21,
+      "title3": 24,
+      "title2": 26,
+      "title1": 32,
+      "largeTitle": 38
+    },
+    "xxxLarge": {
+      "caption2": 13,
+      "caption1": 15,
+      "footnote": 16,
+      "subheadline": 18,
+      "callout": 20,
+      "body": 23,
+      "headline": 23,
+      "title3": 26,
+      "title2": 28,
+      "title1": 34,
+      "largeTitle": 40
+    }
+  }
+}

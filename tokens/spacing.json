@@ -1,0 +1,171 @@
+{
+  "_reference": {
+    "source": "Figma iOS & iPadOS 26 Community Kit (pDmGXdYu2k8xlf1SQoU9PW)",
+    "extracted": "2026-03-28",
+    "plan": "../PLAN.md",
+    "inventory": "../../figma-ios26-pages.md",
+    "note": "Figma MCP is last resort. Use this file as primary reference.",
+    "figmaNodeIds": {
+      "kitVariables": "Variable Collection 'Kit'",
+      "listRow": "550:50430",
+      "toolbar": "1:54472",
+      "tabBar": "3:70967"
+    }
+  },
+  "base": 8,
+  "scale": {
+    "0": 0,
+    "1": 4,
+    "2": 8,
+    "3": 12,
+    "4": 16,
+    "5": 20,
+    "6": 24,
+    "8": 32,
+    "10": 40,
+    "12": 48,
+    "16": 64,
+    "20": 80,
+    "24": 96
+  },
+  "inset": {
+    "xs": 8,
+    "sm": 12,
+    "md": 16,
+    "lg": 20,
+    "xl": 24,
+    "xxl": 32
+  },
+  "contentMargin": {
+    "iphone": {
+      "horizontal": 16,
+      "note": "Standard left/right margin for iPhone content"
+    },
+    "ipad": {
+      "horizontal": 20,
+      "note": "Standard left/right margin for iPad content"
+    }
+  },
+  "radius": {
+    "none": 0,
+    "xs": 4,
+    "sm": 8,
+    "md": 10,
+    "lg": 12,
+    "xl": 16,
+    "xxl": 20,
+    "full": 9999,
+    "semantic": {
+      "card": 12,
+      "button": 12,
+      "alert": 14,
+      "menu": 14,
+      "popover": 14,
+      "sheet": {
+        "iphoneTop": 34,
+        "iphoneBottom": 58,
+        "ipad": 38,
+        "note": "Extracted from Kit variables: Sheet/Corner Radius"
+      },
+      "contextMenu": 14,
+      "notification": 20,
+      "appIcon": {
+        "iphone": 26,
+        "ipad": 22,
+        "note": "Proportional to icon size"
+      },
+      "liquidGlass": {
+        "small": 1000,
+        "medium": 20,
+        "large": 24,
+        "note": "cornerRadius=1000 means full pill/circle. Extracted from component layers."
+      }
+    }
+  },
+  "components": {
+    "navigationBar": {
+      "height": 44,
+      "largeTitleHeight": 96,
+      "paddingHorizontal": 16,
+      "note": "Standard iOS Navigation Bar"
+    },
+    "tabBar": {
+      "height": 49,
+      "heightWithIndicator": 83,
+      "paddingBottom": 0,
+      "itemMinWidth": 64,
+      "note": "iOS 26 Tab Bar. Liquid Glass indicator adds ~34pt height."
+    },
+    "toolbar": {
+      "height": 44,
+      "paddingHorizontal": 16,
+      "buttonMinWidth": 44,
+      "note": "Top/Bottom toolbar standard height"
+    },
+    "statusBar": {
+      "heightRegular": 54,
+      "heightLandscape": 0,
+      "note": "iPhone notch/dynamic island status bar"
+    },
+    "listRow": {
+      "heightSmall": 36,
+      "heightRegular": 44,
+      "heightLarge": 58,
+      "paddingHorizontal": 16,
+      "paddingVertical": 11,
+      "separatorInset": 16,
+      "note": "Standard UITableView row sizes. Regular=44pt is Apple HIG minimum."
+    },
+    "alert": {
+      "width": 270,
+      "paddingHorizontal": 16,
+      "paddingVertical": 20,
+      "buttonHeight": 44,
+      "cornerRadius": 14
+    },
+    "sheet": {
+      "grabberWidth": 36,
+      "grabberHeight": 5,
+      "grabberTop": 8,
+      "minDetent": 0.25,
+      "mediumDetent": 0.5,
+      "largeDetent": 1.0,
+      "note": "iOS 26 bottom sheet with Liquid Glass. Detents match UISheetPresentationController."
+    },
+    "touchTarget": {
+      "minimum": 44,
+      "note": "Apple HIG minimum tap target size. WCAG 2.1 AA requires 44x44pt."
+    }
+  },
+  "safeArea": {
+    "iphone16Pro": {
+      "top": 59,
+      "bottom": 34,
+      "note": "Dynamic Island models"
+    },
+    "iphone16": {
+      "top": 59,
+      "bottom": 34
+    },
+    "iphoneSE": {
+      "top": 20,
+      "bottom": 0,
+      "note": "No Dynamic Island / notch"
+    },
+    "ipadLandscape": {
+      "top": 24,
+      "bottom": 20
+    }
+  },
+  "liquidGlass": {
+    "depth": 16,
+    "frost": {
+      "small": 7,
+      "medium": 12,
+      "large": 14
+    },
+    "splay": 6,
+    "refraction": 100,
+    "note": "Extracted from Figma Kit variables. Depth=blur depth, frost=frosted glass blur amount, splay=light spread angle, refraction=lens distortion amount."
+  }
+}

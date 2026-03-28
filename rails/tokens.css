@@ -1,0 +1,526 @@
+/* ============================================================================
+ * iOS 26 Design Tokens — CSS Custom Properties
+ * For Rails 8 Asset Pipeline (app/assets/stylesheets/ios26/tokens.css)
+ *
+ * Source: iOS & iPadOS 26 Figma Community Kit (pDmGXdYu2k8xlf1SQoU9PW)
+ * Generated for: Rails 8 + Hotwire (Stimulus + ERB + Turbo)
+ * ========================================================================= */
+
+
+/* ---------------------------------------------------------------------------
+ * LIGHT MODE (Default)
+ * ------------------------------------------------------------------------ */
+:root {
+  /* -- System Colors (12) ------------------------------------------------ */
+  --ios-color-red: #ff383c;
+  --ios-color-orange: #ff8d28;
+  --ios-color-yellow: #ffcc00;
+  --ios-color-green: #34c759;
+  --ios-color-mint: #00c8b3;
+  --ios-color-teal: #00c3d0;
+  --ios-color-cyan: #00c0e8;
+  --ios-color-blue: #0088ff;
+  --ios-color-indigo: #6155f5;
+  --ios-color-purple: #cb30e0;
+  --ios-color-pink: #ff2d55;
+  --ios-color-brown: #ac7f5e;
+
+  /* -- Labels (4 levels) ------------------------------------------------- */
+  --ios-label-primary: rgba(0, 0, 0, 1);
+  --ios-label-secondary: rgba(60, 60, 67, 0.6);
+  --ios-label-tertiary: rgba(60, 60, 67, 0.3);
+  --ios-label-quaternary: rgba(60, 60, 67, 0.18);
+
+  /* -- Backgrounds (6) --------------------------------------------------- */
+  --ios-bg-primary: #ffffff;
+  --ios-bg-secondary: #f2f2f7;
+  --ios-bg-tertiary: #ffffff;
+  --ios-bg-grouped-primary: #f2f2f7;
+  --ios-bg-grouped-secondary: #ffffff;
+  --ios-bg-grouped-tertiary: #f2f2f7;
+
+  /* -- Fills (4 levels) -------------------------------------------------- */
+  --ios-fill-primary: rgba(120, 120, 120, 0.2);
+  --ios-fill-secondary: rgba(120, 120, 128, 0.16);
+  --ios-fill-tertiary: rgba(118, 118, 128, 0.12);
+  --ios-fill-quaternary: rgba(116, 116, 128, 0.08);
+
+  /* -- Grays (8) --------------------------------------------------------- */
+  --ios-gray-black: #000000;
+  --ios-gray: #8e8e93;
+  --ios-gray-2: #aeaeb2;
+  --ios-gray-3: #c7c7cc;
+  --ios-gray-4: #d1d1d6;
+  --ios-gray-5: #e5e5ea;
+  --ios-gray-6: #f2f2f7;
+  --ios-gray-white: #ffffff;
+
+  /* -- Separators (2) ---------------------------------------------------- */
+  --ios-separator-opaque: #c6c6c8;
+  --ios-separator-non-opaque: rgba(0, 0, 0, 0.12);
+
+  /* -- Vibrant Labels (Light) -------------------------------------------- */
+  --ios-vibrant-label-primary: rgba(0, 0, 0, 1);
+  --ios-vibrant-label-secondary: rgba(61, 61, 61, 1);
+  --ios-vibrant-label-tertiary: rgba(61, 61, 61, 0.5);
+  --ios-vibrant-label-quaternary: rgba(61, 61, 61, 0.5);
+
+  /* -- Vibrant Fills (Light) --------------------------------------------- */
+  --ios-vibrant-fill-primary: #cccccc;
+  --ios-vibrant-fill-secondary: #e0e0e0;
+  --ios-vibrant-fill-tertiary: #ededed;
+
+
+  /* -----------------------------------------------------------------------
+   * TYPOGRAPHY — SF Pro Font Stack
+   * --------------------------------------------------------------------- */
+
+  /* Font Family (SF Pro with system fallbacks) */
+  --ios-font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "SF Pro Text", "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
+  --ios-font-family-rounded: "SF Pro Rounded", -apple-system,
+    BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --ios-font-family-mono: "SF Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, "Liberation Mono", monospace;
+
+  /* Large Title — 34/41 Regular, Bold emphasized */
+  --ios-large-title-size: 34px;
+  --ios-large-title-line-height: 41px;
+  --ios-large-title-line-height-loose: 43px;
+  --ios-large-title-weight: 400;
+  --ios-large-title-weight-emphasized: 700;
+  --ios-large-title-tracking: 0.40px;
+
+  /* Title 1 — 28/34 */
+  --ios-title1-size: 28px;
+  --ios-title1-line-height: 34px;
+  --ios-title1-line-height-loose: 36px;
+  --ios-title1-weight: 400;
+  --ios-title1-weight-emphasized: 700;
+  --ios-title1-tracking: 0.38px;
+
+  /* Title 2 — 22/28 */
+  --ios-title2-size: 22px;
+  --ios-title2-line-height: 28px;
+  --ios-title2-line-height-loose: 30px;
+  --ios-title2-weight: 400;
+  --ios-title2-weight-emphasized: 700;
+  --ios-title2-tracking: -0.26px;
+
+  /* Title 3 — 20/25 */
+  --ios-title3-size: 20px;
+  --ios-title3-line-height: 25px;
+  --ios-title3-line-height-loose: 27px;
+  --ios-title3-weight: 400;
+  --ios-title3-weight-emphasized: 600;
+  --ios-title3-tracking: -0.45px;
+
+  /* Headline — 17/22 Semibold */
+  --ios-headline-size: 17px;
+  --ios-headline-line-height: 22px;
+  --ios-headline-line-height-loose: 24px;
+  --ios-headline-weight: 600;
+  --ios-headline-tracking: -0.43px;
+
+  /* Body — 17/22 */
+  --ios-body-size: 17px;
+  --ios-body-line-height: 22px;
+  --ios-body-line-height-loose: 24px;
+  --ios-body-weight: 400;
+  --ios-body-weight-emphasized: 600;
+  --ios-body-tracking: -0.43px;
+
+  /* Callout — 16/21 */
+  --ios-callout-size: 16px;
+  --ios-callout-line-height: 21px;
+  --ios-callout-line-height-loose: 23px;
+  --ios-callout-weight: 400;
+  --ios-callout-weight-emphasized: 600;
+  --ios-callout-tracking: -0.31px;
+
+  /* Subheadline — 15/20 */
+  --ios-subheadline-size: 15px;
+  --ios-subheadline-line-height: 20px;
+  --ios-subheadline-weight: 400;
+  --ios-subheadline-weight-emphasized: 600;
+  --ios-subheadline-tracking: -0.23px;
+
+  /* Footnote — 13/18 */
+  --ios-footnote-size: 13px;
+  --ios-footnote-line-height: 18px;
+  --ios-footnote-weight: 400;
+  --ios-footnote-weight-emphasized: 600;
+  --ios-footnote-tracking: -0.08px;
+
+  /* Caption 1 — 12/16 */
+  --ios-caption1-size: 12px;
+  --ios-caption1-line-height: 16px;
+  --ios-caption1-weight: 400;
+  --ios-caption1-weight-emphasized: 500;
+  --ios-caption1-tracking: 0px;
+
+  /* Caption 2 — 11/13 */
+  --ios-caption2-size: 11px;
+  --ios-caption2-line-height: 13px;
+  --ios-caption2-weight: 400;
+  --ios-caption2-weight-emphasized: 600;
+  --ios-caption2-tracking: 0.06px;
+
+
+  /* -----------------------------------------------------------------------
+   * MATERIAL & BLUR — Liquid Glass (iOS 26)
+   * --------------------------------------------------------------------- */
+
+  /* Liquid Glass — Regular */
+  --ios-glass-bg-large: rgba(250, 250, 250, 0.70);
+  --ios-glass-bg-medium: rgba(245, 245, 245, 0.60);
+  --ios-glass-bg-small: #f7f7f7;
+  --ios-glass-bg-small-primary: #ffffff;
+  --ios-glass-border-small: #dddddd;
+  --ios-glass-icon-primary: var(--ios-color-blue);
+  --ios-glass-shadow-blur: 40px;
+  --ios-glass-radius-large: 14px;
+  --ios-glass-radius-medium: 12px;
+  --ios-glass-radius-small: 10px;
+
+  /* Liquid Glass — Clear */
+  --ios-glass-clear-bg: rgba(255, 255, 255, 0.07);
+  --ios-glass-clear-radius: 5px;
+
+  /* Background Materials (Blur) */
+  --ios-blur-chrome: 50px;
+  --ios-blur-thick: 100px;
+  --ios-blur-regular: 100px;
+  --ios-blur-thin: 100px;
+  --ios-blur-ultrathin: 100px;
+
+  --ios-material-chrome-bg: rgba(255, 255, 255, 0.75);
+  --ios-material-thick-bg: rgba(255, 255, 255, 0.84);
+  --ios-material-regular-bg: rgba(255, 255, 255, 0.60);
+  --ios-material-thin-bg: rgba(255, 255, 255, 0.40);
+  --ios-material-ultrathin-bg: rgba(255, 255, 255, 0.03);
+
+  /* Scroll Edge Effects */
+  --ios-scroll-edge-soft-blur: 10px;
+  --ios-scroll-edge-hard-blur: 60px;
+
+
+  /* -----------------------------------------------------------------------
+   * SPACING & LAYOUT
+   * --------------------------------------------------------------------- */
+  --ios-spacing-xs: 4px;
+  --ios-spacing-sm: 8px;
+  --ios-spacing-md: 16px;
+  --ios-spacing-lg: 20px;
+  --ios-spacing-xl: 24px;
+  --ios-spacing-2xl: 32px;
+
+  /* Standard insets for grouped content */
+  --ios-inset-horizontal: 16px;
+  --ios-inset-grouped-horizontal: 20px;
+
+  /* List row heights */
+  --ios-row-height-default: 44px;
+  --ios-row-height-subtitle: 58px;
+  --ios-row-height-large: 76px;
+
+  /* Corner radii */
+  --ios-radius-sm: 8px;
+  --ios-radius-md: 12px;
+  --ios-radius-lg: 16px;
+  --ios-radius-xl: 20px;
+  --ios-radius-card: 10px;
+  --ios-radius-sheet: 12px;
+
+  /* Safe areas (informational — actual values come from env()) */
+  --ios-safe-area-top: env(safe-area-inset-top, 0px);
+  --ios-safe-area-bottom: env(safe-area-inset-bottom, 0px);
+
+
+  /* -----------------------------------------------------------------------
+   * ANIMATION
+   * --------------------------------------------------------------------- */
+  --ios-duration-fast: 150ms;
+  --ios-duration-normal: 250ms;
+  --ios-duration-slow: 350ms;
+  --ios-easing-default: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ios-easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ios-easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+/* ---------------------------------------------------------------------------
+ * DARK MODE
+ * ------------------------------------------------------------------------ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* -- Labels (Dark) --------------------------------------------------- */
+    --ios-label-primary: rgba(255, 255, 255, 1);
+    --ios-label-secondary: rgba(235, 235, 245, 0.6);
+    --ios-label-tertiary: rgba(235, 235, 245, 0.3);
+    --ios-label-quaternary: rgba(235, 235, 245, 0.18);
+
+    /* -- Backgrounds (Dark) ---------------------------------------------- */
+    --ios-bg-primary: #000000;
+    --ios-bg-secondary: #1c1c1e;
+    --ios-bg-tertiary: #2c2c2e;
+    --ios-bg-grouped-primary: #000000;
+    --ios-bg-grouped-secondary: #1c1c1e;
+    --ios-bg-grouped-tertiary: #2c2c2e;
+
+    /* -- Fills (Dark) ---------------------------------------------------- */
+    --ios-fill-primary: rgba(120, 120, 128, 0.36);
+    --ios-fill-secondary: rgba(120, 120, 128, 0.32);
+    --ios-fill-tertiary: rgba(118, 118, 128, 0.24);
+    --ios-fill-quaternary: rgba(116, 116, 128, 0.18);
+
+    /* -- Grays (Dark) ---------------------------------------------------- */
+    --ios-gray: #8e8e93;
+    --ios-gray-2: #636366;
+    --ios-gray-3: #48484a;
+    --ios-gray-4: #3a3a3c;
+    --ios-gray-5: #2c2c2e;
+    --ios-gray-6: #1c1c1e;
+
+    /* -- Separators (Dark) ----------------------------------------------- */
+    --ios-separator-opaque: #38383a;
+    --ios-separator-non-opaque: rgba(255, 255, 255, 0.15);
+
+    /* -- Vibrant Labels (Dark) ------------------------------------------- */
+    --ios-vibrant-label-primary: rgba(255, 255, 255, 1);
+    --ios-vibrant-label-secondary: rgba(153, 153, 153, 1);
+    --ios-vibrant-label-tertiary: rgba(64, 64, 64, 1);
+    --ios-vibrant-label-quaternary: rgba(38, 38, 38, 1);
+
+    /* -- Vibrant Fills (Dark) -------------------------------------------- */
+    --ios-vibrant-fill-primary: #333333;
+    --ios-vibrant-fill-secondary: #1f1f1f;
+    --ios-vibrant-fill-tertiary: #121212;
+
+    /* -- Liquid Glass (Dark) --------------------------------------------- */
+    --ios-glass-bg-large: rgba(0, 0, 0, 0.80);
+    --ios-glass-bg-medium: rgba(0, 0, 0, 0.60);
+    --ios-glass-bg-small: rgba(0, 0, 0, 0.60);
+    --ios-glass-bg-small-primary: #ffffff;
+    --ios-glass-border-small: rgba(255, 255, 255, 0.06);
+    --ios-glass-icon-primary: var(--ios-color-blue);
+
+    /* Background Materials (Dark) */
+    --ios-material-chrome-bg: rgba(0, 0, 0, 0.75);
+    --ios-material-thick-bg: rgba(0, 0, 0, 0.84);
+    --ios-material-regular-bg: rgba(0, 0, 0, 0.60);
+    --ios-material-thin-bg: rgba(0, 0, 0, 0.40);
+    --ios-material-ultrathin-bg: rgba(0, 0, 0, 0.03);
+  }
+}
+
+
+/* ---------------------------------------------------------------------------
+ * DARK MODE CLASS OVERRIDE
+ * For manual dark mode toggling via Stimulus controller
+ * ------------------------------------------------------------------------ */
+.ios26-dark {
+  --ios-label-primary: rgba(255, 255, 255, 1);
+  --ios-label-secondary: rgba(235, 235, 245, 0.6);
+  --ios-label-tertiary: rgba(235, 235, 245, 0.3);
+  --ios-label-quaternary: rgba(235, 235, 245, 0.18);
+
+  --ios-bg-primary: #000000;
+  --ios-bg-secondary: #1c1c1e;
+  --ios-bg-tertiary: #2c2c2e;
+  --ios-bg-grouped-primary: #000000;
+  --ios-bg-grouped-secondary: #1c1c1e;
+  --ios-bg-grouped-tertiary: #2c2c2e;
+
+  --ios-fill-primary: rgba(120, 120, 128, 0.36);
+  --ios-fill-secondary: rgba(120, 120, 128, 0.32);
+  --ios-fill-tertiary: rgba(118, 118, 128, 0.24);
+  --ios-fill-quaternary: rgba(116, 116, 128, 0.18);
+
+  --ios-gray: #8e8e93;
+  --ios-gray-2: #636366;
+  --ios-gray-3: #48484a;
+  --ios-gray-4: #3a3a3c;
+  --ios-gray-5: #2c2c2e;
+  --ios-gray-6: #1c1c1e;
+
+  --ios-separator-opaque: #38383a;
+  --ios-separator-non-opaque: rgba(255, 255, 255, 0.15);
+
+  --ios-vibrant-label-primary: rgba(255, 255, 255, 1);
+  --ios-vibrant-label-secondary: rgba(153, 153, 153, 1);
+  --ios-vibrant-label-tertiary: rgba(64, 64, 64, 1);
+  --ios-vibrant-label-quaternary: rgba(38, 38, 38, 1);
+
+  --ios-vibrant-fill-primary: #333333;
+  --ios-vibrant-fill-secondary: #1f1f1f;
+  --ios-vibrant-fill-tertiary: #121212;
+
+  --ios-glass-bg-large: rgba(0, 0, 0, 0.80);
+  --ios-glass-bg-medium: rgba(0, 0, 0, 0.60);
+  --ios-glass-bg-small: rgba(0, 0, 0, 0.60);
+  --ios-glass-bg-small-primary: #ffffff;
+  --ios-glass-border-small: rgba(255, 255, 255, 0.06);
+
+  --ios-material-chrome-bg: rgba(0, 0, 0, 0.75);
+  --ios-material-thick-bg: rgba(0, 0, 0, 0.84);
+  --ios-material-regular-bg: rgba(0, 0, 0, 0.60);
+  --ios-material-thin-bg: rgba(0, 0, 0, 0.40);
+  --ios-material-ultrathin-bg: rgba(0, 0, 0, 0.03);
+}
+
+
+/* ---------------------------------------------------------------------------
+ * UTILITY CLASSES — Typography
+ * Apply these directly in ERB templates
+ * ------------------------------------------------------------------------ */
+.ios-large-title {
+  font-family: var(--ios-font-family);
+  font-size: var(--ios-large-title-size);
+  line-height: var(--ios-large-title-line-height);
+  font-weight: var(--ios-large-title-weight);
+  letter-spacing: var(--ios-large-title-tracking);
+}
+.ios-large-title--emphasized {
+  font-weight: var(--ios-large-title-weight-emphasized);
+}
+
+.ios-title1 {
+  font-family: var(--ios-font-family);
+  font-size: var(--ios-title1-size);
+  line-height: var(--ios-title1-line-height);
+  font-weight: var(--ios-title1-weight);
+  letter-spacing: var(--ios-title1-tracking);
+}
+.ios-title1--emphasized {
+  font-weight: var(--ios-title1-weight-emphasized);
+}
+
+.ios-title2 {
+  font-family: var(--ios-font-family);
+  font-size: var(--ios-title2-size);
+  line-height: var(--ios-title2-line-height);
+  font-weight: var(--ios-title2-weight);
+  letter-spacing: var(--ios-title2-tracking);
+}
+.ios-title2--emphasized {
+  font-weight: var(--ios-title2-weight-emphasized);
+}
+
+.ios-title3 {
+  font-family: var(--ios-font-family);
+  font-size: var(--ios-title3-size);
+  line-height: var(--ios-title3-line-height);
+  font-weight: var(--ios-title3-weight);
+  letter-spacing: var(--ios-title3-tracking);
+}
+.ios-title3--emphasized {
+  font-weight: var(--ios-title3-weight-emphasized);
+}
+
+.ios-headline {
+  font-family: var(--ios-font-family);
+  font-size: var(--ios-headline-size);
+  line-height: var(--ios-headline-line-height);
+  font-weight: var(--ios-headline-weight);
+  letter-spacing: var(--ios-headline-tracking);
+}
+
+.ios-body {
+  font-family: var(--ios-font-family);
+  font-size: var(--ios-body-size);
+  line-height: var(--ios-body-line-height);
+  font-weight: var(--ios-body-weight);
+  letter-spacing: var(--ios-body-tracking);
+}
+.ios-body--emphasized {
+  font-weight: var(--ios-body-weight-emphasized);
+}
+
+.ios-callout {
+  font-family: var(--ios-font-family);
+  font-size: var(--ios-callout-size);
+  line-height: var(--ios-callout-line-height);
+  font-weight: var(--ios-callout-weight);
+  letter-spacing: var(--ios-callout-tracking);
+}
+
+.ios-subheadline {
+  font-family: var(--ios-font-family);
+  font-size: var(--ios-subheadline-size);
+  line-height: var(--ios-subheadline-line-height);
+  font-weight: var(--ios-subheadline-weight);
+  letter-spacing: var(--ios-subheadline-tracking);
+}
+
+.ios-footnote {
+  font-family: var(--ios-font-family);
+  font-size: var(--ios-footnote-size);
+  line-height: var(--ios-footnote-line-height);
+  font-weight: var(--ios-footnote-weight);
+  letter-spacing: var(--ios-footnote-tracking);
+}
+
+.ios-caption1 {
+  font-family: var(--ios-font-family);
+  font-size: var(--ios-caption1-size);
+  line-height: var(--ios-caption1-line-height);
+  font-weight: var(--ios-caption1-weight);
+  letter-spacing: var(--ios-caption1-tracking);
+}
+
+.ios-caption2 {
+  font-family: var(--ios-font-family);
+  font-size: var(--ios-caption2-size);
+  line-height: var(--ios-caption2-line-height);
+  font-weight: var(--ios-caption2-weight);
+  letter-spacing: var(--ios-caption2-tracking);
+}
+
+
+/* ---------------------------------------------------------------------------
+ * UTILITY CLASSES — Materials
+ * ------------------------------------------------------------------------ */
+.ios-glass {
+  background: var(--ios-glass-bg-medium);
+  backdrop-filter: blur(var(--ios-glass-shadow-blur));
+  -webkit-backdrop-filter: blur(var(--ios-glass-shadow-blur));
+  border-radius: var(--ios-glass-radius-medium);
+  box-shadow: 0 0 var(--ios-glass-shadow-blur) rgba(0, 0, 0, 0.08);
+}
+
+.ios-glass--large {
+  background: var(--ios-glass-bg-large);
+  border-radius: var(--ios-glass-radius-large);
+}
+
+.ios-glass--small {
+  background: var(--ios-glass-bg-small);
+  border: 1px solid var(--ios-glass-border-small);
+  border-radius: var(--ios-glass-radius-small);
+}
+
+.ios-glass--clear {
+  background: var(--ios-glass-clear-bg);
+  backdrop-filter: blur(var(--ios-glass-shadow-blur));
+  -webkit-backdrop-filter: blur(var(--ios-glass-shadow-blur));
+  border-radius: var(--ios-glass-clear-radius);
+}
+
+.ios-material--chrome {
+  background: var(--ios-material-chrome-bg);
+  backdrop-filter: blur(var(--ios-blur-chrome));
+  -webkit-backdrop-filter: blur(var(--ios-blur-chrome));
+}
+
+.ios-material--regular {
+  background: var(--ios-material-regular-bg);
+  backdrop-filter: blur(var(--ios-blur-regular));
+  -webkit-backdrop-filter: blur(var(--ios-blur-regular));
+}
+
+.ios-material--thin {
+  background: var(--ios-material-thin-bg);
+  backdrop-filter: blur(var(--ios-blur-thin));
+  -webkit-backdrop-filter: blur(var(--ios-blur-thin));
+}

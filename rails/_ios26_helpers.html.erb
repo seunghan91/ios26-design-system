@@ -1,0 +1,655 @@
+<%# ============================================================================
+     iOS 26 ERB Partial Helpers
+     For Rails 8 + Hotwire (Stimulus + ERB + Turbo)
+
+     Usage: Copy individual partials to app/views/shared/ios26/
+     Then render with: render "shared/ios26/toolbar", title: "Settings"
+     ========================================================================= %>
+
+
+<%# ---------------------------------------------------------------------------
+     TOOLBAR (Top Navigation Bar)
+
+     Params:
+       title:       String  — page title (required)
+       large_title: Boolean — use large title style (default: false)
+       leading:     String  — HTML for left button(s), e.g. back arrow
+       trailing:    String  — HTML for right button(s), e.g. edit/done
+       turbo_frame: String  — optional turbo frame target for navigation
+
+     Example:
+       <%= render "shared/ios26/toolbar",
+         title: "Settings",
+         large_title: true,
+         leading: link_to("Back", root_path, class: "ios-toolbar__back"),
+         trailing: link_to("Edit", edit_path, class: "ios-toolbar__action")
+       %>
+     -------------------------------------------------------------------------- %>
+
+<%# Partial: app/views/shared/ios26/_toolbar.html.erb %>
+
+<header class="ios-toolbar" data-controller="ios26-toolbar">
+  <% if local_assigns[:large_title] %>
+    <div class="ios-toolbar__large-title-area">
+      <div class="ios-toolbar__row">
+        <div class="ios-toolbar__leading">
+          <%= leading if local_assigns[:leading] %>
+        </div>
+        <div class="ios-toolbar__trailing">
+          <%= trailing if local_assigns[:trailing] %>
+        </div>
+      </div>
+      <h1 class="ios-large-title ios-large-title--emphasized ios-toolbar__title--large"
+          data-ios26-toolbar-target="largeTitle">
+        <%= title %>
+      </h1>
+    </div>
+  <% else %>
+    <div class="ios-toolbar__row">
+      <div class="ios-toolbar__leading">
+        <%= leading if local_assigns[:leading] %>
+      </div>
+      <h1 class="ios-headline ios-toolbar__title--inline">
+        <%= title %>
+      </h1>
+      <div class="ios-toolbar__trailing">
+        <%= trailing if local_assigns[:trailing] %>
+      </div>
+    </div>
+  <% end %>
+</header>
+
+<style>
+  .ios-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--ios-material-chrome-bg);
+    backdrop-filter: blur(var(--ios-blur-chrome));
+    -webkit-backdrop-filter: blur(var(--ios-blur-chrome));
+    padding: var(--ios-spacing-sm) var(--ios-inset-horizontal);
+    border-bottom: 0.5px solid var(--ios-separator-non-opaque);
+  }
+  .ios-toolbar__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 44px;
+  }
+  .ios-toolbar__leading,
+  .ios-toolbar__trailing {
+    display: flex;
+    align-items: center;
+    gap: var(--ios-spacing-sm);
+    min-width: 60px;
+  }
+  .ios-toolbar__trailing {
+    justify-content: flex-end;
+  }
+  .ios-toolbar__title--inline {
+    flex: 1;
+    text-align: center;
+    color: var(--ios-label-primary);
+    margin: 0;
+  }
+  .ios-toolbar__title--large {
+    color: var(--ios-label-primary);
+    margin: var(--ios-spacing-xs) 0 var(--ios-spacing-sm);
+    padding: 0 var(--ios-spacing-xs);
+  }
+  .ios-toolbar__large-title-area {
+    display: flex;
+    flex-direction: column;
+  }
+  .ios-toolbar__back,
+  .ios-toolbar__action {
+    color: var(--ios-color-blue);
+    text-decoration: none;
+    font-family: var(--ios-font-family);
+    font-size: var(--ios-body-size);
+    font-weight: var(--ios-body-weight);
+    letter-spacing: var(--ios-body-tracking);
+    padding: var(--ios-spacing-sm);
+    border-radius: var(--ios-radius-sm);
+    transition: opacity var(--ios-duration-fast) var(--ios-easing-default);
+  }
+  .ios-toolbar__back:active,
+  .ios-toolbar__action:active {
+    opacity: 0.5;
+  }
+</style>
+
+
+<%# ---------------------------------------------------------------------------
+     LIST ROW
+
+     Params:
+       title:       String  — primary text (required)
+       subtitle:    String  — secondary text below title
+       detail:      String  — detail text on the right side
+       leading:     String  — HTML for leading icon/image
+       trailing:    String  — HTML for trailing accessory (chevron, switch, etc.)
+       url:         String  — link destination (makes entire row tappable)
+       destructive: Boolean — red text style for delete actions
+
+     Example:
+       <%= render "shared/ios26/list_row",
+         title: "Wi-Fi",
+         detail: "Connected",
+         leading: '<svg>...</svg>',
+         trailing: '<span class="ios-row__chevron"></span>',
+         url: wifi_settings_path
+       %>
+     -------------------------------------------------------------------------- %>
+
+<%# Partial: app/views/shared/ios26/_list_row.html.erb %>
+
+<% row_tag = local_assigns[:url] ? "a" : "div" %>
+<%= content_tag row_tag,
+      class: "ios-row #{'ios-row--destructive' if local_assigns[:destructive]}",
+      href: (local_assigns[:url] if local_assigns[:url]),
+      data: { turbo_frame: (local_assigns[:turbo_frame] || "_top") } do %>
+  <% if local_assigns[:leading] %>
+    <div class="ios-row__leading">
+      <%= leading.html_safe %>
+    </div>
+  <% end %>
+
+  <div class="ios-row__content">
+    <span class="ios-body ios-row__title"><%= title %></span>
+    <% if local_assigns[:subtitle] %>
+      <span class="ios-footnote ios-row__subtitle"><%= subtitle %></span>
+    <% end %>
+  </div>
+
+  <div class="ios-row__trailing">
+    <% if local_assigns[:detail] %>
+      <span class="ios-body ios-row__detail"><%= detail %></span>
+    <% end %>
+    <% if local_assigns[:trailing] %>
+      <%= trailing.html_safe %>
+    <% end %>
+  </div>
+<% end %>
+
+<style>
+  .ios-row {
+    display: flex;
+    align-items: center;
+    min-height: var(--ios-row-height-default);
+    padding: var(--ios-spacing-sm) var(--ios-inset-grouped-horizontal);
+    background: var(--ios-bg-grouped-secondary);
+    text-decoration: none;
+    color: inherit;
+    transition: background var(--ios-duration-fast) var(--ios-easing-default);
+    border-bottom: 0.5px solid var(--ios-separator-opaque);
+  }
+  .ios-row:last-child {
+    border-bottom: none;
+  }
+  a.ios-row:active {
+    background: var(--ios-fill-tertiary);
+  }
+  .ios-row__leading {
+    width: 29px;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--ios-spacing-md);
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  .ios-row__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .ios-row__title {
+    color: var(--ios-label-primary);
+  }
+  .ios-row__subtitle {
+    color: var(--ios-label-secondary);
+  }
+  .ios-row__trailing {
+    display: flex;
+    align-items: center;
+    gap: var(--ios-spacing-xs);
+    flex-shrink: 0;
+    margin-left: var(--ios-spacing-sm);
+  }
+  .ios-row__detail {
+    color: var(--ios-label-secondary);
+  }
+  .ios-row__chevron {
+    display: inline-block;
+    width: 7px;
+    height: 12px;
+    border-right: 2px solid var(--ios-gray-3);
+    border-bottom: 2px solid var(--ios-gray-3);
+    transform: rotate(-45deg);
+  }
+  .ios-row--destructive .ios-row__title {
+    color: var(--ios-color-red);
+  }
+</style>
+
+
+<%# ---------------------------------------------------------------------------
+     ALERT DIALOG
+
+     Params:
+       title:   String — alert title (required)
+       message: String — descriptive message
+       actions: Array  — list of hashes: { label:, url:, method:, variant: }
+                         variant can be :default, :cancel, or :destructive
+
+     Example:
+       <%= render "shared/ios26/alert",
+         title: "Delete Item?",
+         message: "This action cannot be undone.",
+         actions: [
+           { label: "Cancel", variant: :cancel },
+           { label: "Delete", url: item_path(@item), method: :delete, variant: :destructive }
+         ]
+       %>
+     -------------------------------------------------------------------------- %>
+
+<%# Partial: app/views/shared/ios26/_alert.html.erb %>
+
+<div class="ios-alert-backdrop" data-controller="ios26-alert" data-action="click->ios26-alert#backdropClick">
+  <div class="ios-alert" role="alertdialog" aria-labelledby="ios-alert-title" aria-describedby="ios-alert-message">
+    <div class="ios-alert__content">
+      <h2 id="ios-alert-title" class="ios-headline ios-alert__title"><%= title %></h2>
+      <% if local_assigns[:message] %>
+        <p id="ios-alert-message" class="ios-footnote ios-alert__message"><%= message %></p>
+      <% end %>
+    </div>
+    <div class="ios-alert__actions">
+      <% actions.each_with_index do |action, i| %>
+        <% variant_class = case action[:variant]
+             when :cancel then "ios-alert__btn--cancel"
+             when :destructive then "ios-alert__btn--destructive"
+             else "ios-alert__btn--default"
+           end %>
+
+        <% if action[:url] %>
+          <%= link_to action[:label], action[:url],
+                method: action[:method],
+                class: "ios-alert__btn #{variant_class}",
+                data: { turbo_method: action[:method], action: "ios26-alert#dismiss" } %>
+        <% else %>
+          <button type="button"
+                  class="ios-alert__btn <%= variant_class %>"
+                  data-action="ios26-alert#dismiss">
+            <%= action[:label] %>
+          </button>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<style>
+  .ios-alert-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    animation: ios-fade-in var(--ios-duration-normal) var(--ios-easing-default);
+  }
+  .ios-alert {
+    width: 270px;
+    background: var(--ios-material-thick-bg);
+    backdrop-filter: blur(var(--ios-blur-thick));
+    -webkit-backdrop-filter: blur(var(--ios-blur-thick));
+    border-radius: 14px;
+    overflow: hidden;
+    animation: ios-scale-in var(--ios-duration-normal) var(--ios-easing-spring);
+  }
+  .ios-alert__content {
+    padding: 20px 16px 16px;
+    text-align: center;
+  }
+  .ios-alert__title {
+    color: var(--ios-label-primary);
+    margin: 0 0 4px;
+  }
+  .ios-alert__message {
+    color: var(--ios-label-secondary);
+    margin: 0;
+    font-size: var(--ios-footnote-size);
+    line-height: var(--ios-footnote-line-height);
+  }
+  .ios-alert__actions {
+    display: flex;
+    flex-direction: column;
+    border-top: 0.5px solid var(--ios-separator-opaque);
+  }
+  .ios-alert__actions:has(> :nth-child(3)) {
+    flex-direction: column;
+  }
+  .ios-alert__actions:not(:has(> :nth-child(3))) {
+    flex-direction: row;
+  }
+  .ios-alert__btn {
+    flex: 1;
+    padding: 11px 8px;
+    text-align: center;
+    font-family: var(--ios-font-family);
+    font-size: var(--ios-body-size);
+    color: var(--ios-color-blue);
+    background: none;
+    border: none;
+    border-top: 0.5px solid var(--ios-separator-opaque);
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    transition: background var(--ios-duration-fast) var(--ios-easing-default);
+  }
+  .ios-alert__actions:not(:has(> :nth-child(3))) .ios-alert__btn {
+    border-top: none;
+    border-left: 0.5px solid var(--ios-separator-opaque);
+  }
+  .ios-alert__actions:not(:has(> :nth-child(3))) .ios-alert__btn:first-child {
+    border-left: none;
+  }
+  .ios-alert__btn:first-child {
+    border-top: none;
+  }
+  .ios-alert__btn:active {
+    background: var(--ios-fill-quaternary);
+  }
+  .ios-alert__btn--cancel {
+    font-weight: 600;
+  }
+  .ios-alert__btn--destructive {
+    color: var(--ios-color-red);
+  }
+  .ios-alert__btn--default {
+    font-weight: 400;
+  }
+
+  @keyframes ios-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes ios-scale-in {
+    from { transform: scale(1.05); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+</style>
+
+
+<%# ---------------------------------------------------------------------------
+     BUTTON
+
+     Params:
+       label:   String  — button text (required)
+       variant: Symbol  — :liquid_glass, :filled, :gray, :plain, :destructive
+       size:    Symbol  — :small, :medium, :large
+       icon:    String  — optional HTML for leading icon
+       url:     String  — if provided, renders as <a> instead of <button>
+       method:  Symbol  — HTTP method for Turbo (:get, :post, :patch, :delete)
+       disabled: Boolean
+       data:    Hash    — additional data attributes
+
+     Example:
+       <%= render "shared/ios26/button",
+         label: "Continue",
+         variant: :filled,
+         size: :large,
+         url: next_step_path
+       %>
+     -------------------------------------------------------------------------- %>
+
+<%# Partial: app/views/shared/ios26/_button.html.erb %>
+
+<%
+  variant = local_assigns.fetch(:variant, :liquid_glass)
+  size = local_assigns.fetch(:size, :medium)
+  disabled = local_assigns.fetch(:disabled, false)
+
+  variant_class = "ios-btn--#{variant}"
+  size_class = "ios-btn--#{size}"
+  btn_class = "ios-btn #{variant_class} #{size_class}"
+  btn_class += " ios-btn--disabled" if disabled
+
+  extra_data = local_assigns.fetch(:data, {})
+  extra_data[:turbo_method] = local_assigns[:method] if local_assigns[:method]
+%>
+
+<% if local_assigns[:url] && !disabled %>
+  <%= link_to url, class: btn_class, data: extra_data do %>
+    <% if local_assigns[:icon] %><span class="ios-btn__icon"><%= icon.html_safe %></span><% end %>
+    <span class="ios-btn__label"><%= label %></span>
+  <% end %>
+<% else %>
+  <button type="<%= local_assigns.fetch(:type, 'button') %>"
+          class="<%= btn_class %>"
+          <%= 'disabled' if disabled %>
+          <% extra_data.each do |k, v| %>data-<%= k.to_s.dasherize %>="<%= v %>"<% end %>>
+    <% if local_assigns[:icon] %><span class="ios-btn__icon"><%= icon.html_safe %></span><% end %>
+    <span class="ios-btn__label"><%= label %></span>
+  </button>
+<% end %>
+
+<style>
+  .ios-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ios-spacing-xs);
+    font-family: var(--ios-font-family);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: var(--ios-glass-radius-medium);
+    transition: all var(--ios-duration-fast) var(--ios-easing-default);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .ios-btn:active:not(.ios-btn--disabled) {
+    transform: scale(0.97);
+    opacity: 0.7;
+  }
+
+  /* Sizes */
+  .ios-btn--small {
+    font-size: var(--ios-subheadline-size);
+    line-height: var(--ios-subheadline-line-height);
+    padding: 6px 12px;
+    border-radius: var(--ios-glass-radius-small);
+  }
+  .ios-btn--medium {
+    font-size: var(--ios-body-size);
+    line-height: var(--ios-body-line-height);
+    padding: 8px 16px;
+  }
+  .ios-btn--large {
+    font-size: var(--ios-body-size);
+    line-height: var(--ios-body-line-height);
+    font-weight: 600;
+    padding: 14px 20px;
+    width: 100%;
+    border-radius: var(--ios-glass-radius-large);
+  }
+
+  /* Variants */
+  .ios-btn--liquid_glass {
+    background: var(--ios-glass-bg-medium);
+    backdrop-filter: blur(var(--ios-glass-shadow-blur));
+    -webkit-backdrop-filter: blur(var(--ios-glass-shadow-blur));
+    color: var(--ios-color-blue);
+    box-shadow: 0 0 var(--ios-glass-shadow-blur) rgba(0, 0, 0, 0.06);
+  }
+  .ios-btn--filled {
+    background: var(--ios-color-blue);
+    color: #ffffff;
+  }
+  .ios-btn--gray {
+    background: var(--ios-fill-primary);
+    color: var(--ios-label-primary);
+  }
+  .ios-btn--plain {
+    background: transparent;
+    color: var(--ios-color-blue);
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .ios-btn--destructive {
+    background: var(--ios-color-red);
+    color: #ffffff;
+  }
+
+  /* Disabled */
+  .ios-btn--disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+</style>
+
+
+<%# ---------------------------------------------------------------------------
+     TAB BAR
+
+     Params:
+       tabs:    Array  — list of hashes: { label:, icon:, url:, id: }
+       current: String — id of the currently selected tab
+
+     Example:
+       <%= render "shared/ios26/tab_bar",
+         current: "home",
+         tabs: [
+           { id: "home", label: "Home", icon: "house.fill", url: root_path },
+           { id: "search", label: "Search", icon: "magnifyingglass", url: search_path },
+           { id: "settings", label: "Settings", icon: "gearshape.fill", url: settings_path }
+         ]
+       %>
+     -------------------------------------------------------------------------- %>
+
+<%# Partial: app/views/shared/ios26/_tab_bar.html.erb %>
+
+<nav class="ios-tab-bar" data-controller="ios26-tab-bar" role="tablist">
+  <% tabs.each do |tab| %>
+    <% is_active = (tab[:id].to_s == current.to_s) %>
+    <%= link_to tab[:url],
+          class: "ios-tab-bar__item #{'ios-tab-bar__item--active' if is_active}",
+          role: "tab",
+          aria: { selected: is_active, label: tab[:label] },
+          data: {
+            turbo_frame: "main-content",
+            ios26_tab_bar_target: "tab",
+            action: "ios26-tab-bar#switch"
+          } do %>
+      <span class="ios-tab-bar__icon" aria-hidden="true">
+        <%# SF Symbol name passed as icon — render as SVG or use SF Symbols web font %>
+        <%= tab[:icon_html]&.html_safe || content_tag(:span, tab[:icon], class: "ios-tab-bar__sf-symbol") %>
+      </span>
+      <span class="ios-caption2 ios-tab-bar__label"><%= tab[:label] %></span>
+    <% end %>
+  <% end %>
+</nav>
+
+<style>
+  .ios-tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: var(--ios-spacing-xs) 0 var(--ios-safe-area-bottom);
+    background: var(--ios-glass-bg-large);
+    backdrop-filter: blur(var(--ios-glass-shadow-blur));
+    -webkit-backdrop-filter: blur(var(--ios-glass-shadow-blur));
+    border-top: 0.5px solid var(--ios-separator-non-opaque);
+    min-height: 49px;
+  }
+  .ios-tab-bar__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: var(--ios-spacing-xs) var(--ios-spacing-sm);
+    text-decoration: none;
+    color: var(--ios-gray);
+    min-width: 50px;
+    transition: color var(--ios-duration-fast) var(--ios-easing-default);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .ios-tab-bar__item--active {
+    color: var(--ios-color-blue);
+  }
+  .ios-tab-bar__icon {
+    font-size: 22px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ios-tab-bar__label {
+    color: inherit;
+  }
+  .ios-tab-bar__item:active {
+    opacity: 0.5;
+  }
+</style>
+
+
+<%# ---------------------------------------------------------------------------
+     GROUPED LIST SECTION
+
+     Params:
+       header:  String — section header text (optional)
+       footer:  String — section footer/help text (optional)
+       inset:   Boolean — use inset grouped style (default: true)
+
+     Usage (wraps list_row partials):
+       <%= render "shared/ios26/list_section", header: "General", footer: "Help text" do %>
+         <%= render "shared/ios26/list_row", title: "About", trailing: chevron %>
+         <%= render "shared/ios26/list_row", title: "Software Update", trailing: chevron %>
+       <% end %>
+     -------------------------------------------------------------------------- %>
+
+<%# Partial: app/views/shared/ios26/_list_section.html.erb %>
+
+<section class="ios-list-section">
+  <% if local_assigns[:header] %>
+    <header class="ios-footnote ios-list-section__header"><%= header %></header>
+  <% end %>
+  <div class="ios-list-section__body">
+    <%= yield %>
+  </div>
+  <% if local_assigns[:footer] %>
+    <footer class="ios-caption1 ios-list-section__footer"><%= footer %></footer>
+  <% end %>
+</section>
+
+<style>
+  .ios-list-section {
+    margin-bottom: var(--ios-spacing-2xl);
+  }
+  .ios-list-section__header {
+    color: var(--ios-label-secondary);
+    text-transform: uppercase;
+    padding: 0 var(--ios-inset-grouped-horizontal) var(--ios-spacing-sm);
+  }
+  .ios-list-section__body {
+    background: var(--ios-bg-grouped-secondary);
+    border-radius: var(--ios-radius-card);
+    margin: 0 var(--ios-inset-horizontal);
+    overflow: hidden;
+  }
+  .ios-list-section__footer {
+    color: var(--ios-label-secondary);
+    padding: var(--ios-spacing-sm) var(--ios-inset-grouped-horizontal) 0;
+  }
+</style>

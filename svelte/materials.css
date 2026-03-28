@@ -1,0 +1,351 @@
+/* ==========================================================================
+   iOS 26 Materials — Liquid Glass & Blur Effects
+   Requires: tokens.css
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   Background Materials (Frosted Glass Blur)
+   These simulate the system-level background materials.
+   Apply behind content that sits above a blurred background.
+   -------------------------------------------------------------------------- */
+
+.material-chrome {
+  background-color: rgba(255, 255, 255, var(--material-chrome-opacity));
+  backdrop-filter: blur(var(--blur-chrome));
+  -webkit-backdrop-filter: blur(var(--blur-chrome));
+}
+
+.material-thick {
+  background-color: rgba(255, 255, 255, var(--material-thick-opacity));
+  backdrop-filter: blur(var(--blur-thick));
+  -webkit-backdrop-filter: blur(var(--blur-thick));
+}
+
+.material-regular {
+  background-color: rgba(255, 255, 255, var(--material-regular-opacity));
+  backdrop-filter: blur(var(--blur-regular));
+  -webkit-backdrop-filter: blur(var(--blur-regular));
+}
+
+.material-thin {
+  background-color: rgba(255, 255, 255, var(--material-thin-opacity));
+  backdrop-filter: blur(var(--blur-thin));
+  -webkit-backdrop-filter: blur(var(--blur-thin));
+}
+
+.material-ultrathin {
+  background-color: rgba(255, 255, 255, var(--material-ultrathin-opacity));
+  backdrop-filter: blur(var(--blur-ultrathin));
+  -webkit-backdrop-filter: blur(var(--blur-ultrathin));
+}
+
+/* Dark mode material adjustments */
+@media (prefers-color-scheme: dark) {
+  .material-chrome {
+    background-color: rgba(0, 0, 0, var(--material-chrome-opacity));
+  }
+
+  .material-thick {
+    background-color: rgba(0, 0, 0, var(--material-thick-opacity));
+  }
+
+  .material-regular {
+    background-color: rgba(0, 0, 0, var(--material-regular-opacity));
+  }
+
+  .material-thin {
+    background-color: rgba(0, 0, 0, var(--material-thin-opacity));
+  }
+
+  .material-ultrathin {
+    background-color: rgba(0, 0, 0, var(--material-ultrathin-opacity));
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Liquid Glass — Large
+   Use for: Toolbars, Tab Bars, Navigation Bars
+   -------------------------------------------------------------------------- */
+
+.liquid-glass-large {
+  background-color: var(--glass-large-bg);
+  border-radius: var(--glass-large-radius);
+  box-shadow: 0 0 var(--glass-large-shadow-blur) rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(var(--glass-large-shadow-blur));
+  -webkit-backdrop-filter: blur(var(--glass-large-shadow-blur));
+}
+
+@media (prefers-color-scheme: dark) {
+  .liquid-glass-large {
+    background-color: var(--glass-large-bg);
+    box-shadow:
+      0 0 var(--glass-large-shadow-blur) rgba(0, 0, 0, 0.3),
+      inset 0 0 0 0.5px rgba(255, 255, 255, 0.06);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Liquid Glass — Medium
+   Use for: Floating action buttons, grouped controls
+   -------------------------------------------------------------------------- */
+
+.liquid-glass-medium {
+  background-color: var(--glass-medium-bg);
+  border-radius: var(--glass-medium-radius);
+  box-shadow: 0 0 var(--glass-medium-shadow-blur) rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(var(--glass-medium-shadow-blur));
+  -webkit-backdrop-filter: blur(var(--glass-medium-shadow-blur));
+}
+
+@media (prefers-color-scheme: dark) {
+  .liquid-glass-medium {
+    background-color: var(--glass-medium-bg);
+    box-shadow:
+      0 0 var(--glass-medium-shadow-blur) rgba(0, 0, 0, 0.25),
+      inset 0 0 0 0.5px rgba(255, 255, 255, 0.06);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Liquid Glass — Small
+   Use for: Small buttons, icon buttons, badge-like elements
+   -------------------------------------------------------------------------- */
+
+.liquid-glass-small {
+  background-color: var(--glass-small-bg);
+  border: 0.5px solid var(--glass-small-border);
+  border-radius: 8px;
+  box-shadow: 0 0 var(--glass-small-shadow-blur) rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(var(--glass-small-shadow-blur));
+  -webkit-backdrop-filter: blur(var(--glass-small-shadow-blur));
+}
+
+@media (prefers-color-scheme: dark) {
+  .liquid-glass-small {
+    background-color: var(--glass-small-bg);
+    border-color: var(--glass-small-border);
+    box-shadow:
+      0 0 var(--glass-small-shadow-blur) rgba(0, 0, 0, 0.2),
+      inset 0 0 0 0.5px rgba(255, 255, 255, 0.06);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Liquid Glass — Primary (Blue Tinted)
+   Use for: Primary action buttons, highlighted navigation items
+   -------------------------------------------------------------------------- */
+
+.liquid-glass-primary {
+  background-color: var(--glass-primary-bg);
+  border-radius: 8px;
+  box-shadow: 0 0 var(--glass-primary-shadow-blur) rgba(0, 0, 0, 0.06);
+  color: var(--glass-primary-icon-color);
+  backdrop-filter: blur(var(--glass-primary-shadow-blur));
+  -webkit-backdrop-filter: blur(var(--glass-primary-shadow-blur));
+}
+
+@media (prefers-color-scheme: dark) {
+  .liquid-glass-primary {
+    background-color: var(--glass-primary-bg);
+    box-shadow:
+      0 0 var(--glass-primary-shadow-blur) rgba(0, 0, 0, 0.3),
+      inset 0 0 0 0.5px rgba(255, 255, 255, 0.06);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Liquid Glass — Clear
+   Use for: Subtle overlays, minimal glass effect
+   -------------------------------------------------------------------------- */
+
+.liquid-glass-clear {
+  background-color: var(--glass-clear-bg);
+  border-radius: var(--glass-clear-radius);
+  box-shadow: 0 0 var(--glass-clear-shadow-blur) rgba(0, 0, 0, 0.02);
+  backdrop-filter: blur(var(--glass-clear-shadow-blur));
+  -webkit-backdrop-filter: blur(var(--glass-clear-shadow-blur));
+}
+
+
+/* --------------------------------------------------------------------------
+   Scroll Edge Effects
+   Apply to scroll containers. The gradient masks content at scroll edges.
+   -------------------------------------------------------------------------- */
+
+/* Soft: gradient + blur fade */
+
+.scroll-edge-soft-top {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black var(--scroll-edge-soft-blur),
+    black 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black var(--scroll-edge-soft-blur),
+    black 100%
+  );
+}
+
+.scroll-edge-soft-bottom {
+  mask-image: linear-gradient(
+    to top,
+    transparent 0%,
+    black var(--scroll-edge-soft-blur),
+    black 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to top,
+    transparent 0%,
+    black var(--scroll-edge-soft-blur),
+    black 100%
+  );
+}
+
+.scroll-edge-soft-leading {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black var(--scroll-edge-soft-blur),
+    black 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black var(--scroll-edge-soft-blur),
+    black 100%
+  );
+}
+
+.scroll-edge-soft-trailing {
+  mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    black var(--scroll-edge-soft-blur),
+    black 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    black var(--scroll-edge-soft-blur),
+    black 100%
+  );
+}
+
+/* Hard: solid + blur boundary */
+
+.scroll-edge-hard-top {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 1px,
+    black 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 1px,
+    black 100%
+  );
+  backdrop-filter: blur(var(--scroll-edge-hard-blur));
+  -webkit-backdrop-filter: blur(var(--scroll-edge-hard-blur));
+}
+
+.scroll-edge-hard-bottom {
+  mask-image: linear-gradient(
+    to top,
+    transparent 0%,
+    black 1px,
+    black 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to top,
+    transparent 0%,
+    black 1px,
+    black 100%
+  );
+  backdrop-filter: blur(var(--scroll-edge-hard-blur));
+  -webkit-backdrop-filter: blur(var(--scroll-edge-hard-blur));
+}
+
+.scroll-edge-hard-leading {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 1px,
+    black 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 1px,
+    black 100%
+  );
+  backdrop-filter: blur(var(--scroll-edge-hard-blur));
+  -webkit-backdrop-filter: blur(var(--scroll-edge-hard-blur));
+}
+
+.scroll-edge-hard-trailing {
+  mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    black 1px,
+    black 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    black 1px,
+    black 100%
+  );
+  backdrop-filter: blur(var(--scroll-edge-hard-blur));
+  -webkit-backdrop-filter: blur(var(--scroll-edge-hard-blur));
+}
+
+
+/* --------------------------------------------------------------------------
+   Combined Scroll Edge (top + bottom)
+   Common case: vertical scroll container with both edges fading.
+   -------------------------------------------------------------------------- */
+
+.scroll-edge-soft-vertical {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black var(--scroll-edge-soft-blur),
+    black calc(100% - var(--scroll-edge-soft-blur)),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black var(--scroll-edge-soft-blur),
+    black calc(100% - var(--scroll-edge-soft-blur)),
+    transparent 100%
+  );
+}
+
+.scroll-edge-soft-horizontal {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black var(--scroll-edge-soft-blur),
+    black calc(100% - var(--scroll-edge-soft-blur)),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black var(--scroll-edge-soft-blur),
+    black calc(100% - var(--scroll-edge-soft-blur)),
+    transparent 100%
+  );
+}

@@ -1,0 +1,277 @@
+/* ==========================================================================
+   iOS 26 Design Tokens — CSS Custom Properties
+   Source: Apple iOS & iPadOS 26 Figma Community Kit
+   Target: Pure Svelte 5 (runes mode)
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   Light Mode (Default)
+   -------------------------------------------------------------------------- */
+
+:root {
+
+  /* -- System Colors (12) ------------------------------------------------ */
+  --color-red: #ff383c;
+  --color-orange: #ff8d28;
+  --color-yellow: #ffcc00;
+  --color-green: #34c759;
+  --color-mint: #00c8b3;
+  --color-teal: #00c3d0;
+  --color-cyan: #00c0e8;
+  --color-blue: #0088ff;
+  --color-indigo: #6155f5;
+  --color-purple: #cb30e0;
+  --color-pink: #ff2d55;
+  --color-brown: #ac7f5e;
+
+  /* -- Labels (4 levels) ------------------------------------------------- */
+  --label-primary: #000000;
+  --label-secondary: rgba(60, 60, 67, 0.6);
+  --label-tertiary: rgba(60, 60, 67, 0.3);
+  --label-quaternary: rgba(60, 60, 67, 0.18);
+
+  /* -- Backgrounds (6) --------------------------------------------------- */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f2f2f7;
+  --bg-tertiary: #ffffff;
+  --bg-grouped-primary: #f2f2f7;
+  --bg-grouped-secondary: #ffffff;
+  --bg-grouped-tertiary: #f2f2f7;
+
+  /* -- Fills (4 levels) -------------------------------------------------- */
+  --fill-primary: rgba(120, 120, 128, 0.2);
+  --fill-secondary: rgba(120, 120, 128, 0.16);
+  --fill-tertiary: rgba(118, 118, 128, 0.12);
+  --fill-quaternary: rgba(116, 116, 128, 0.08);
+
+  /* -- Grays (8) --------------------------------------------------------- */
+  --black: #000000;
+  --gray: #8e8e93;
+  --gray-2: #aeaeb2;
+  --gray-3: #c7c7cc;
+  --gray-4: #d1d1d6;
+  --gray-5: #e5e5ea;
+  --gray-6: #f2f2f7;
+  --white: #ffffff;
+
+  /* -- Separators -------------------------------------------------------- */
+  --separator-opaque: #c6c6c8;
+  --separator: rgba(0, 0, 0, 0.12);
+
+  /* -- Vibrant Labels (Light) -------------------------------------------- */
+  --vibrant-label-primary: #000000;
+  --vibrant-label-secondary: #3d3d3d;
+  --vibrant-label-tertiary: rgba(61, 61, 61, 0.5);
+  --vibrant-label-quaternary: rgba(61, 61, 61, 0.5);
+
+  /* -- Vibrant Fills (Light) --------------------------------------------- */
+  --vibrant-fill-primary: #cccccc;
+  --vibrant-fill-secondary: #e0e0e0;
+  --vibrant-fill-tertiary: #ededed;
+
+  /* -- Typography -------------------------------------------------------- */
+  --font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  /* Type Scale — Size */
+  --text-large-title: 34px;
+  --text-title1: 28px;
+  --text-title2: 22px;
+  --text-title3: 20px;
+  --text-headline: 17px;
+  --text-body: 17px;
+  --text-callout: 16px;
+  --text-subheadline: 15px;
+  --text-footnote: 13px;
+  --text-caption1: 12px;
+  --text-caption2: 11px;
+
+  /* Type Scale — Line Height */
+  --lh-large-title: 41px;
+  --lh-title1: 34px;
+  --lh-title2: 28px;
+  --lh-title3: 25px;
+  --lh-headline: 22px;
+  --lh-body: 22px;
+  --lh-callout: 21px;
+  --lh-subheadline: 20px;
+  --lh-footnote: 18px;
+  --lh-caption1: 16px;
+  --lh-caption2: 13px;
+
+  /* Type Scale — Loose Line Height (+2px for multiline) */
+  --lh-large-title-loose: 43px;
+  --lh-title1-loose: 36px;
+  --lh-title2-loose: 30px;
+  --lh-title3-loose: 27px;
+  --lh-headline-loose: 24px;
+  --lh-body-loose: 24px;
+  --lh-callout-loose: 23px;
+
+  /* Type Scale — Letter Spacing */
+  --ls-large-title: 0.4px;
+  --ls-title1: 0.38px;
+  --ls-title2: -0.26px;
+  --ls-title3: -0.45px;
+  --ls-headline: -0.43px;
+  --ls-body: -0.43px;
+  --ls-callout: -0.31px;
+  --ls-subheadline: -0.23px;
+  --ls-footnote: -0.08px;
+  --ls-caption1: 0px;
+  --ls-caption2: 0.06px;
+
+  /* Type Scale — Font Weight */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* -- Materials (Liquid Glass & Blur) ----------------------------------- */
+
+  /* Background Materials — Blur Radius */
+  --blur-chrome: 50px;
+  --blur-thick: 100px;
+  --blur-regular: 100px;
+  --blur-thin: 100px;
+  --blur-ultrathin: 100px;
+
+  /* Background Materials — Opacity */
+  --material-chrome-opacity: 0.75;
+  --material-thick-opacity: 0.84;
+  --material-regular-opacity: 0.60;
+  --material-thin-opacity: 0.40;
+  --material-ultrathin-opacity: 0.03;
+
+  /* Liquid Glass */
+  --glass-large-bg: rgba(250, 250, 250, 0.7);
+  --glass-large-radius: 14px;
+  --glass-large-shadow-blur: 40px;
+
+  --glass-medium-bg: rgba(245, 245, 245, 0.6);
+  --glass-medium-radius: 12px;
+  --glass-medium-shadow-blur: 40px;
+
+  --glass-small-bg: #f7f7f7;
+  --glass-small-border: #dddddd;
+  --glass-small-shadow-blur: 40px;
+
+  --glass-primary-bg: #ffffff;
+  --glass-primary-icon-color: #0091ff;
+  --glass-primary-shadow-blur: 40px;
+
+  --glass-clear-bg: rgba(255, 255, 255, 0.07);
+  --glass-clear-radius: 5px;
+  --glass-clear-shadow-blur: 40px;
+
+  /* Scroll Edge Effects */
+  --scroll-edge-soft-blur: 10px;
+  --scroll-edge-hard-blur: 60px;
+  --scroll-edge-gradient-blur: 60px;
+
+  /* -- Spacing (4px base grid) ------------------------------------------- */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* -- Layout ------------------------------------------------------------ */
+  --safe-area-top: 59px;
+  --safe-area-bottom: 34px;
+  --content-inset: 16px;
+  --list-row-height: 44px;
+  --toolbar-height: 44px;
+  --tabbar-height: 49px;
+  --separator-height: 0.5px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Dark Mode
+   -------------------------------------------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+
+    /* -- System Colors (Dark adjustments) -------------------------------- */
+    --color-red: #ff453a;
+    --color-orange: #ff9f0a;
+    --color-yellow: #ffd60a;
+    --color-green: #30d158;
+    --color-mint: #63e6e2;
+    --color-teal: #40c8e0;
+    --color-cyan: #64d2ff;
+    --color-blue: #0a84ff;
+    --color-indigo: #5e5ce6;
+    --color-purple: #bf5af2;
+    --color-pink: #ff375f;
+    --color-brown: #ac8e68;
+
+    /* -- Labels (Dark) --------------------------------------------------- */
+    --label-primary: #ffffff;
+    --label-secondary: rgba(235, 235, 245, 0.6);
+    --label-tertiary: rgba(235, 235, 245, 0.3);
+    --label-quaternary: rgba(235, 235, 245, 0.18);
+
+    /* -- Backgrounds (Dark) ---------------------------------------------- */
+    --bg-primary: #000000;
+    --bg-secondary: #1c1c1e;
+    --bg-tertiary: #2c2c2e;
+    --bg-grouped-primary: #000000;
+    --bg-grouped-secondary: #1c1c1e;
+    --bg-grouped-tertiary: #2c2c2e;
+
+    /* -- Fills (Dark) ---------------------------------------------------- */
+    --fill-primary: rgba(120, 120, 128, 0.36);
+    --fill-secondary: rgba(120, 120, 128, 0.32);
+    --fill-tertiary: rgba(118, 118, 128, 0.24);
+    --fill-quaternary: rgba(118, 118, 128, 0.18);
+
+    /* -- Grays (Dark) ---------------------------------------------------- */
+    --black: #000000;
+    --gray: #8e8e93;
+    --gray-2: #636366;
+    --gray-3: #48484a;
+    --gray-4: #3a3a3c;
+    --gray-5: #2c2c2e;
+    --gray-6: #1c1c1e;
+    --white: #ffffff;
+
+    /* -- Separators (Dark) ----------------------------------------------- */
+    --separator-opaque: #38383a;
+    --separator: rgba(84, 84, 88, 0.65);
+
+    /* -- Vibrant Labels (Dark) ------------------------------------------- */
+    --vibrant-label-primary: #ffffff;
+    --vibrant-label-secondary: #999999;
+    --vibrant-label-tertiary: #404040;
+    --vibrant-label-quaternary: #262626;
+
+    /* -- Vibrant Fills (Dark) -------------------------------------------- */
+    --vibrant-fill-primary: #333333;
+    --vibrant-fill-secondary: #1f1f1f;
+    --vibrant-fill-tertiary: #121212;
+
+    /* -- Liquid Glass (Dark) --------------------------------------------- */
+    --glass-large-bg: rgba(0, 0, 0, 0.8);
+    --glass-medium-bg: rgba(0, 0, 0, 0.6);
+    --glass-small-bg: rgba(0, 0, 0, 0.6);
+    --glass-small-border: rgba(255, 255, 255, 0.06);
+    --glass-clear-bg: rgba(255, 255, 255, 0.07);
+
+    /* -- Materials (Dark overlays) --------------------------------------- */
+    --material-chrome-opacity: 0.75;
+    --material-thick-opacity: 0.84;
+    --material-regular-opacity: 0.60;
+    --material-thin-opacity: 0.40;
+    --material-ultrathin-opacity: 0.03;
+  }
+}

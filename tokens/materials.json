@@ -1,0 +1,97 @@
+{
+  "_reference": {
+    "source": "Figma iOS & iPadOS 26 Community Kit (pDmGXdYu2k8xlf1SQoU9PW)",
+    "extracted": "2026-03-27",
+    "plan": "../PLAN.md",
+    "inventory": "../../figma-ios26-pages.md",
+    "note": "Figma MCP is last resort. Use this file as primary reference."
+  },
+  "liquidGlass": {
+    "variables": {
+      "lightAngle": -45,
+      "opacity": 60,
+      "refraction": 100,
+      "dispersion": 0,
+      "shadowBlurBg": 80,
+      "shadowBlurLayer": 40
+    },
+    "regular": {
+      "large": {
+        "frostRadius": 14,
+        "depth": 16,
+        "splay": 6,
+        "light": {
+          "bg": { "hex": "#fafafa", "a": 0.7 },
+          "shadow": { "blur": 40 }
+        },
+        "dark": {
+          "bg": { "hex": "#000000", "a": 0.8 },
+          "tint": { "hex": "#ffffff", "a": 0.06 },
+          "shadow": { "blur": 40 }
+        }
+      },
+      "medium": {
+        "frostRadius": 12,
+        "depth": 16,
+        "splay": 6,
+        "light": {
+          "bg": { "hex": "#f5f5f5", "a": 0.6 },
+          "shadow": { "blur": 40 }
+        },
+        "dark": {
+          "bg": { "hex": "#000000", "a": 0.6 },
+          "tint": { "hex": "#ffffff", "a": 0.06 },
+          "shadow": { "blur": 40 }
+        }
+      },
+      "small": {
+        "frostRadius": 7,
+        "depth": 16,
+        "splay": 6,
+        "light": {
+          "default": {
+            "bg": { "hex": "#f7f7f7", "a": 1 },
+            "border": "#dddddd",
+            "shadow": { "blur": 40 }
+          },
+          "primary": {
+            "bg": "#ffffff",
+            "iconColor": "#0091ff",
+            "shadow": { "blur": 40 }
+          }
+        },
+        "dark": {
+          "default": {
+            "bg": { "hex": "#000000", "a": 0.6 },
+            "tint": { "hex": "#ffffff", "a": 0.06 },
+            "shadow": { "blur": 40 }
+          },
+          "primary": {
+            "bg": "#ffffff",
+            "iconColor": "#0091ff",
+            "shadow": { "blur": 40 }
+          }
+        }
+      }
+    },
+    "clear": {
+      "light": {
+        "bg": { "hex": "#ffffff", "a": 0.07 },
+        "frostRadius": 5,
+        "shadow": { "blur": 40 }
+      }
+    }
+  },
+  "backgroundMaterials": {
+    "chrome": { "bgOpacity": 0.75, "blurRadius": 50 },
+    "thick": { "bgOpacity": 0.84, "overlayOpacity": 0.34, "blurRadius": 100 },
+    "regular": { "bgOpacity": 0.60, "overlayOpacity": 0.25, "blurRadius": 100 },
+    "thin": { "bgOpacity": 0.40, "overlayOpacity": 0.05, "blurRadius": 100 },
+    "ultrathin": { "bgOpacity": 0.03, "overlayOpacity": 0.07, "blurRadius": 100 }
+  },
+  "scrollEdgeEffect": {
+    "soft": { "blurRadius": 10, "fadeBlurRadius": 60, "gradientOpacity": 0.9 },
+    "hard": { "blurRadius": 60 },
+    "directions": ["top", "bottom", "leading", "trailing"]
+  }
+}
