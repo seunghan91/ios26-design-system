@@ -715,3 +715,30 @@ List {
 .listStyle(.insetGrouped)
 // iOS 26: Liquid Glass 배경 자동 적용
 ```
+
+---
+
+## 추가 Variants (보강)
+
+### Row - Button (`550:49677`, 3 variants)
+- List row가 전체 버튼인 경우 (탭 전체 영역 = 버튼)
+- 배경 탭 highlight: `Colors/System/Fill/Tertiary`
+- 3 variants: Default / Pressed / Disabled
+
+### Row with Swipe Actions (`550:49969`, 4 variants)
+- 좌우 스와이프로 액션 버튼 노출
+- Leading swipe: 초록/파랑 계열 (긍정적 액션)
+- Trailing swipe: 빨간 계열 (삭제 등)
+- 스와이프 버튼 높이 = 행 높이 동일
+- 4 variants: Leading Small / Leading Large / Trailing Small / Trailing Large
+- Large = full swipe → 즉시 실행 (destructive)
+
+### List Header (`517:38042`, 3 variants)
+- Section 헤더 행
+- 높이: 28pt (Plain), 38pt (Grouped Inset)
+- 3 variants: Default / With Button / Editing
+
+### Index Bar (`48:56457`, 2 variants)
+- 알파벳 인덱스 바 (오른쪽 측면)
+- 너비: 15pt, 각 인덱스 글자 간격 4pt
+- 2 variants: Default / Pressed

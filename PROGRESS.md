@@ -22,8 +22,7 @@
 | 1.10 | Svelte+Inertia 토큰 파일 | DONE | tokens.css, typography.css, materials.css + components/layout/README |
 | 1.11 | Flutter 토큰 파일 | DONE | ios26_colors.dart, ios26_typography.dart |
 
-## Phase 2: Components
-**담당: 사용자 직접 진행**
+## Phase 2: Components ✅ FULLY COMPLETE
 
 > References (작업 시 이 순서로 참조):
 > 1. `tokens/*.json` — 토큰 값
@@ -49,6 +48,24 @@
 | P2 | Page Controls | `488:51848` | 35 | **DONE** `specs/page-controls.md` |
 | P3 | App Icons | `2402:17543` | 2 | **DONE** `specs/app-icons.md` |
 | P3 | Popovers | `61:65421` | 12 | **DONE** `specs/popovers.md` |
+| **보강** | Action Sheets | `507:24669` | — | **DONE** `specs/action-sheets.md` |
+| **보강** | Activity Views | `507:24670` | 2 | **DONE** `specs/activity-views.md` |
+| **보강** | Context Menus | `507:25994` | 4 | **DONE** `specs/context-menus.md` |
+| **보강** | Menus | `507:24676` | 18 | **DONE** `specs/menus.md` |
+| **보강** | Pickers | `507:24680` | 4 | **DONE** `specs/pickers.md` |
+| **보강** | Sidebars | `507:26013` | 12 | **DONE** `specs/sidebars.md` |
+| **보강** | Pop-up Buttons | `507:26009` | 2 | **DONE** `specs/popup-buttons.md` |
+| **보강** | Empty States | `5518:18111` | 3 | **DONE** `specs/empty-states.md` |
+| **보강** | Keyboards | `507:24674` | 33 | **DONE** `specs/keyboards.md` |
+| **보강** | Widgets | `507:26511` | 23 | **DONE** `specs/widgets.md` |
+| **보강** | Face ID | `507:26011` | 2 | **DONE** `specs/face-id.md` |
+| **보강** | Color Pickers | `507:26010` | 7 | **DONE** `specs/color-pickers.md` |
+| **보강** | Windows | `5413:10149` | 2 | **DONE** `specs/windows.md` |
+| **보강** | System UI | `507:24688` | 32 | **DONE** `specs/system-ui.md` |
+| **보강** | toolbar.md | — | — | **DONE** Bottom/iPad/Sheet variants 추가 |
+| **보강** | list-row.md | — | — | **DONE** Row-Button/Swipe/Header/IndexBar 추가 |
+| **보강** | tab-bar.md | — | — | **DONE** iPad Tab Bar 추가 |
+| **보강** | button.md | — | — | **DONE** Liquid Glass Symbol 추가 |
 
 ## Phase 3: Templates ✅ DONE
 

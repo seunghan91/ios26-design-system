@@ -611,3 +611,15 @@ Button { action() } label: {
 }
 .buttonStyle(.glass) // iOS 26 새로운 스타일
 ```
+
+---
+
+## Button - Liquid Glass - Symbol 보강
+
+### Button - Liquid Glass - Symbol (`5522:11866`, 2 variants)
+- Text 버튼과 달리 SF Symbol 아이콘만 표시
+- 원형(circle) 또는 정사각형(square) 형태
+- 크기: 44×44pt (기본), 50×50pt (Large)
+- Liquid Glass 배경 + SF Symbol 20pt
+- 2 variants: Light / Dark mode
+- 사용처: toolbar 아이콘 버튼, floating action button

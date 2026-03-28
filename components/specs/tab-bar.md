@@ -435,3 +435,14 @@ TabView(selection: $selectedTab) {
 // Liquid Glass indicator는 시스템이 자동으로 처리
 // UITabBarAppearance로 외관 커스터마이징 가능
 ```
+
+---
+
+## iPad Tab Bar 보강
+
+### Tab Bar - iPad (`2524:7957`)
+- iPhone과 달리 좌측 수직 배치 (iPad sidebar-style)
+- 또는 상단 toolbar에 통합
+- iPad에서의 Liquid Glass morphing indicator 동작 차이
+- `_Tab Bar Button - iPad - Text` (4 variants), `_Tab Bar Button - iPad - Symbol` (4 variants)
+- 탭 최대 개수: 제한 없음 (스크롤 가능)

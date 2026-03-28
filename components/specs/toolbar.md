@@ -541,3 +541,27 @@ NavigationStack {
 // iOS 26: Liquid Glass 배경은 시스템이 자동 적용
 // UINavigationBarAppearance로 커스터마이징 가능
 ```
+
+---
+
+## 추가 Variants (보강)
+
+### Toolbar - Bottom - iPhone (`4:55732`, 6 variants)
+- 위치: 화면 하단, Tab Bar 위 (Tab Bar 없을 때는 safe area 바로 위)
+- 높이: 44pt + safe area bottom inset
+- 용도: 편집 툴바 (Safari 앞/뒤, Mail 작성 등)
+- 버튼 배치: 좌/우 끝 + 중앙 균등 분배
+- Variants: 버튼 1~5개
+- Liquid Glass 배경
+
+### Toolbar - Top - iPad (`5561:41165`, 8 variants)
+- 높이: 52pt (iPad는 iPhone보다 약간 큼)
+- 8 variants: 버튼 구성 × 검색바 포함 여부
+- Large Title: iPad는 Sidebar와 함께 쓰이므로 toolbar에 title 없는 경우 많음
+
+### Toolbar - Top - Sheet (`5726:33474`, 5 variants)
+- Sheet 내부에서 사용하는 Toolbar
+- 높이: 56pt (Grabber 포함 시 상단 20pt + 44pt = 64pt 공간)
+- Cancel/Done 버튼 배치: Cancel 좌, Done 우
+- Title: 중앙 정렬
+- 5 variants: title만 / title+Cancel / title+Done / title+Cancel+Done / title+Back
