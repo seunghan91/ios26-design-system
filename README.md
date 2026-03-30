@@ -27,47 +27,29 @@
 
 > Every screenshot below is rendered with **actual design tokens** from this package — not mockups.
 
-### Light / Dark Mode
+### System Colors
 
 <p align="center">
-  <img src="./docs/images/dark-mode-toggle.gif" width="720" alt="Light and Dark mode toggle" />
+  <img src="./docs/images/colors-light.png" width="720" alt="12 system colors with hex values" />
 </p>
 
-### System Colors (79 tokens x 4 modes)
-
-<table>
-<tr>
-<td><img src="./docs/images/colors-light.png" width="480" alt="Colors — Light" /></td>
-<td><img src="./docs/images/colors-dark.png" width="480" alt="Colors — Dark" /></td>
-</tr>
-<tr><td align="center"><em>Light</em></td><td align="center"><em>Dark</em></td></tr>
-</table>
-
-### Typography (SF Pro type scale)
+### Typography
 
 <p align="center">
-  <img src="./docs/images/typography-light.png" width="720" alt="Typography scale" />
+  <img src="./docs/images/typography-light.png" width="720" alt="SF Pro type scale — 11 styles" />
 </p>
 
 ### Liquid Glass & Materials
 
-<table>
-<tr>
-<td><img src="./docs/images/liquid-glass-light.png" width="480" alt="Liquid Glass — Light" /></td>
-<td><img src="./docs/images/liquid-glass-dark.png" width="480" alt="Liquid Glass — Dark" /></td>
-</tr>
-<tr><td align="center"><em>Light</em></td><td align="center"><em>Dark</em></td></tr>
-</table>
+<p align="center">
+  <img src="./docs/images/liquid-glass-light.png" width="720" alt="Liquid Glass on photo background" />
+</p>
 
 ### Components
 
-<table>
-<tr>
-<td><img src="./docs/images/components-light.png" width="480" alt="Components — Light" /></td>
-<td><img src="./docs/images/components-dark.png" width="480" alt="Components — Dark" /></td>
-</tr>
-<tr><td align="center"><em>Light</em></td><td align="center"><em>Dark</em></td></tr>
-</table>
+<p align="center">
+  <img src="./docs/images/components-light.png" width="720" alt="Buttons, Controls, List, Alert" />
+</p>
 
 ### Spacing & Layout
 

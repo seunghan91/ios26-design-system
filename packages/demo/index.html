@@ -65,22 +65,6 @@
       color: var(--label-primary);
     }
 
-    /* ── Theme Toggle ────────────────────────────────── */
-    .theme-toggle {
-      position: fixed; top: 16px; right: 16px; z-index: 100;
-      display: flex; gap: 4px; padding: 4px;
-      border-radius: 12px;
-    }
-    .theme-toggle button {
-      padding: 8px 16px; border: none; border-radius: 10px;
-      font-family: var(--font-family); font-size: var(--text-footnote);
-      font-weight: 600; cursor: pointer;
-      background: transparent; color: var(--label-secondary);
-      transition: all 0.2s;
-    }
-    .theme-toggle button.active {
-      color: var(--label-primary);
-    }
 
     /* ── Colors ───────────────────────────────────────── */
     .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
@@ -487,19 +471,6 @@
     }
     .footer a { color: var(--color-blue); text-decoration: none; }
 
-    /* ── Dark mode forced via class ──────────────────── */
-    html.dark {
-      color-scheme: dark;
-    }
-    html.dark body { background: #000; }
-    html.dark .card { background: #1c1c1e; }
-    html.dark .ios-list { background: #1c1c1e; }
-    html.dark .ios-alert .alert-body,
-    html.dark .ios-alert .alert-actions { background: #2c2c2e; }
-    html.dark .ios-sheet { background: #1c1c1e; }
-    html.dark .ios-textfield { background: #1c1c1e; border-color: #38383a; }
-    html.dark .animation-card { background: #1c1c1e; }
-    html.dark .ios-notification { background: rgba(28,28,30,0.95); }
 
     /* Nav */
     .nav {
@@ -550,10 +521,6 @@
     <a href="#materials">Glass</a>
     <a href="#components">Components</a>
     <a href="#animations">Motion</a>
-  </div>
-  <div class="theme-toggle">
-    <button class="active" onclick="setTheme('light')">Light</button>
-    <button onclick="setTheme('dark')">Dark</button>
   </div>
 </nav>
 
@@ -1013,12 +980,6 @@
 </div>
 
 <script>
-function setTheme(mode) {
-  document.documentElement.classList.toggle('dark', mode === 'dark');
-  document.querySelectorAll('.theme-toggle button').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-}
-
 function switchTab(el) {
   el.closest('.glass-tab-bar').querySelectorAll('.glass-tab').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
@@ -1034,12 +995,6 @@ function switchSegment(el) {
   el.classList.add('active');
 }
 
-// Auto dark mode detection
-if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  document.documentElement.classList.add('dark');
-  document.querySelectorAll('.theme-toggle button').forEach(b => b.classList.remove('active'));
-  document.querySelector('.theme-toggle button:last-child').classList.add('active');
-}
 </script>
 
 </body>
