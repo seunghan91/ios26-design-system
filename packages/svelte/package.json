@@ -1,5 +1,5 @@
 {
-  "name": "@ios26/svelte",
+  "name": "@ios26_design_system/svelte",
   "version": "1.0.0",
   "description": "iOS 26 design system for Svelte 5 — Liquid Glass components, tokens, typography",
   "type": "module",

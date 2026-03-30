@@ -1,5 +1,5 @@
 {
-  "name": "@ios26/metadata",
+  "name": "@ios26_design_system/metadata",
   "version": "1.0.0",
   "description": "iOS 26 design system specs — 31 component specs, 5 templates, 5 sections, 48 page recipes",
   "type": "module",

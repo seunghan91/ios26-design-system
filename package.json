@@ -4,7 +4,7 @@
   "description": "iOS 26 / iPadOS 26 design system — tokens, components, templates, sections, pages",
   "scripts": {
     "build": "turbo run build",
-    "build:tokens": "turbo run build --filter=@ios26/tokens",
+    "build:tokens": "turbo run build --filter=@ios26_design_system/tokens",
     "lint": "turbo run lint",
     "clean": "turbo run clean",
     "changeset": "changeset",

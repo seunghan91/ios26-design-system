@@ -1,5 +1,5 @@
 {
-  "name": "@ios26/rails",
+  "name": "@ios26_design_system/rails",
   "version": "1.0.0",
   "description": "iOS 26 design system for Rails 8 + Hotwire — CSS tokens, Stimulus controllers, ERB partials",
   "type": "module",

@@ -53,27 +53,27 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: cd packages/tokens && node build.js
 
-      - name: Publish @ios26/tokens
+      - name: Publish @ios26_design_system/tokens
         run: cd packages/tokens && pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish @ios26/svelte
+      - name: Publish @ios26_design_system/svelte
         run: cd packages/svelte && pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish @ios26/rails
+      - name: Publish @ios26_design_system/rails
         run: cd packages/rails && pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish @ios26/svelte-inertia
+      - name: Publish @ios26_design_system/svelte-inertia
         run: cd packages/svelte-inertia && pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish @ios26/metadata
+      - name: Publish @ios26_design_system/metadata
         run: cd packages/metadata && pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

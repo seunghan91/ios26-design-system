@@ -4,7 +4,7 @@ description: |
   iOS 26 / iPadOS 26 design system intelligence. Use when building UI that follows
   Apple's iOS 26 Liquid Glass design language — components, tokens, layouts, animations.
   Triggers on: "iOS 26", "Liquid Glass", "ios26", "iPadOS 26", "Apple design",
-  "tab bar", "toolbar", "sheet", "alert" in iOS context, or when importing @ios26/*.
+  "tab bar", "toolbar", "sheet", "alert" in iOS context, or when importing @ios26_design_system/*.
 ---
 
 # iOS 26 Design System Skill
@@ -14,18 +14,18 @@ You are an expert in Apple's iOS 26 / iPadOS 26 design language, specifically th
 ## When to Activate
 
 - User mentions iOS 26, iPadOS 26, Liquid Glass, or Apple's new design language
-- Code imports `@ios26/tokens`, `@ios26/svelte`, `@ios26/rails`, `@ios26/svelte-inertia`
+- Code imports `@ios26_design_system/tokens`, `@ios26_design_system/svelte`, `@ios26_design_system/rails`, `@ios26_design_system/svelte-inertia`
 - Building UI components that should follow iOS 26 patterns
 - Questions about iOS 26 specific values (colors, spacing, animations, materials)
 
 ## Available Packages
 
 ```
-@ios26/tokens          — Design tokens (CSS vars, JS/TS, Dart)
-@ios26/svelte          — Svelte 5 components (runes mode)
-@ios26/rails           — Rails 8 + Hotwire (Stimulus + ERB)
-@ios26/svelte-inertia  — Svelte 5 + Inertia.js + Rails
-@ios26/metadata        — Component specs, templates, page recipes
+@ios26_design_system/tokens          — Design tokens (CSS vars, JS/TS, Dart)
+@ios26_design_system/svelte          — Svelte 5 components (runes mode)
+@ios26_design_system/rails           — Rails 8 + Hotwire (Stimulus + ERB)
+@ios26_design_system/svelte-inertia  — Svelte 5 + Inertia.js + Rails
+@ios26_design_system/metadata        — Component specs, templates, page recipes
 ```
 
 ## Quick Reference: Design Tokens
@@ -145,9 +145,9 @@ Key durations:
 
 ```svelte
 <script>
-  import '@ios26/svelte/tokens.css';
-  import '@ios26/svelte/typography.css';
-  import '@ios26/svelte/materials.css';
+  import '@ios26_design_system/svelte/tokens.css';
+  import '@ios26_design_system/svelte/typography.css';
+  import '@ios26_design_system/svelte/materials.css';
 </script>
 
 <nav class="ios26-liquid-glass-lg">
@@ -172,9 +172,9 @@ Key durations:
 
 ```svelte
 <script>
-  import '@ios26/svelte-inertia/tokens.css';
-  import '@ios26/svelte-inertia/typography.css';
-  import '@ios26/svelte-inertia/materials.css';
+  import '@ios26_design_system/svelte-inertia/tokens.css';
+  import '@ios26_design_system/svelte-inertia/typography.css';
+  import '@ios26_design_system/svelte-inertia/materials.css';
 </script>
 ```
 
@@ -229,4 +229,4 @@ MaterialApp(
 
 - **Figma Community Kit**: [iOS & iPadOS 26](https://www.figma.com/community/file/1527721578857867021)
 - **GitHub**: [seunghan91/ios26-design-system](https://github.com/seunghan91/ios26-design-system)
-- **npm**: `@ios26/tokens`, `@ios26/svelte`, `@ios26/rails`, `@ios26/svelte-inertia`
+- **npm**: `@ios26_design_system/tokens`, `@ios26_design_system/svelte`, `@ios26_design_system/rails`, `@ios26_design_system/svelte-inertia`

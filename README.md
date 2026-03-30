@@ -33,15 +33,15 @@ This project bridges that gap. Every token, every component spec, every layout r
 
 ```bash
 # Design tokens (CSS variables, JS/TS, Dart)
-npm install @ios26/tokens
+npm install @ios26_design_system/tokens
 
 # Framework-specific packages
-npm install @ios26/svelte          # Svelte 5
-npm install @ios26/rails           # Rails 8 + Hotwire
-npm install @ios26/svelte-inertia  # Svelte 5 + Inertia.js
+npm install @ios26_design_system/svelte          # Svelte 5
+npm install @ios26_design_system/rails           # Rails 8 + Hotwire
+npm install @ios26_design_system/svelte-inertia  # Svelte 5 + Inertia.js
 
 # Component specs, page recipes (for docs/AI context)
-npm install @ios26/metadata
+npm install @ios26_design_system/metadata
 ```
 
 ## What's Inside
@@ -49,7 +49,7 @@ npm install @ios26/metadata
 ```
 ios26-design-system/                 # pnpm monorepo + Turborepo
 ├── packages/
-│   ├── tokens/                      # @ios26/tokens
+│   ├── tokens/                      # @ios26_design_system/tokens
 │   │   ├── src/                     # Source JSON (5 files)
 │   │   │   ├── colors.json          # 79 variables × 4 modes
 │   │   │   ├── typography.json      # 11 styles × 4 variants + Dynamic Type
@@ -62,11 +62,11 @@ ios26-design-system/                 # pnpm monorepo + Turborepo
 │   │   │   └── dart/                # Flutter Dart classes
 │   │   └── build.js                 # Token transformation pipeline
 │   │
-│   ├── svelte/                      # @ios26/svelte
-│   ├── rails/                       # @ios26/rails
-│   ├── svelte-inertia/              # @ios26/svelte-inertia
+│   ├── svelte/                      # @ios26_design_system/svelte
+│   ├── rails/                       # @ios26_design_system/rails
+│   ├── svelte-inertia/              # @ios26_design_system/svelte-inertia
 │   ├── flutter/                     # pub.dev: ios26_design
-│   └── metadata/                    # @ios26/metadata
+│   └── metadata/                    # @ios26_design_system/metadata
 │       ├── components/specs/        # 31 component specifications
 │       ├── templates/               # 5 layout composition patterns
 │       ├── sections/                # 5 screen region specs
@@ -83,11 +83,11 @@ ios26-design-system/                 # pnpm monorepo + Turborepo
 
 | Package | Framework | Tokens | Components | Status |
 |---------|-----------|--------|------------|--------|
-| `@ios26/tokens` | Any | JSON, CSS, JS/TS, Dart | — | `npm install @ios26/tokens` |
-| `@ios26/svelte` | Svelte 5 | CSS Custom Properties | Runes mode | `npm install @ios26/svelte` |
-| `@ios26/svelte-inertia` | Svelte 5 + Inertia.js | CSS Custom Properties | + Rails layouts | `npm install @ios26/svelte-inertia` |
-| `@ios26/rails` | Rails 8 + Hotwire | CSS + Stimulus | ERB partials | `npm install @ios26/rails` |
-| `@ios26/metadata` | Any | — | 31 specs + 48 pages | `npm install @ios26/metadata` |
+| `@ios26_design_system/tokens` | Any | JSON, CSS, JS/TS, Dart | — | `npm install @ios26_design_system/tokens` |
+| `@ios26_design_system/svelte` | Svelte 5 | CSS Custom Properties | Runes mode | `npm install @ios26_design_system/svelte` |
+| `@ios26_design_system/svelte-inertia` | Svelte 5 + Inertia.js | CSS Custom Properties | + Rails layouts | `npm install @ios26_design_system/svelte-inertia` |
+| `@ios26_design_system/rails` | Rails 8 + Hotwire | CSS + Stimulus | ERB partials | `npm install @ios26_design_system/rails` |
+| `@ios26_design_system/metadata` | Any | — | 31 specs + 48 pages | `npm install @ios26_design_system/metadata` |
 | `ios26_design` | Flutter 3.x | Dart constants | Material + Cupertino | pub.dev (coming) |
 
 ## Quick Start
@@ -95,34 +95,34 @@ ios26-design-system/                 # pnpm monorepo + Turborepo
 ### Tokens (any framework)
 
 ```bash
-npm install @ios26/tokens
+npm install @ios26_design_system/tokens
 ```
 
 ```js
 // ES Module — import token objects
-import { colors, typography, materials } from '@ios26/tokens';
+import { colors, typography, materials } from '@ios26_design_system/tokens';
 
 // CSS — import as custom properties
-import '@ios26/tokens/css';              // colors
-import '@ios26/tokens/css/typography';   // typography classes
-import '@ios26/tokens/css/materials';    // Liquid Glass utilities
-import '@ios26/tokens/css/animations';   // spring curves + durations
+import '@ios26_design_system/tokens/css';              // colors
+import '@ios26_design_system/tokens/css/typography';   // typography classes
+import '@ios26_design_system/tokens/css/materials';    // Liquid Glass utilities
+import '@ios26_design_system/tokens/css/animations';   // spring curves + durations
 
 // Raw JSON — for custom build pipelines
-import colors from '@ios26/tokens/json/colors';
+import colors from '@ios26_design_system/tokens/json/colors';
 ```
 
 ### Svelte 5
 
 ```bash
-npm install @ios26/svelte
+npm install @ios26_design_system/svelte
 ```
 
 ```svelte
 <script>
-  import '@ios26/svelte/tokens.css';
-  import '@ios26/svelte/typography.css';
-  import '@ios26/svelte/materials.css';
+  import '@ios26_design_system/svelte/tokens.css';
+  import '@ios26_design_system/svelte/typography.css';
+  import '@ios26_design_system/svelte/materials.css';
 </script>
 
 <button class="ios26-button ios26-liquid-glass-sm">Done</button>
@@ -143,7 +143,7 @@ MaterialApp(
 ### Rails 8
 
 ```erb
-<%# Gemfile or importmap: pin "@ios26/rails" %>
+<%# Gemfile or importmap: pin "@ios26_design_system/rails" %>
 <%= stylesheet_link_tag "ios26/tokens" %>
 <%= render "shared/ios26/toolbar", title: "Settings" %>
 ```
@@ -234,7 +234,7 @@ Each layer references the one below it. Component specs reference token values. 
 
 This design system ships with a **Claude Code skill** (`skills/ios26-design.md`) that gives AI assistants complete knowledge of iOS 26 tokens, components, and layout patterns.
 
-To use it, copy the skill file to your Claude Code skills directory, or reference it in your project. The skill auto-activates when it detects iOS 26, Liquid Glass, or `@ios26/*` imports.
+To use it, copy the skill file to your Claude Code skills directory, or reference it in your project. The skill auto-activates when it detects iOS 26, Liquid Glass, or `@ios26_design_system/*` imports.
 
 Also works as context for **Cursor Rules**, **GitHub Copilot**, or any AI coding assistant — the skill file contains a complete quick-reference of all token values, component dimensions, and animation parameters.
 
@@ -252,7 +252,7 @@ Please open an issue to discuss before submitting large PRs.
 
 ## Roadmap
 
-- [x] npm monorepo (`@ios26/tokens`, `@ios26/svelte`, `@ios26/rails`, ...)
+- [x] npm monorepo (`@ios26_design_system/tokens`, `@ios26_design_system/svelte`, `@ios26_design_system/rails`, ...)
 - [x] Token build pipeline (JSON → CSS / JS / Dart)
 - [x] Claude Code AI skill
 - [x] GitHub Actions CI/CD

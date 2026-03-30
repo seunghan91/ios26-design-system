@@ -1,5 +1,5 @@
 {
-  "name": "@ios26/svelte-inertia",
+  "name": "@ios26_design_system/svelte-inertia",
   "version": "1.0.0",
   "description": "iOS 26 design system for Svelte 5 + Inertia.js + Rails — components, layouts, tokens",
   "type": "module",

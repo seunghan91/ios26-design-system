@@ -1,5 +1,5 @@
 {
-  "name": "@ios26/tokens",
+  "name": "@ios26_design_system/tokens",
   "version": "1.0.0",
   "description": "iOS 26 design tokens — colors, typography, materials, spacing, animations (Light/Dark/IC modes)",
   "type": "module",

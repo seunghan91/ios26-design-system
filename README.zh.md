@@ -222,7 +222,7 @@ Tokens（原子）→ Components（分子）→ Templates（有机体）→ Sect
 
 ## 路线图
 
-- [ ] NPM 包（`@ios26/tokens`）
+- [ ] NPM 包（`@ios26_design_system/tokens`）
 - [ ] pub.dev Dart 包
 - [ ] Storybook / Histoire 组件展示
 - [ ] 交互式 Liquid Glass 演练场
