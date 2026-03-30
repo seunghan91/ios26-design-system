@@ -27,7 +27,7 @@
 
 Apple 在 WWDC25 上发布了 **Liquid Glass** 和全新的设计语言。设计师拿到了 Figma 套件，**但开发者什么都没有。**
 
-这个项目填补了这个空白。我们从[官方 Figma Community Kit](https://www.figma.com/community/file/pDmGXdYu2k8xlf1SQoU9PW) 中提取了每一个令牌、每一个组件规格、每一个布局规则，并转化为可以在 **4 个框架**中**立即使用**的代码。
+这个项目填补了这个空白。我们从[官方 Figma Community Kit](https://www.figma.com/community/file/1527721578857867021) 中提取了每一个令牌、每一个组件规格、每一个布局规则，并转化为可以在 **4 个框架**中**立即使用**的代码。
 
 ## 项目结构
 
@@ -193,7 +193,8 @@ Liquid Glass = 磨砂模糊 + 折射 + 深度阴影 + 光照角度
 
 所有数据从 Apple 官方 **iOS & iPadOS 26 Figma Community Kit** 提取。
 
-- **Figma 文件**: [`pDmGXdYu2k8xlf1SQoU9PW`](https://www.figma.com/community/file/pDmGXdYu2k8xlf1SQoU9PW)
+- **Figma Community Kit**: [iOS & iPadOS 26](https://www.figma.com/community/file/1527721578857867021)
+- **Figma File Key**: `pDmGXdYu2k8xlf1SQoU9PW`（Figma API / MCP 访问用）
 - **提取方式**: Figma MCP + 手动验证
 - **模式**: Light、Dark、Increased Contrast Light、Increased Contrast Dark
 

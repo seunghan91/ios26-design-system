@@ -2,7 +2,7 @@
 
 Complete iOS 26 design system implementation for Flutter 3.x with null safety.
 
-Extracted from the iOS & iPadOS 26 Figma Community Kit (`pDmGXdYu2k8xlf1SQoU9PW`).
+Extracted from the iOS & iPadOS 26 [Figma Community Kit](https://www.figma.com/community/file/1527721578857867021).
 
 ---
 

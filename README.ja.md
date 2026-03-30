@@ -27,7 +27,7 @@
 
 AppleはWWDC25で**Liquid Glass**と全く新しいデザイン言語を発表しました。デザイナーにはFigmaキットが提供されましたが、**開発者には何も提供されませんでした。**
 
-このプロジェクトはそのギャップを埋めます。すべてのトークン、すべてのコンポーネント仕様、すべてのレイアウトルールを[公式Figma Community Kit](https://www.figma.com/community/file/pDmGXdYu2k8xlf1SQoU9PW)から抽出し、**4つのフレームワーク**で**今すぐ**使えるコードに変換しました。
+このプロジェクトはそのギャップを埋めます。すべてのトークン、すべてのコンポーネント仕様、すべてのレイアウトルールを[公式Figma Community Kit](https://www.figma.com/community/file/1527721578857867021)から抽出し、**4つのフレームワーク**で**今すぐ**使えるコードに変換しました。
 
 ## プロジェクト構成
 
@@ -193,7 +193,8 @@ Liquid Glass = Frosted blur + Refraction + Depth shadow + Light angle
 
 すべてのデータはApple公式の**iOS & iPadOS 26 Figma Community Kit**から抽出しました。
 
-- **Figmaファイル**: [`pDmGXdYu2k8xlf1SQoU9PW`](https://www.figma.com/community/file/pDmGXdYu2k8xlf1SQoU9PW)
+- **Figma Community Kit**: [iOS & iPadOS 26](https://www.figma.com/community/file/1527721578857867021)
+- **Figma File Key**: `pDmGXdYu2k8xlf1SQoU9PW`（Figma API / MCPアクセス用）
 - **抽出方法**: Figma MCP + 手動検証
 - **モード**: Light、Dark、Increased Contrast Light、Increased Contrast Dark
 

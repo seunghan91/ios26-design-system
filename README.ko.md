@@ -27,7 +27,7 @@
 
 Apple이 WWDC25에서 **Liquid Glass**와 완전히 새로운 디자인 언어를 발표했습니다. 디자이너들은 Figma 키트를 받았지만, **개발자들은 아무것도 받지 못했습니다.**
 
-이 프로젝트는 그 간극을 메웁니다. 모든 토큰, 모든 컴포넌트 스펙, 모든 레이아웃 규칙을 [공식 Figma Community Kit](https://www.figma.com/community/file/pDmGXdYu2k8xlf1SQoU9PW)에서 추출하여, **4개 프레임워크**에서 **지금 바로** 사용할 수 있는 코드로 변환했습니다.
+이 프로젝트는 그 간극을 메웁니다. 모든 토큰, 모든 컴포넌트 스펙, 모든 레이아웃 규칙을 [공식 Figma Community Kit](https://www.figma.com/community/file/1527721578857867021)에서 추출하여, **4개 프레임워크**에서 **지금 바로** 사용할 수 있는 코드로 변환했습니다.
 
 ## 프로젝트 구조
 
@@ -193,7 +193,8 @@ Liquid Glass = Frosted blur + Refraction + Depth shadow + Light angle
 
 모든 데이터는 Apple의 공식 **iOS & iPadOS 26 Figma Community Kit**에서 추출했습니다.
 
-- **Figma 파일**: [`pDmGXdYu2k8xlf1SQoU9PW`](https://www.figma.com/community/file/pDmGXdYu2k8xlf1SQoU9PW)
+- **Figma Community Kit**: [iOS & iPadOS 26](https://www.figma.com/community/file/1527721578857867021)
+- **Figma File Key**: `pDmGXdYu2k8xlf1SQoU9PW` (Figma API / MCP 접근용)
 - **추출 방법**: Figma MCP + 수동 검증
 - **모드**: Light, Dark, Increased Contrast Light, Increased Contrast Dark
 

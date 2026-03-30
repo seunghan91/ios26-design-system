@@ -3,7 +3,7 @@
 Complete iOS 26 design token and component library for Group A stack projects
 (Rails 8 + Inertia.js + Svelte 5 + Vite).
 
-Source: Figma Community Kit `pDmGXdYu2k8xlf1SQoU9PW`
+Source: [Figma Community Kit](https://www.figma.com/community/file/1527721578857867021)
 
 ---
 
@@ -319,6 +319,6 @@ end
 ## Related Files
 
 - Design guide source: `docs/ios26-design-guide.md`
-- Figma kit: `pDmGXdYu2k8xlf1SQoU9PW`
+- Figma kit: [Community Kit](https://www.figma.com/community/file/1527721578857867021)
 - Flutter tokens: `docs/ios26-design/flutter/ios26_colors.dart`
 - Svelte-only tokens: `docs/ios26-design/svelte/tokens.css`

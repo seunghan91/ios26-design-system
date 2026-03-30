@@ -27,7 +27,7 @@
 
 Apple announced **Liquid Glass** and a radical new design language at WWDC25. Designers got a Figma kit. **Developers got nothing.**
 
-This project bridges that gap. Every token, every component spec, every layout rule — extracted from the [official Figma Community Kit](https://www.figma.com/community/file/pDmGXdYu2k8xlf1SQoU9PW) and translated into code you can use **today**, across **4 frameworks**.
+This project bridges that gap. Every token, every component spec, every layout rule — extracted from the [official Figma Community Kit](https://www.figma.com/community/file/1527721578857867021) and translated into code you can use **today**, across **4 frameworks**.
 
 ## What's Inside
 
@@ -218,7 +218,8 @@ The `animations.json` includes Liquid Glass morphing keyframes — the "blob-lik
 
 All data is extracted from the official **iOS & iPadOS 26 Figma Community Kit** by Apple.
 
-- **Figma File**: [`pDmGXdYu2k8xlf1SQoU9PW`](https://www.figma.com/community/file/pDmGXdYu2k8xlf1SQoU9PW)
+- **Figma Community Kit**: [iOS & iPadOS 26](https://www.figma.com/community/file/1527721578857867021)
+- **Figma File Key**: `pDmGXdYu2k8xlf1SQoU9PW` (for Figma API / MCP access)
 - **Extraction**: Figma MCP + manual verification
 - **Modes**: Light, Dark, Increased Contrast Light, Increased Contrast Dark
 
