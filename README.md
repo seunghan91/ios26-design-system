@@ -232,11 +232,45 @@ Each layer references the one below it. Component specs reference token values. 
 
 ## AI / Vibe Coding Integration
 
-This design system ships with a **Claude Code skill** (`skills/ios26-design.md`) that gives AI assistants complete knowledge of iOS 26 tokens, components, and layout patterns.
+This design system ships with a **Claude Code skill** that gives AI assistants complete knowledge of iOS 26 tokens, component dimensions, animation parameters, and layout patterns.
 
-To use it, copy the skill file to your Claude Code skills directory, or reference it in your project. The skill auto-activates when it detects iOS 26, Liquid Glass, or `@ios26_design_system/*` imports.
+### Install Skill
 
-Also works as context for **Cursor Rules**, **GitHub Copilot**, or any AI coding assistant — the skill file contains a complete quick-reference of all token values, component dimensions, and animation parameters.
+```bash
+# Download and install
+curl -LO https://github.com/seunghan91/ios26-design-system/raw/main/skills/ios26-design.skill
+claude install-skill ios26-design.skill
+```
+
+Or manually copy the skill folder:
+
+```bash
+git clone https://github.com/seunghan91/ios26-design-system.git
+cp -r ios26-design-system/skills/ios26-design ~/.claude/skills/
+```
+
+### What the Skill Provides
+
+| File | Content |
+|------|---------|
+| `SKILL.md` | Token quick reference, component dimensions, Liquid Glass params, animation curves |
+| `references/tokens.md` | Full 79-color × 4-mode token table |
+| `references/components.md` | 31 component specs (heights, radius, padding, variants) |
+| `references/layouts.md` | 5 templates + 48 page recipe summary |
+| `references/frameworks.md` | Svelte 5, Rails 8, Flutter, Inertia.js code examples |
+
+The skill auto-activates when it detects iOS 26, Liquid Glass, or `@ios26_design_system/*` imports.
+
+### For Other AI Tools
+
+The skill files are plain Markdown — also works as context for **Cursor Rules**, **Windsurf**, **GitHub Copilot**, or any AI coding assistant:
+
+```bash
+# Cursor — copy as .cursorrules
+cp skills/ios26-design/SKILL.md .cursorrules
+
+# Any AI tool — reference the skill folder as context
+```
 
 ## Contributing
 
