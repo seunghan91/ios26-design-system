@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOS 26 Design System — Live Demo</title>
+  <link rel="stylesheet" href="../svelte/tokens.css">
+  <link rel="stylesheet" href="../svelte/typography.css">
+  <link rel="stylesheet" href="../svelte/materials.css">
+  <style>
+    /* ── Reset & Base ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-family);
+      font-size: var(--text-body);
+      line-height: var(--lh-body);
+      letter-spacing: var(--ls-body);
+      color: var(--label-primary);
+      background: var(--bg-secondary);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ───────────────────────────────────────── */
+    .page { max-width: 960px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      margin-bottom: 48px;
+    }
+    .hero h1 { font-size: 40px; font-weight: 700; letter-spacing: 0.4px; margin-bottom: 12px; }
+    .hero p { color: var(--label-secondary); font-size: var(--text-title3); }
+    .hero .badges { display: flex; gap: 8px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+    .hero .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 9999px;
+      font-size: var(--text-caption1); font-weight: 600;
+      color: white;
+    }
+
+    .section { margin-bottom: 48px; }
+    .section-title {
+      font-size: var(--text-title2);
+      font-weight: 700;
+      letter-spacing: var(--ls-title2);
+      margin-bottom: 8px;
+    }
+    .section-subtitle {
+      color: var(--label-secondary);
+      font-size: var(--text-subheadline);
+      margin-bottom: 24px;
+    }
+
+    .card {
+      background: var(--bg-primary);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: var(--text-headline);
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--label-primary);
+    }
+
+    /* ── Theme Toggle ────────────────────────────────── */
+    .theme-toggle {
+      position: fixed; top: 16px; right: 16px; z-index: 100;
+      display: flex; gap: 4px; padding: 4px;
+      border-radius: 12px;
+    }
+    .theme-toggle button {
+      padding: 8px 16px; border: none; border-radius: 10px;
+      font-family: var(--font-family); font-size: var(--text-footnote);
+      font-weight: 600; cursor: pointer;
+      background: transparent; color: var(--label-secondary);
+      transition: all 0.2s;
+    }
+    .theme-toggle button.active {
+      color: var(--label-primary);
+    }
+
+    /* ── Colors ───────────────────────────────────────── */
+    .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
+    .color-swatch {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .color-swatch .swatch {
+      width: 100%; aspect-ratio: 1; border-radius: 16px;
+      box-shadow: 0 0 0 0.5px var(--separator);
+    }
+    .color-swatch .name { font-size: var(--text-caption1); font-weight: 500; color: var(--label-secondary); }
+    .color-swatch .hex { font-size: var(--text-caption2); color: var(--label-tertiary); font-family: 'SF Mono', monospace; }
+
+    /* ── Labels ───────────────────────────────────────── */
+    .label-demo { display: flex; flex-direction: column; gap: 12px; }
+    .label-row { display: flex; align-items: center; gap: 16px; }
+    .label-row .sample { font-size: var(--text-headline); font-weight: 600; min-width: 200px; }
+    .label-row .meta { font-size: var(--text-caption1); color: var(--label-tertiary); font-family: 'SF Mono', monospace; }
+
+    /* ── Typography ────────────────────────────────────── */
+    .type-scale { display: flex; flex-direction: column; gap: 16px; }
+    .type-row {
+      display: flex; align-items: baseline; gap: 16px;
+      padding-bottom: 16px; border-bottom: 0.5px solid var(--separator);
+    }
+    .type-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .type-row .label {
+      min-width: 120px;
+      font-size: var(--text-caption1); font-weight: 500;
+      color: var(--label-tertiary); flex-shrink: 0;
+    }
+    .type-row .meta-info {
+      font-size: var(--text-caption2); color: var(--label-tertiary);
+      font-family: 'SF Mono', monospace; flex-shrink: 0; min-width: 140px; text-align: right;
+    }
+
+    /* ── Materials ─────────────────────────────────────── */
+    .materials-demo {
+      background: linear-gradient(135deg, var(--color-blue), var(--color-purple), var(--color-pink), var(--color-orange));
+      border-radius: 16px; padding: 32px;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px;
+    }
+    .material-card {
+      padding: 20px; border-radius: 14px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; min-height: 100px;
+    }
+    .material-card .name { font-size: var(--text-footnote); font-weight: 600; margin-bottom: 4px; }
+    .material-card .meta { font-size: var(--text-caption2); opacity: 0.7; }
+
+    /* ── Liquid Glass ──────────────────────────────────── */
+    .glass-showcase {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 16px; padding: 40px 24px;
+      display: flex; flex-direction: column; gap: 24px; align-items: center;
+    }
+    .glass-item { text-align: center; }
+    .glass-item .name { font-size: var(--text-footnote); font-weight: 600; color: white; margin-top: 8px; }
+    .glass-item .meta { font-size: var(--text-caption2); color: rgba(255,255,255,0.7); }
+
+    .glass-tab-bar {
+      display: inline-flex; align-items: center; gap: 4px; padding: 6px;
+      border-radius: 9999px;
+    }
+    .glass-tab {
+      padding: 8px 20px; border-radius: 9999px;
+      font-size: var(--text-caption1); font-weight: 600;
+      color: rgba(255,255,255,0.6); cursor: pointer;
+      transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1.0);
+    }
+    .glass-tab.active {
+      color: white;
+    }
+
+    .glass-toolbar {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 16px; border-radius: 14px; width: 100%; max-width: 390px;
+    }
+    .glass-toolbar .back { font-size: 20px; color: white; opacity: 0.8; }
+    .glass-toolbar .title { flex: 1; text-align: center; font-size: var(--text-headline); font-weight: 600; color: white; }
+    .glass-toolbar .action { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; color: white; }
+
+    .glass-card-demo {
+      padding: 16px; border-radius: 14px; width: 100%; max-width: 390px;
+    }
+    .glass-card-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; }
+    .glass-card-row + .glass-card-row { border-top: 0.5px solid rgba(255,255,255,0.15); }
+    .glass-card-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .glass-card-text { flex: 1; }
+    .glass-card-text .primary { font-size: var(--text-body); font-weight: 400; color: white; }
+    .glass-card-text .secondary { font-size: var(--text-caption1); color: rgba(255,255,255,0.6); }
+    .glass-card-chevron { color: rgba(255,255,255,0.4); font-size: 14px; }
+
+    /* ── Spacing ───────────────────────────────────────── */
+    .spacing-grid { display: flex; flex-direction: column; gap: 8px; }
+    .spacing-row { display: flex; align-items: center; gap: 12px; }
+    .spacing-bar { height: 24px; background: var(--color-blue); border-radius: 4px; opacity: 0.3; }
+    .spacing-label { min-width: 60px; font-size: var(--text-caption1); font-weight: 500; color: var(--label-secondary); }
+    .spacing-value { font-size: var(--text-caption2); color: var(--label-tertiary); font-family: 'SF Mono', monospace; }
+
+    /* ── Radius ────────────────────────────────────────── */
+    .radius-grid { display: flex; flex-wrap: wrap; gap: 16px; }
+    .radius-item {
+      width: 80px; height: 80px;
+      background: var(--fill-tertiary);
+      border: 1px solid var(--separator);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 4px;
+    }
+    .radius-item .val { font-size: var(--text-caption2); font-weight: 600; color: var(--label-secondary); }
+    .radius-item .name { font-size: 9px; color: var(--label-tertiary); }
+
+    /* ── Components ────────────────────────────────────── */
+    .component-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+
+    /* Buttons */
+    .btn-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .ios-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 10px 20px; border-radius: 12px; border: none;
+      font-family: var(--font-family); font-size: var(--text-body);
+      font-weight: 600; cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .ios-btn:active { transform: scale(0.96); }
+    .ios-btn.filled { background: var(--color-blue); color: white; }
+    .ios-btn.gray { background: var(--fill-tertiary); color: var(--color-blue); }
+    .ios-btn.tinted { background: rgba(0, 136, 255, 0.15); color: var(--color-blue); }
+    .ios-btn.plain { background: transparent; color: var(--color-blue); }
+    .ios-btn.destructive { background: rgba(255, 56, 60, 0.15); color: var(--color-red); }
+    .ios-btn.sm { padding: 6px 14px; font-size: var(--text-footnote); border-radius: 8px; }
+    .ios-btn.lg { padding: 14px 28px; font-size: var(--text-title3); border-radius: 14px; }
+
+    /* Toggle */
+    .ios-toggle { position: relative; width: 51px; height: 31px; cursor: pointer; }
+    .ios-toggle input { display: none; }
+    .ios-toggle .track {
+      position: absolute; inset: 0; border-radius: 9999px;
+      background: var(--fill-primary);
+      transition: background 0.2s;
+    }
+    .ios-toggle input:checked + .track { background: var(--color-green); }
+    .ios-toggle .thumb {
+      position: absolute; top: 2px; left: 2px;
+      width: 27px; height: 27px; border-radius: 50%;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1.0);
+    }
+    .ios-toggle input:checked ~ .thumb { transform: translateX(20px); }
+
+    /* Segmented Control */
+    .ios-segmented {
+      display: inline-flex; padding: 2px; border-radius: 10px;
+      background: var(--fill-tertiary);
+    }
+    .ios-segmented button {
+      padding: 6px 16px; border: none; border-radius: 8px;
+      font-family: var(--font-family); font-size: var(--text-footnote);
+      font-weight: 600; cursor: pointer;
+      background: transparent; color: var(--label-primary);
+      transition: all 0.2s;
+    }
+    .ios-segmented button.active {
+      background: var(--bg-primary);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    /* List Rows */
+    .ios-list { border-radius: 12px; overflow: hidden; background: var(--bg-primary); }
+    .ios-list-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 11px 16px; min-height: 44px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .ios-list-row:hover { background: var(--fill-quaternary); }
+    .ios-list-row + .ios-list-row { border-top: 0.5px solid var(--separator); margin-left: 16px; padding-left: 0; }
+    .ios-list-icon {
+      width: 30px; height: 30px; border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: white; flex-shrink: 0;
+    }
+    .ios-list-content { flex: 1; }
+    .ios-list-title { font-size: var(--text-body); color: var(--label-primary); }
+    .ios-list-detail { font-size: var(--text-body); color: var(--label-secondary); }
+    .ios-list-chevron { color: var(--label-quaternary); font-size: 14px; font-weight: 700; }
+
+    /* Alert */
+    .ios-alert-demo { display: flex; justify-content: center; padding: 20px; }
+    .ios-alert {
+      width: 270px; border-radius: 14px; overflow: hidden; text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+    .ios-alert .alert-body { padding: 20px 16px; background: var(--bg-primary); }
+    .ios-alert .alert-title { font-size: var(--text-headline); font-weight: 600; margin-bottom: 4px; }
+    .ios-alert .alert-message { font-size: var(--text-footnote); color: var(--label-secondary); }
+    .ios-alert .alert-actions { display: flex; border-top: 0.5px solid var(--separator); background: var(--bg-primary); }
+    .ios-alert .alert-btn {
+      flex: 1; padding: 12px; border: none; background: transparent;
+      font-family: var(--font-family); font-size: var(--text-body);
+      color: var(--color-blue); cursor: pointer;
+    }
+    .ios-alert .alert-btn + .alert-btn { border-left: 0.5px solid var(--separator); }
+    .ios-alert .alert-btn.bold { font-weight: 600; }
+    .ios-alert .alert-btn.destructive { color: var(--color-red); }
+
+    /* TextField */
+    .ios-textfield {
+      width: 100%; padding: 11px 12px;
+      border: 0.5px solid var(--separator-opaque);
+      border-radius: 10px; background: var(--bg-primary);
+      font-family: var(--font-family); font-size: var(--text-body);
+      color: var(--label-primary); outline: none;
+      transition: border-color 0.2s;
+    }
+    .ios-textfield:focus { border-color: var(--color-blue); }
+    .ios-textfield::placeholder { color: var(--label-tertiary); }
+
+    /* Slider */
+    .ios-slider { width: 100%; appearance: none; height: 4px; border-radius: 2px; background: var(--fill-primary); outline: none; }
+    .ios-slider::-webkit-slider-thumb {
+      appearance: none; width: 28px; height: 28px; border-radius: 50%;
+      background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+
+    /* Progress */
+    .ios-progress { width: 100%; height: 4px; border-radius: 2px; background: var(--fill-primary); overflow: hidden; }
+    .ios-progress .bar { height: 100%; border-radius: 2px; background: var(--color-blue); transition: width 0.3s; }
+
+    /* Sheet */
+    .ios-sheet-demo { display: flex; justify-content: center; }
+    .ios-sheet {
+      width: 100%; max-width: 390px; border-radius: 34px 34px 0 0;
+      background: var(--bg-primary); padding: 8px 0 0; overflow: hidden;
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.1);
+    }
+    .ios-sheet .grabber {
+      width: 36px; height: 5px; border-radius: 3px;
+      background: var(--fill-primary); margin: 0 auto 12px;
+    }
+    .ios-sheet .sheet-content { padding: 8px 16px 24px; }
+    .ios-sheet .sheet-title { font-size: var(--text-title3); font-weight: 600; margin-bottom: 16px; text-align: center; }
+
+    /* Tab Bar */
+    .ios-tabbar-demo { display: flex; justify-content: center; }
+    .ios-tabbar {
+      display: inline-flex; align-items: center; gap: 0;
+      padding: 8px 12px; border-radius: 9999px;
+    }
+    .ios-tab {
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+      padding: 8px 16px; border-radius: 9999px;
+      cursor: pointer; transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1.0);
+      color: var(--label-secondary);
+    }
+    .ios-tab.active { color: var(--color-blue); }
+    .ios-tab .tab-icon { font-size: 22px; }
+    .ios-tab .tab-label { font-size: var(--text-caption2); font-weight: 500; }
+
+    /* Notification */
+    .ios-notification {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 16px; border-radius: 20px;
+      max-width: 390px; margin: 0 auto;
+    }
+    .ios-notification .notif-icon {
+      width: 38px; height: 38px; border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .ios-notification .notif-content { flex: 1; }
+    .ios-notification .notif-app { font-size: var(--text-caption1); font-weight: 600; color: var(--label-secondary); }
+    .ios-notification .notif-title { font-size: var(--text-subheadline); font-weight: 600; }
+    .ios-notification .notif-body { font-size: var(--text-subheadline); color: var(--label-secondary); }
+    .ios-notification .notif-time { font-size: var(--text-caption2); color: var(--label-tertiary); flex-shrink: 0; }
+
+    /* ── Animations ────────────────────────────────────── */
+    .animation-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+    .animation-card {
+      background: var(--bg-primary); border-radius: 12px; padding: 16px;
+      text-align: center; cursor: pointer;
+    }
+    .animation-card .ball {
+      width: 32px; height: 32px; border-radius: 50%; margin: 16px auto;
+      background: var(--color-blue);
+    }
+    .animation-card .name { font-size: var(--text-footnote); font-weight: 600; margin-bottom: 2px; }
+    .animation-card .desc { font-size: var(--text-caption2); color: var(--label-tertiary); }
+
+    .animation-card:hover .ball-snappy { animation: bounce-snappy 0.6s; }
+    .animation-card:hover .ball-bouncy { animation: bounce-bouncy 0.8s; }
+    .animation-card:hover .ball-gentle { animation: bounce-gentle 0.7s; }
+    .animation-card:hover .ball-stiff { animation: bounce-stiff 0.4s; }
+
+    @keyframes bounce-snappy { 0% { transform: scale(1); } 30% { transform: scale(0.85); } 100% { transform: scale(1); } }
+    @keyframes bounce-bouncy { 0% { transform: translateY(0); } 30% { transform: translateY(-20px); } 50% { transform: translateY(0); } 70% { transform: translateY(-8px); } 100% { transform: translateY(0); } }
+    @keyframes bounce-gentle { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
+    @keyframes bounce-stiff { 0% { transform: translateX(0); } 50% { transform: translateX(10px); } 100% { transform: translateX(0); } }
+
+    /* Liquid Glass morph animation */
+    .glass-tab.active .indicator-bg {
+      animation: liquid-tab-morph 0.45s cubic-bezier(0.34, 1.56, 0.64, 1.0);
+    }
+    @keyframes liquid-tab-morph {
+      0% { transform: scaleX(0.85); opacity: 0.5; }
+      40% { transform: scaleX(1.15); }
+      100% { transform: scaleX(1); opacity: 1; }
+    }
+
+    /* ── Print / PDF ──────────────────────────────────── */
+    @media print {
+      body { background: white !important; }
+      .nav { position: static; backdrop-filter: none; background: var(--bg-primary); }
+      .theme-toggle { display: none; }
+      .page { padding-top: 0; }
+
+      /* backdrop-filter doesn't work in PDF — use solid fallback */
+      .liquid-glass-large,
+      .liquid-glass-medium,
+      .liquid-glass-small,
+      .liquid-glass-primary,
+      .liquid-glass-clear,
+      .material-chrome,
+      .material-thick,
+      .material-regular,
+      .material-thin,
+      .material-ultrathin {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
+      /* Glass showcase: make items visible on mountain photo */
+      .glass-showcase .liquid-glass-large,
+      .glass-showcase .liquid-glass-medium {
+        background: rgba(255, 255, 255, 0.85) !important;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.15) !important;
+      }
+      .glass-showcase .liquid-glass-large .glass-tab,
+      .glass-showcase .liquid-glass-large .back,
+      .glass-showcase .liquid-glass-large .title,
+      .glass-showcase .liquid-glass-large .action {
+        color: #000 !important;
+      }
+      .glass-showcase .liquid-glass-medium .glass-card-text .primary {
+        color: #000 !important;
+      }
+      .glass-showcase .liquid-glass-medium .glass-card-text .secondary {
+        color: #555 !important;
+      }
+      .glass-showcase .liquid-glass-medium .glass-card-chevron {
+        color: #999 !important;
+      }
+      .glass-showcase .glass-tab.active {
+        color: var(--color-blue) !important;
+      }
+
+      /* Material cards: use solid bg */
+      .materials-demo .material-card {
+        background: rgba(255, 255, 255, 0.75) !important;
+        color: #000 !important;
+      }
+      .materials-demo .material-card .name { color: #000 !important; }
+      .materials-demo .material-card .meta { color: #555 !important; }
+
+      /* Glass variants: solid fallback */
+      .card .liquid-glass-large { background: rgba(255,255,255,0.8) !important; color: #000 !important; }
+      .card .liquid-glass-medium { background: rgba(255,255,255,0.7) !important; color: #000 !important; }
+      .card .liquid-glass-small { background: rgba(255,255,255,0.7) !important; color: #000 !important; }
+      .card .liquid-glass-primary { background: rgba(255,255,255,0.9) !important; }
+      .card .liquid-glass-clear { background: rgba(255,255,255,0.3) !important; color: #000 !important; }
+
+      /* Alert: ensure visible */
+      .ios-alert { box-shadow: 0 2px 12px rgba(0,0,0,0.1) !important; }
+      .ios-alert .alert-body,
+      .ios-alert .alert-actions { background: #f8f8f8 !important; }
+
+      /* Notification: solid bg */
+      .ios-notification {
+        background: rgba(242, 242, 247, 0.95) !important;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.1) !important;
+      }
+      .ios-notification .notif-title,
+      .ios-notification .notif-app { color: #000 !important; }
+      .ios-notification .notif-body { color: #555 !important; }
+
+      /* Tab bar: solid bg */
+      .ios-tabbar {
+        background: rgba(242, 242, 247, 0.95) !important;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08) !important;
+      }
+
+      /* Page break hints */
+      .section { break-inside: avoid; }
+      .card { break-inside: avoid; }
+      .glass-showcase { break-inside: avoid; }
+    }
+
+    /* ── Footer ────────────────────────────────────────── */
+    .footer {
+      text-align: center; padding: 40px 20px;
+      color: var(--label-tertiary); font-size: var(--text-footnote);
+    }
+    .footer a { color: var(--color-blue); text-decoration: none; }
+
+    /* ── Dark mode forced via class ──────────────────── */
+    html.dark {
+      color-scheme: dark;
+    }
+    html.dark body { background: #000; }
+    html.dark .card { background: #1c1c1e; }
+    html.dark .ios-list { background: #1c1c1e; }
+    html.dark .ios-alert .alert-body,
+    html.dark .ios-alert .alert-actions { background: #2c2c2e; }
+    html.dark .ios-sheet { background: #1c1c1e; }
+    html.dark .ios-textfield { background: #1c1c1e; border-color: #38383a; }
+    html.dark .animation-card { background: #1c1c1e; }
+    html.dark .ios-notification { background: rgba(28,28,30,0.95); }
+
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      padding: 12px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+    .nav-links a {
+      padding: 4px 10px; border-radius: 8px;
+      font-size: var(--text-caption1); font-weight: 500;
+      color: var(--label-secondary); text-decoration: none;
+      transition: all 0.15s;
+    }
+    .nav-links a:hover { background: var(--fill-quaternary); color: var(--label-primary); }
+
+    /* ── iPhone frame ──────────────────────────────────── */
+    .iphone-frame {
+      width: 390px; max-width: 100%; margin: 0 auto;
+      border-radius: 48px; overflow: hidden;
+      border: 6px solid #1a1a1a;
+      background: var(--bg-primary);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    html.dark .iphone-frame { border-color: #333; }
+    .iphone-screen { padding: 0; min-height: 600px; position: relative; overflow: hidden; }
+    .iphone-status-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 24px 0;
+      font-size: 14px; font-weight: 600;
+    }
+    .iphone-home-indicator {
+      width: 134px; height: 5px; border-radius: 3px;
+      background: var(--label-primary); opacity: 0.2;
+      margin: 12px auto;
+    }
+    .iphone-content { padding: 0 16px; }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav liquid-glass-large">
+  <strong style="font-size: var(--text-headline);">iOS 26 DS</strong>
+  <div class="nav-links">
+    <a href="#colors">Colors</a>
+    <a href="#typography">Type</a>
+    <a href="#materials">Glass</a>
+    <a href="#components">Components</a>
+    <a href="#animations">Motion</a>
+  </div>
+  <div class="theme-toggle">
+    <button class="active" onclick="setTheme('light')">Light</button>
+    <button onclick="setTheme('dark')">Dark</button>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>iOS 26 Design System</h1>
+    <p>Liquid Glass tokens, components, and layouts — live preview</p>
+    <div class="badges">
+      <span class="badge" style="background: var(--color-blue);">79 Color Tokens</span>
+      <span class="badge" style="background: var(--color-green);">11 Type Styles</span>
+      <span class="badge" style="background: var(--color-purple);">5 Glass Variants</span>
+      <span class="badge" style="background: var(--color-orange);">31 Components</span>
+      <span class="badge" style="background: var(--color-pink);">48 Pages</span>
+    </div>
+  </div>
+
+  <!-- ════════════ COLORS ════════════ -->
+  <div class="section" id="colors">
+    <h2 class="section-title">System Colors</h2>
+    <p class="section-subtitle">12 accent colors with automatic Light/Dark adaptation</p>
+
+    <div class="card">
+      <div class="card-title">Accent Colors</div>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch" style="background: var(--color-red);"></div><span class="name">Red</span><span class="hex">#ff383c</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--color-orange);"></div><span class="name">Orange</span><span class="hex">#ff8d28</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--color-yellow);"></div><span class="name">Yellow</span><span class="hex">#ffcc00</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--color-green);"></div><span class="name">Green</span><span class="hex">#34c759</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--color-mint);"></div><span class="name">Mint</span><span class="hex">#00c8b3</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--color-teal);"></div><span class="name">Teal</span><span class="hex">#00c3d0</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--color-cyan);"></div><span class="name">Cyan</span><span class="hex">#00c0e8</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--color-blue);"></div><span class="name">Blue</span><span class="hex">#0088ff</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--color-indigo);"></div><span class="name">Indigo</span><span class="hex">#6155f5</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--color-purple);"></div><span class="name">Purple</span><span class="hex">#cb30e0</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--color-pink);"></div><span class="name">Pink</span><span class="hex">#ff2d55</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--color-brown);"></div><span class="name">Brown</span><span class="hex">#ac7f5e</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Label Hierarchy</div>
+      <div class="label-demo">
+        <div class="label-row"><span class="sample" style="color: var(--label-primary);">Primary Label</span><span class="meta">--label-primary</span></div>
+        <div class="label-row"><span class="sample" style="color: var(--label-secondary);">Secondary Label</span><span class="meta">--label-secondary (60%)</span></div>
+        <div class="label-row"><span class="sample" style="color: var(--label-tertiary);">Tertiary Label</span><span class="meta">--label-tertiary (30%)</span></div>
+        <div class="label-row"><span class="sample" style="color: var(--label-quaternary);">Quaternary Label</span><span class="meta">--label-quaternary (18%)</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Backgrounds &amp; Fills</div>
+      <div class="color-grid" style="grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));">
+        <div class="color-swatch"><div class="swatch" style="background: var(--bg-primary); border: 1px solid var(--separator);"></div><span class="name">BG Primary</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--bg-secondary);"></div><span class="name">BG Secondary</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--bg-tertiary); border: 1px solid var(--separator);"></div><span class="name">BG Tertiary</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--fill-primary);"></div><span class="name">Fill Primary</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--fill-secondary);"></div><span class="name">Fill Secondary</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--fill-tertiary);"></div><span class="name">Fill Tertiary</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--gray);"></div><span class="name">Gray</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--gray-3);"></div><span class="name">Gray 3</span></div>
+        <div class="color-swatch"><div class="swatch" style="background: var(--gray-5);"></div><span class="name">Gray 5</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ TYPOGRAPHY ════════════ -->
+  <div class="section" id="typography">
+    <h2 class="section-title">Typography</h2>
+    <p class="section-subtitle">SF Pro type scale — 11 styles with emphasized, italic, and loose modifiers</p>
+
+    <div class="card">
+      <div class="type-scale">
+        <div class="type-row"><span class="label">Large Title</span><span class="text-large-title" style="flex:1">Aa</span><span class="meta-info">34px / 700</span></div>
+        <div class="type-row"><span class="label">Title 1</span><span class="text-title1" style="flex:1">Aa</span><span class="meta-info">28px / 400</span></div>
+        <div class="type-row"><span class="label">Title 2</span><span class="text-title2" style="flex:1">Aa</span><span class="meta-info">22px / 400</span></div>
+        <div class="type-row"><span class="label">Title 3</span><span class="text-title3" style="flex:1">Aa</span><span class="meta-info">20px / 400</span></div>
+        <div class="type-row"><span class="label">Headline</span><span class="text-headline" style="flex:1">Aa</span><span class="meta-info">17px / 600</span></div>
+        <div class="type-row"><span class="label">Body</span><span class="text-body" style="flex:1">The quick brown fox</span><span class="meta-info">17px / 400</span></div>
+        <div class="type-row"><span class="label">Callout</span><span class="text-callout" style="flex:1">The quick brown fox</span><span class="meta-info">16px / 400</span></div>
+        <div class="type-row"><span class="label">Subheadline</span><span class="text-subheadline" style="flex:1">The quick brown fox</span><span class="meta-info">15px / 400</span></div>
+        <div class="type-row"><span class="label">Footnote</span><span class="text-footnote" style="flex:1">The quick brown fox jumps over</span><span class="meta-info">13px / 400</span></div>
+        <div class="type-row"><span class="label">Caption 1</span><span class="text-caption1" style="flex:1">The quick brown fox jumps over the lazy dog</span><span class="meta-info">12px / 400</span></div>
+        <div class="type-row"><span class="label">Caption 2</span><span class="text-caption2" style="flex:1">The quick brown fox jumps over the lazy dog</span><span class="meta-info">11px / 400</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Modifiers</div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div><span class="text-body">Regular — The quick brown fox</span></div>
+        <div><span class="text-body emphasized">Emphasized — The quick brown fox</span></div>
+        <div><span class="text-body italic">Italic — The quick brown fox</span></div>
+        <div><span class="text-body emphasized italic">Emphasized Italic — The quick brown fox</span></div>
+        <div><span class="text-body text-loose" style="display:block; max-width:300px;">Loose Leading — For multiline text with +2px line height for better readability in longer paragraphs.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ MATERIALS ════════════ -->
+  <div class="section" id="materials">
+    <h2 class="section-title">Liquid Glass &amp; Materials</h2>
+    <p class="section-subtitle">The defining visual feature of iOS 26 — frosted blur, refraction, depth shadow</p>
+
+    <div class="card" style="padding: 0; overflow: hidden;">
+      <div class="glass-showcase" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=960&q=80'); background-size: cover; background-position: center;">
+
+        <!-- Tab Bar with Liquid Glass -->
+        <div class="glass-item" style="width: 100%; max-width: 390px;">
+          <div class="glass-tab-bar liquid-glass-large" style="width: 100%; justify-content: center;">
+            <div class="glass-tab active" onclick="switchTab(this)">
+              <span class="tab-icon">&#9679;</span>
+              <span class="tab-label">Home</span>
+            </div>
+            <div class="glass-tab" onclick="switchTab(this)">
+              <span class="tab-icon">&#9650;</span>
+              <span class="tab-label">Search</span>
+            </div>
+            <div class="glass-tab" onclick="switchTab(this)">
+              <span class="tab-icon">&#9724;</span>
+              <span class="tab-label">Library</span>
+            </div>
+            <div class="glass-tab" onclick="switchTab(this)">
+              <span class="tab-icon">&#9733;</span>
+              <span class="tab-label">Profile</span>
+            </div>
+          </div>
+          <div class="name">Tab Bar — liquid-glass-large</div>
+          <div class="meta">blur: 40px / radius: 14px / frost: 70%</div>
+        </div>
+
+        <!-- Toolbar with Liquid Glass -->
+        <div class="glass-item" style="width: 100%; max-width: 390px;">
+          <div class="glass-toolbar liquid-glass-large">
+            <span class="back">&lsaquo;</span>
+            <span class="title">Settings</span>
+            <div class="action liquid-glass-small">&#8943;</div>
+          </div>
+          <div class="name">Toolbar — liquid-glass-large</div>
+          <div class="meta">Height: 44px / spring: gentle</div>
+        </div>
+
+        <!-- List with Liquid Glass -->
+        <div class="glass-item" style="width: 100%; max-width: 390px;">
+          <div class="glass-card-demo liquid-glass-medium">
+            <div class="glass-card-row">
+              <div class="glass-card-icon" style="background: var(--color-blue);">W</div>
+              <div class="glass-card-text">
+                <div class="primary">Wi-Fi</div>
+                <div class="secondary">Connected</div>
+              </div>
+              <span class="glass-card-chevron">&rsaquo;</span>
+            </div>
+            <div class="glass-card-row">
+              <div class="glass-card-icon" style="background: var(--color-green);">B</div>
+              <div class="glass-card-text"><div class="primary">Bluetooth</div></div>
+              <span class="glass-card-chevron">&rsaquo;</span>
+            </div>
+            <div class="glass-card-row">
+              <div class="glass-card-icon" style="background: var(--color-orange);">A</div>
+              <div class="glass-card-text"><div class="primary">Airplane Mode</div></div>
+              <span class="glass-card-chevron">&rsaquo;</span>
+            </div>
+          </div>
+          <div class="name">List — liquid-glass-medium</div>
+          <div class="meta">blur: 40px / radius: 12px / frost: 60%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Background Materials</div>
+      <div class="materials-demo">
+        <div class="material-card material-chrome"><span class="name">Chrome</span><span class="meta">50px blur / 75%</span></div>
+        <div class="material-card material-thick"><span class="name">Thick</span><span class="meta">100px blur / 84%</span></div>
+        <div class="material-card material-regular"><span class="name">Regular</span><span class="meta">100px blur / 60%</span></div>
+        <div class="material-card material-thin"><span class="name">Thin</span><span class="meta">100px blur / 40%</span></div>
+        <div class="material-card material-ultrathin"><span class="name">Ultrathin</span><span class="meta">100px blur / 3%</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Glass Variants</div>
+      <div style="background: linear-gradient(135deg, #2C3E50, #4CA1AF); border-radius: 12px; padding: 24px; display: flex; flex-wrap: wrap; gap: 16px;">
+        <div class="liquid-glass-large" style="padding: 16px 24px; color: white;"><strong>Large</strong><br><span style="font-size:12px; opacity:0.7;">Toolbars, Tab Bars</span></div>
+        <div class="liquid-glass-medium" style="padding: 16px 24px; color: white;"><strong>Medium</strong><br><span style="font-size:12px; opacity:0.7;">FAB, Grouped</span></div>
+        <div class="liquid-glass-small" style="padding: 16px 24px; color: white;"><strong>Small</strong><br><span style="font-size:12px; opacity:0.7;">Icon buttons</span></div>
+        <div class="liquid-glass-primary" style="padding: 16px 24px;"><strong>Primary</strong><br><span style="font-size:12px; opacity:0.7;">Blue tinted</span></div>
+        <div class="liquid-glass-clear" style="padding: 16px 24px; color: white;"><strong>Clear</strong><br><span style="font-size:12px; opacity:0.7;">Subtle overlay</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ SPACING ════════════ -->
+  <div class="section" id="spacing">
+    <h2 class="section-title">Spacing &amp; Layout</h2>
+    <p class="section-subtitle">4px base grid — Safe areas, content insets, component heights</p>
+
+    <div class="card">
+      <div class="card-title">Spacing Scale</div>
+      <div class="spacing-grid">
+        <div class="spacing-row"><span class="spacing-label">--space-1</span><div class="spacing-bar" style="width: 4px;"></div><span class="spacing-value">4px</span></div>
+        <div class="spacing-row"><span class="spacing-label">--space-2</span><div class="spacing-bar" style="width: 8px;"></div><span class="spacing-value">8px</span></div>
+        <div class="spacing-row"><span class="spacing-label">--space-3</span><div class="spacing-bar" style="width: 12px;"></div><span class="spacing-value">12px</span></div>
+        <div class="spacing-row"><span class="spacing-label">--space-4</span><div class="spacing-bar" style="width: 16px;"></div><span class="spacing-value">16px</span></div>
+        <div class="spacing-row"><span class="spacing-label">--space-6</span><div class="spacing-bar" style="width: 24px;"></div><span class="spacing-value">24px</span></div>
+        <div class="spacing-row"><span class="spacing-label">--space-8</span><div class="spacing-bar" style="width: 32px;"></div><span class="spacing-value">32px</span></div>
+        <div class="spacing-row"><span class="spacing-label">--space-12</span><div class="spacing-bar" style="width: 48px;"></div><span class="spacing-value">48px</span></div>
+        <div class="spacing-row"><span class="spacing-label">--space-16</span><div class="spacing-bar" style="width: 64px;"></div><span class="spacing-value">64px</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Corner Radius</div>
+      <div class="radius-grid">
+        <div class="radius-item" style="border-radius: 0;"><span class="val">0</span><span class="name">none</span></div>
+        <div class="radius-item" style="border-radius: 4px;"><span class="val">4</span><span class="name">xs</span></div>
+        <div class="radius-item" style="border-radius: 8px;"><span class="val">8</span><span class="name">sm</span></div>
+        <div class="radius-item" style="border-radius: 10px;"><span class="val">10</span><span class="name">md</span></div>
+        <div class="radius-item" style="border-radius: 12px;"><span class="val">12</span><span class="name">lg</span></div>
+        <div class="radius-item" style="border-radius: 16px;"><span class="val">16</span><span class="name">xl</span></div>
+        <div class="radius-item" style="border-radius: 20px;"><span class="val">20</span><span class="name">xxl</span></div>
+        <div class="radius-item" style="border-radius: 9999px;"><span class="val">full</span><span class="name">pill</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Component Heights</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px;">
+        <div style="text-align: center;"><div style="height: 44px; background: var(--color-blue); opacity: 0.2; border-radius: 8px; display: flex; align-items: center; justify-content: center;"><span style="font-size: 12px; font-weight: 600;">44pt</span></div><span class="spacing-value">Toolbar / Nav Bar</span></div>
+        <div style="text-align: center;"><div style="height: 49px; background: var(--color-green); opacity: 0.2; border-radius: 8px; display: flex; align-items: center; justify-content: center;"><span style="font-size: 12px; font-weight: 600;">49pt</span></div><span class="spacing-value">Tab Bar</span></div>
+        <div style="text-align: center;"><div style="height: 44px; background: var(--color-purple); opacity: 0.2; border-radius: 8px; display: flex; align-items: center; justify-content: center;"><span style="font-size: 12px; font-weight: 600;">44pt</span></div><span class="spacing-value">List Row</span></div>
+        <div style="text-align: center;"><div style="height: 44px; background: var(--color-orange); opacity: 0.2; border-radius: 8px; display: flex; align-items: center; justify-content: center;"><span style="font-size: 12px; font-weight: 600;">44pt</span></div><span class="spacing-value">Touch Target</span></div>
+        <div style="text-align: center;"><div style="height: 54px; background: var(--color-red); opacity: 0.2; border-radius: 8px; display: flex; align-items: center; justify-content: center;"><span style="font-size: 12px; font-weight: 600;">54pt</span></div><span class="spacing-value">Status Bar</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ COMPONENTS ════════════ -->
+  <div class="section" id="components">
+    <h2 class="section-title">Components</h2>
+    <p class="section-subtitle">31 component specifications — interactive demos with actual design tokens</p>
+
+    <div class="component-grid">
+
+      <!-- Buttons -->
+      <div class="card">
+        <div class="card-title">Buttons</div>
+        <div class="btn-grid">
+          <button class="ios-btn filled">Filled</button>
+          <button class="ios-btn gray">Gray</button>
+          <button class="ios-btn tinted">Tinted</button>
+          <button class="ios-btn plain">Plain</button>
+          <button class="ios-btn destructive">Delete</button>
+        </div>
+        <div class="btn-grid">
+          <button class="ios-btn filled sm">Small</button>
+          <button class="ios-btn filled">Regular</button>
+          <button class="ios-btn filled lg">Large</button>
+        </div>
+      </div>
+
+      <!-- Toggle & Segmented -->
+      <div class="card">
+        <div class="card-title">Controls</div>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div>
+            <div style="font-size: var(--text-footnote); color: var(--label-secondary); margin-bottom: 8px;">Toggle</div>
+            <div style="display: flex; gap: 16px;">
+              <label class="ios-toggle"><input type="checkbox" checked><span class="track"></span><span class="thumb"></span></label>
+              <label class="ios-toggle"><input type="checkbox"><span class="track"></span><span class="thumb"></span></label>
+            </div>
+          </div>
+          <div>
+            <div style="font-size: var(--text-footnote); color: var(--label-secondary); margin-bottom: 8px;">Segmented Control</div>
+            <div class="ios-segmented">
+              <button class="active" onclick="switchSegment(this)">Daily</button>
+              <button onclick="switchSegment(this)">Weekly</button>
+              <button onclick="switchSegment(this)">Monthly</button>
+            </div>
+          </div>
+          <div>
+            <div style="font-size: var(--text-footnote); color: var(--label-secondary); margin-bottom: 8px;">Slider</div>
+            <input type="range" class="ios-slider" value="60">
+          </div>
+          <div>
+            <div style="font-size: var(--text-footnote); color: var(--label-secondary); margin-bottom: 8px;">Progress (65%)</div>
+            <div class="ios-progress"><div class="bar" style="width: 65%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text Field -->
+      <div class="card">
+        <div class="card-title">Text Field</div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <input type="text" class="ios-textfield" placeholder="Email address">
+          <input type="password" class="ios-textfield" placeholder="Password">
+        </div>
+      </div>
+
+      <!-- List -->
+      <div class="card" style="padding: 0;">
+        <div style="padding: 16px 16px 8px;"><div class="card-title" style="margin-bottom: 0;">List</div></div>
+        <div class="ios-list" style="border-radius: 0 0 16px 16px;">
+          <div class="ios-list-row">
+            <div class="ios-list-icon" style="background: var(--color-blue);">W</div>
+            <div class="ios-list-content"><span class="ios-list-title">Wi-Fi</span></div>
+            <span class="ios-list-detail">Home Network</span>
+            <span class="ios-list-chevron">&rsaquo;</span>
+          </div>
+          <div class="ios-list-row">
+            <div class="ios-list-icon" style="background: var(--color-green);">B</div>
+            <div class="ios-list-content"><span class="ios-list-title">Bluetooth</span></div>
+            <span class="ios-list-detail">On</span>
+            <span class="ios-list-chevron">&rsaquo;</span>
+          </div>
+          <div class="ios-list-row">
+            <div class="ios-list-icon" style="background: var(--color-orange);">C</div>
+            <div class="ios-list-content"><span class="ios-list-title">Cellular</span></div>
+            <span class="ios-list-chevron">&rsaquo;</span>
+          </div>
+          <div class="ios-list-row">
+            <div class="ios-list-icon" style="background: var(--color-purple);">H</div>
+            <div class="ios-list-content"><span class="ios-list-title">Hotspot</span></div>
+            <span class="ios-list-detail">Off</span>
+            <span class="ios-list-chevron">&rsaquo;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alert -->
+      <div class="card">
+        <div class="card-title">Alert</div>
+        <div class="ios-alert-demo">
+          <div class="ios-alert liquid-glass-medium">
+            <div class="alert-body">
+              <div class="alert-title">Delete Photo?</div>
+              <div class="alert-message">This photo will be moved to Recently Deleted.</div>
+            </div>
+            <div class="alert-actions">
+              <button class="alert-btn">Cancel</button>
+              <button class="alert-btn bold destructive">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notification -->
+      <div class="card">
+        <div class="card-title">Notification</div>
+        <div class="ios-notification liquid-glass-large">
+          <div class="notif-icon" style="background: var(--color-blue); color: white;">M</div>
+          <div class="notif-content">
+            <div class="notif-app">Messages</div>
+            <div class="notif-title">John Appleseed</div>
+            <div class="notif-body">Hey, are you coming to the event tonight?</div>
+          </div>
+          <span class="notif-time">now</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="card">
+      <div class="card-title">Tab Bar</div>
+      <div class="ios-tabbar-demo">
+        <div class="ios-tabbar liquid-glass-large">
+          <div class="ios-tab active" onclick="switchTab2(this)"><span class="tab-icon">&#9679;</span><span class="tab-label">Home</span></div>
+          <div class="ios-tab" onclick="switchTab2(this)"><span class="tab-icon">&#128269;</span><span class="tab-label">Search</span></div>
+          <div class="ios-tab" onclick="switchTab2(this)"><span class="tab-icon">&#9733;</span><span class="tab-label">Favorites</span></div>
+          <div class="ios-tab" onclick="switchTab2(this)"><span class="tab-icon">&#9998;</span><span class="tab-label">Settings</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sheet -->
+    <div class="card" style="padding: 0; overflow: hidden;">
+      <div style="padding: 16px 16px 0;"><div class="card-title">Sheet</div></div>
+      <div class="ios-sheet-demo">
+        <div class="ios-sheet">
+          <div class="grabber"></div>
+          <div class="sheet-content">
+            <div class="sheet-title">New Event</div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <input type="text" class="ios-textfield" placeholder="Event name" value="WWDC 26 Watch Party">
+              <input type="text" class="ios-textfield" placeholder="Location" value="Apple Park">
+              <div style="display: flex; gap: 8px;">
+                <button class="ios-btn gray" style="flex:1;">Cancel</button>
+                <button class="ios-btn filled" style="flex:1;">Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ ANIMATIONS ════════════ -->
+  <div class="section" id="animations">
+    <h2 class="section-title">Motion &amp; Animation</h2>
+    <p class="section-subtitle">Spring curves from Apple HIG — hover to preview</p>
+
+    <div class="animation-grid">
+      <div class="animation-card">
+        <div class="ball ball-snappy"></div>
+        <div class="name">Snappy</div>
+        <div class="desc">Tabs, buttons (0.3s)</div>
+      </div>
+      <div class="animation-card">
+        <div class="ball ball-bouncy"></div>
+        <div class="name">Bouncy</div>
+        <div class="desc">Icons, notifications (0.5s)</div>
+      </div>
+      <div class="animation-card">
+        <div class="ball ball-gentle"></div>
+        <div class="name">Gentle</div>
+        <div class="desc">Sheets, pages (0.55s)</div>
+      </div>
+      <div class="animation-card">
+        <div class="ball ball-stiff"></div>
+        <div class="name">Stiff</div>
+        <div class="desc">Alerts, menus (0.25s)</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 16px;">
+      <div class="card-title">Spring Parameters</div>
+      <table style="width: 100%; font-size: var(--text-footnote); border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--separator);">
+            <th style="text-align: left; padding: 8px 0; color: var(--label-secondary);">Preset</th>
+            <th style="text-align: left; padding: 8px 0; color: var(--label-secondary);">Response</th>
+            <th style="text-align: left; padding: 8px 0; color: var(--label-secondary);">Damping</th>
+            <th style="text-align: left; padding: 8px 0; color: var(--label-secondary);">CSS Approximation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 0.5px solid var(--separator);"><td style="padding: 8px 0;">Snappy</td><td>0.3</td><td>0.8</td><td style="font-family: monospace; font-size: 11px;">cubic-bezier(0.34, 1.56, 0.64, 1.0)</td></tr>
+          <tr style="border-bottom: 0.5px solid var(--separator);"><td style="padding: 8px 0;">Bouncy</td><td>0.5</td><td>0.65</td><td style="font-family: monospace; font-size: 11px;">cubic-bezier(0.68, -0.55, 0.265, 1.55)</td></tr>
+          <tr style="border-bottom: 0.5px solid var(--separator);"><td style="padding: 8px 0;">Gentle</td><td>0.55</td><td>0.825</td><td style="font-family: monospace; font-size: 11px;">cubic-bezier(0.25, 0.46, 0.45, 0.94)</td></tr>
+          <tr><td style="padding: 8px 0;">Stiff</td><td>0.25</td><td>1.0</td><td style="font-family: monospace; font-size: 11px;">cubic-bezier(0.5, 0, 0.75, 0)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>iOS 26 Design System by <a href="https://dcode-labs.com">Dcode Labs</a></p>
+    <p style="margin-top: 4px;">Source: <a href="https://github.com/seunghan91/ios26-design-system">GitHub</a> &middot; Figma: <a href="https://www.figma.com/community/file/1527721578857867021">iOS & iPadOS 26 Community Kit</a></p>
+    <p style="margin-top: 8px; font-size: var(--text-caption2);">Design tokens derived from Apple's publicly available Figma Community Kit. Apple, iOS, iPadOS, and Liquid Glass are trademarks of Apple Inc.</p>
+  </div>
+
+</div>
+
+<script>
+function setTheme(mode) {
+  document.documentElement.classList.toggle('dark', mode === 'dark');
+  document.querySelectorAll('.theme-toggle button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+function switchTab(el) {
+  el.closest('.glass-tab-bar').querySelectorAll('.glass-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function switchTab2(el) {
+  el.closest('.ios-tabbar').querySelectorAll('.ios-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function switchSegment(el) {
+  el.closest('.ios-segmented').querySelectorAll('button').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// Auto dark mode detection
+if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  document.documentElement.classList.add('dark');
+  document.querySelectorAll('.theme-toggle button').forEach(b => b.classList.remove('active'));
+  document.querySelector('.theme-toggle button:last-child').classList.add('active');
+}
+</script>
+
+</body>
+</html>

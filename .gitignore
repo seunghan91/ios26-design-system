@@ -3,3 +3,5 @@ dist/
 .turbo/
 *.tgz
 .DS_Store
+packages/demo/node_modules/
+packages/demo/*.pdf

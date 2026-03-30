@@ -23,6 +23,66 @@
 
 ---
 
+## Preview
+
+> Every screenshot below is rendered with **actual design tokens** from this package — not mockups.
+
+### Light / Dark Mode
+
+<p align="center">
+  <img src="./docs/images/dark-mode-toggle.gif" width="720" alt="Light and Dark mode toggle" />
+</p>
+
+### System Colors (79 tokens x 4 modes)
+
+<table>
+<tr>
+<td><img src="./docs/images/colors-light.png" width="480" alt="Colors — Light" /></td>
+<td><img src="./docs/images/colors-dark.png" width="480" alt="Colors — Dark" /></td>
+</tr>
+<tr><td align="center"><em>Light</em></td><td align="center"><em>Dark</em></td></tr>
+</table>
+
+### Typography (SF Pro type scale)
+
+<p align="center">
+  <img src="./docs/images/typography-light.png" width="720" alt="Typography scale" />
+</p>
+
+### Liquid Glass & Materials
+
+<table>
+<tr>
+<td><img src="./docs/images/liquid-glass-light.png" width="480" alt="Liquid Glass — Light" /></td>
+<td><img src="./docs/images/liquid-glass-dark.png" width="480" alt="Liquid Glass — Dark" /></td>
+</tr>
+<tr><td align="center"><em>Light</em></td><td align="center"><em>Dark</em></td></tr>
+</table>
+
+### Components
+
+<table>
+<tr>
+<td><img src="./docs/images/components-light.png" width="480" alt="Components — Light" /></td>
+<td><img src="./docs/images/components-dark.png" width="480" alt="Components — Dark" /></td>
+</tr>
+<tr><td align="center"><em>Light</em></td><td align="center"><em>Dark</em></td></tr>
+</table>
+
+### Spacing & Layout
+
+<p align="center">
+  <img src="./docs/images/spacing-light.png" width="720" alt="Spacing scale and corner radius" />
+</p>
+
+### Motion & Animation
+
+<p align="center">
+  <img src="./docs/images/animations-light.png" width="720" alt="Spring animation curves" />
+</p>
+
+---
+
 ## Why This Exists
 
 Apple announced **Liquid Glass** and a radical new design language at WWDC25. Designers got a Figma kit. **Developers got nothing.**
