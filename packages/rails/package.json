@@ -1,0 +1,24 @@
+{
+  "name": "@ios26/rails",
+  "version": "1.0.0",
+  "description": "iOS 26 design system for Rails 8 + Hotwire — CSS tokens, Stimulus controllers, ERB partials",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./tokens.css": "./tokens.css",
+    "./controller": "./ios26_controller.js",
+    "./helpers": "./_ios26_helpers.html.erb",
+    "./components": "./components.md",
+    "./package.json": "./package.json"
+  },
+  "files": ["src", "*.css", "*.js", "*.erb", "*.md"],
+  "keywords": ["ios26", "rails", "hotwire", "stimulus", "design-system", "liquid-glass"],
+  "author": "Dcode Labs <iyu974895@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/seunghan91/ios26-design-system/tree/main/packages/rails",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seunghan91/ios26-design-system.git",
+    "directory": "packages/rails"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "@ios26/tokens",
+  "version": "1.0.0",
+  "description": "iOS 26 design tokens — colors, typography, materials, spacing, animations (Light/Dark/IC modes)",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./css": "./dist/css/tokens.css",
+    "./css/typography": "./dist/css/typography.css",
+    "./css/materials": "./dist/css/materials.css",
+    "./css/animations": "./dist/css/animations.css",
+    "./json/colors": "./src/colors.json",
+    "./json/typography": "./src/typography.json",
+    "./json/materials": "./src/materials.json",
+    "./json/spacing": "./src/spacing.json",
+    "./json/animations": "./src/animations.json",
+    "./dart": "./dist/dart/ios26_tokens.dart",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "src/*.json"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "ios26", "ipados26", "design-tokens", "liquid-glass",
+    "apple", "figma", "design-system", "css-variables",
+    "dark-mode", "accessibility", "wcag"
+  ],
+  "author": "Dcode Labs <iyu974895@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/seunghan91/ios26-design-system",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seunghan91/ios26-design-system.git",
+    "directory": "packages/tokens"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.3.0"
+  }
+}

@@ -1,0 +1,12 @@
+name: ios26_design
+description: iOS 26 / iPadOS 26 design system for Flutter — Liquid Glass tokens, typography, materials, theme
+version: 1.0.0
+homepage: https://github.com/seunghan91/ios26-design-system/tree/main/packages/flutter
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter

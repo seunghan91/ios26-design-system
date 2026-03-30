@@ -1,0 +1,79 @@
+name: Build & Publish
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build tokens
+        run: cd packages/tokens && node build.js
+
+      - name: Verify build outputs
+        run: |
+          test -f packages/tokens/dist/css/tokens.css
+          test -f packages/tokens/dist/index.js
+          test -f packages/tokens/dist/dart/ios26_tokens.dart
+          echo "All build outputs verified"
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+
+      - run: pnpm install --frozen-lockfile
+      - run: cd packages/tokens && node build.js
+
+      - name: Publish @ios26/tokens
+        run: cd packages/tokens && pnpm publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @ios26/svelte
+        run: cd packages/svelte && pnpm publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @ios26/rails
+        run: cd packages/rails && pnpm publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @ios26/svelte-inertia
+        run: cd packages/svelte-inertia && pnpm publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @ios26/metadata
+        run: cd packages/metadata && pnpm publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

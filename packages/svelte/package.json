@@ -1,0 +1,27 @@
+{
+  "name": "@ios26/svelte",
+  "version": "1.0.0",
+  "description": "iOS 26 design system for Svelte 5 — Liquid Glass components, tokens, typography",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./tokens.css": "./tokens.css",
+    "./typography.css": "./typography.css",
+    "./materials.css": "./materials.css",
+    "./components": "./components.svelte.md",
+    "./package.json": "./package.json"
+  },
+  "files": ["src", "*.css", "*.md"],
+  "peerDependencies": {
+    "svelte": "^5.0.0"
+  },
+  "keywords": ["ios26", "svelte", "svelte5", "design-system", "liquid-glass", "apple"],
+  "author": "Dcode Labs <iyu974895@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/seunghan91/ios26-design-system/tree/main/packages/svelte",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seunghan91/ios26-design-system.git",
+    "directory": "packages/svelte"
+  }
+}

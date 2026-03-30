@@ -1,0 +1,24 @@
+{
+  "name": "@ios26/metadata",
+  "version": "1.0.0",
+  "description": "iOS 26 design system specs — 31 component specs, 5 templates, 5 sections, 48 page recipes",
+  "type": "module",
+  "exports": {
+    "./components/*": "./components/specs/*.md",
+    "./templates/*": "./templates/*.md",
+    "./sections/*": "./sections/*.md",
+    "./pages/iphone/*": "./pages/iphone-examples/*.md",
+    "./pages/ipad/*": "./pages/ipad-examples/*.md",
+    "./package.json": "./package.json"
+  },
+  "files": ["components", "templates", "sections", "pages"],
+  "keywords": ["ios26", "design-system", "component-specs", "figma", "liquid-glass", "apple"],
+  "author": "Dcode Labs <iyu974895@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/seunghan91/ios26-design-system/tree/main/packages/metadata",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seunghan91/ios26-design-system.git",
+    "directory": "packages/metadata"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "ios26-design-system",
+  "private": true,
+  "description": "iOS 26 / iPadOS 26 design system — tokens, components, templates, sections, pages",
+  "scripts": {
+    "build": "turbo run build",
+    "build:tokens": "turbo run build --filter=@ios26/tokens",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean",
+    "changeset": "changeset",
+    "release": "turbo run build && changeset publish"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0",
+    "@changesets/cli": "^2.29.0"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20"
+  }
+}

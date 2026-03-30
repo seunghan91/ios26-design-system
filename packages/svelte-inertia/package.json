@@ -1,0 +1,29 @@
+{
+  "name": "@ios26/svelte-inertia",
+  "version": "1.0.0",
+  "description": "iOS 26 design system for Svelte 5 + Inertia.js + Rails — components, layouts, tokens",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./tokens.css": "./tokens.css",
+    "./typography.css": "./typography.css",
+    "./materials.css": "./materials.css",
+    "./components": "./components.svelte.md",
+    "./layout": "./layout.svelte.md",
+    "./package.json": "./package.json"
+  },
+  "files": ["src", "*.css", "*.md"],
+  "peerDependencies": {
+    "svelte": "^5.0.0",
+    "@inertiajs/svelte": "^2.0.0"
+  },
+  "keywords": ["ios26", "svelte", "inertia", "rails", "design-system", "liquid-glass"],
+  "author": "Dcode Labs <iyu974895@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/seunghan91/ios26-design-system/tree/main/packages/svelte-inertia",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seunghan91/ios26-design-system.git",
+    "directory": "packages/svelte-inertia"
+  }
+}

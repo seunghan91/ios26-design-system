@@ -29,111 +29,110 @@ Apple announced **Liquid Glass** and a radical new design language at WWDC25. De
 
 This project bridges that gap. Every token, every component spec, every layout rule — extracted from the [official Figma Community Kit](https://www.figma.com/community/file/1527721578857867021) and translated into code you can use **today**, across **4 frameworks**.
 
+## Install
+
+```bash
+# Design tokens (CSS variables, JS/TS, Dart)
+npm install @ios26/tokens
+
+# Framework-specific packages
+npm install @ios26/svelte          # Svelte 5
+npm install @ios26/rails           # Rails 8 + Hotwire
+npm install @ios26/svelte-inertia  # Svelte 5 + Inertia.js
+
+# Component specs, page recipes (for docs/AI context)
+npm install @ios26/metadata
+```
+
 ## What's Inside
 
 ```
-ios26-design-system/
-├── tokens/                    # Design tokens (JSON)
-│   ├── colors.json            # 79 variables × 4 modes (Light/Dark/IC-Light/IC-Dark)
-│   ├── typography.json        # 11 styles × 4 variants + Dynamic Type (7 sizes)
-│   ├── materials.json         # Liquid Glass + Background Materials + Scroll Edge
-│   ├── spacing.json           # 8pt grid, radius, safe areas, component dimensions
-│   └── animations.json        # Spring curves, durations, Liquid Glass morphing
+ios26-design-system/                 # pnpm monorepo + Turborepo
+├── packages/
+│   ├── tokens/                      # @ios26/tokens
+│   │   ├── src/                     # Source JSON (5 files)
+│   │   │   ├── colors.json          # 79 variables × 4 modes
+│   │   │   ├── typography.json      # 11 styles × 4 variants + Dynamic Type
+│   │   │   ├── materials.json       # Liquid Glass + Background Materials
+│   │   │   ├── spacing.json         # 8pt grid, radius, safe areas
+│   │   │   └── animations.json      # Spring curves, Liquid Glass morphing
+│   │   ├── dist/                    # Built outputs (auto-generated)
+│   │   │   ├── css/                 # CSS custom properties
+│   │   │   ├── index.js / .cjs     # JS/TS modules
+│   │   │   └── dart/                # Flutter Dart classes
+│   │   └── build.js                 # Token transformation pipeline
+│   │
+│   ├── svelte/                      # @ios26/svelte
+│   ├── rails/                       # @ios26/rails
+│   ├── svelte-inertia/              # @ios26/svelte-inertia
+│   ├── flutter/                     # pub.dev: ios26_design
+│   └── metadata/                    # @ios26/metadata
+│       ├── components/specs/        # 31 component specifications
+│       ├── templates/               # 5 layout composition patterns
+│       ├── sections/                # 5 screen region specs
+│       └── pages/                   # 48 page recipes (iPhone + iPad)
 │
-├── components/specs/          # 31 component specifications
-│   ├── button.md              # 148 variants (Content Area + Liquid Glass)
-│   ├── tab-bar.md             # iPhone + iPad, Liquid Glass indicator
-│   ├── toolbar.md             # Top/Bottom/Sheet/iPad variants
-│   ├── list-row.md            # Row, Swipe, Header, Index Bar
-│   ├── sheet.md               # Detents, Liquid Glass grabber
-│   ├── alert.md               # Standard + Text Field
-│   └── ... (25 more)          # Every component from the Figma kit
+├── skills/                          # Claude Code / AI skills
+│   └── ios26-design.md              # Complete token + component reference
 │
-├── templates/                 # 5 layout composition patterns
-│   ├── standard-screen.md     # Status Bar + Nav + Content + Tab Bar
-│   ├── sheet-overlay.md       # Detent 25/50/100%, keyboard avoidance
-│   ├── navigation-stack.md    # Push/Pop, Large Title collapse
-│   ├── tab-bar-layout.md      # Liquid Glass indicator morphing
-│   └── alert-modal.md         # 270pt card, scale + fade animation
-│
-├── sections/                  # 5 screen region specifications
-│   ├── status-bar.md          # Heights: 54pt (iPhone) / 24pt (iPad)
-│   ├── navigation-region.md   # Standard 44pt / Large Title 96pt
-│   ├── content-region.md      # Safe areas, scroll behavior, section spacing
-│   ├── overlay-region.md      # Sheet detents, alert positioning, dimming
-│   └── system-region.md       # Home Indicator, Dynamic Island, Keyboard
-│
-├── pages/                     # 48 complete page recipes
-│   ├── iphone-examples/       # 25 iPhone screens
-│   └── ipad-examples/         # 23 iPad screens
-│
-├── svelte/                    # Svelte 5 implementation
-├── svelte-inertia/            # Svelte 5 + Inertia.js + Rails implementation
-├── rails/                     # Rails 8 + Hotwire implementation
-└── flutter/                   # Flutter 3.x implementation
+├── turbo.json                       # Build orchestration
+└── pnpm-workspace.yaml              # Monorepo workspace
 ```
 
 ## Framework Support
 
-| Framework | Tokens | Components | Status |
-|-----------|--------|------------|--------|
-| **Svelte 5** | CSS Custom Properties | Runes mode (`$props()`) | Ready |
-| **Svelte 5 + Inertia.js** | CSS Custom Properties | Svelte 5 + Rails backend | Ready |
-| **Rails 8 + Hotwire** | CSS + Stimulus | ERB partials + Turbo | Ready |
-| **Flutter 3.x** | Dart constants | Material + Cupertino themes | Ready |
+| Package | Framework | Tokens | Components | Status |
+|---------|-----------|--------|------------|--------|
+| `@ios26/tokens` | Any | JSON, CSS, JS/TS, Dart | — | `npm install @ios26/tokens` |
+| `@ios26/svelte` | Svelte 5 | CSS Custom Properties | Runes mode | `npm install @ios26/svelte` |
+| `@ios26/svelte-inertia` | Svelte 5 + Inertia.js | CSS Custom Properties | + Rails layouts | `npm install @ios26/svelte-inertia` |
+| `@ios26/rails` | Rails 8 + Hotwire | CSS + Stimulus | ERB partials | `npm install @ios26/rails` |
+| `@ios26/metadata` | Any | — | 31 specs + 48 pages | `npm install @ios26/metadata` |
+| `ios26_design` | Flutter 3.x | Dart constants | Material + Cupertino | pub.dev (coming) |
 
 ## Quick Start
 
-### Design Tokens (Framework-agnostic JSON)
+### Tokens (any framework)
 
-All tokens live in `tokens/*.json` and can be consumed by any build tool:
-
-```json
-// tokens/colors.json — Liquid Glass blue accent
-{
-  "accents": {
-    "blue": {
-      "light": "#0088ff",
-      "dark": "#0091ff",
-      "icLight": "#1e6ef4",
-      "icDark": "#5cb8ff"
-    }
-  }
-}
+```bash
+npm install @ios26/tokens
 ```
 
-```json
-// tokens/materials.json — Liquid Glass blur parameters
-{
-  "liquidGlass": {
-    "regular": {
-      "large": { "frostRadius": 14, "depth": 16, "splay": 6 },
-      "medium": { "frostRadius": 12, "depth": 16, "splay": 6 },
-      "small": { "frostRadius": 7, "depth": 16, "splay": 6 }
-    }
-  }
-}
+```js
+// ES Module — import token objects
+import { colors, typography, materials } from '@ios26/tokens';
+
+// CSS — import as custom properties
+import '@ios26/tokens/css';              // colors
+import '@ios26/tokens/css/typography';   // typography classes
+import '@ios26/tokens/css/materials';    // Liquid Glass utilities
+import '@ios26/tokens/css/animations';   // spring curves + durations
+
+// Raw JSON — for custom build pipelines
+import colors from '@ios26/tokens/json/colors';
 ```
 
 ### Svelte 5
 
-```css
-/* Import tokens */
-@import 'ios26/tokens.css';
-@import 'ios26/typography.css';
-@import 'ios26/materials.css';
+```bash
+npm install @ios26/svelte
 ```
 
 ```svelte
-<button class="ios26-button ios26-liquid-glass-sm">
-  Done
-</button>
+<script>
+  import '@ios26/svelte/tokens.css';
+  import '@ios26/svelte/typography.css';
+  import '@ios26/svelte/materials.css';
+</script>
+
+<button class="ios26-button ios26-liquid-glass-sm">Done</button>
 ```
 
 ### Flutter
 
 ```dart
-import 'theme/ios26/ios26.dart';
+// pubspec.yaml: ios26_design: ^1.0.0
+import 'package:ios26_design/ios26_theme.dart';
 
 MaterialApp(
   theme: iOS26Theme.light(),
@@ -144,10 +143,8 @@ MaterialApp(
 ### Rails 8
 
 ```erb
-<!-- In your layout -->
+<%# Gemfile or importmap: pin "@ios26/rails" %>
 <%= stylesheet_link_tag "ios26/tokens" %>
-
-<!-- iOS 26 toolbar partial -->
 <%= render "shared/ios26/toolbar", title: "Settings" %>
 ```
 
@@ -233,6 +230,14 @@ Tokens (atoms) → Components (molecules) → Templates (organisms) → Sections
 
 Each layer references the one below it. Component specs reference token values. Templates compose components. Pages instantiate templates.
 
+## AI / Vibe Coding Integration
+
+This design system ships with a **Claude Code skill** (`skills/ios26-design.md`) that gives AI assistants complete knowledge of iOS 26 tokens, components, and layout patterns.
+
+To use it, copy the skill file to your Claude Code skills directory, or reference it in your project. The skill auto-activates when it detects iOS 26, Liquid Glass, or `@ios26/*` imports.
+
+Also works as context for **Cursor Rules**, **GitHub Copilot**, or any AI coding assistant — the skill file contains a complete quick-reference of all token values, component dimensions, and animation parameters.
+
 ## Contributing
 
 Contributions are welcome! Areas where help is needed:
@@ -247,13 +252,16 @@ Please open an issue to discuss before submitting large PRs.
 
 ## Roadmap
 
-- [ ] NPM package (`@ios26/tokens`)
+- [x] npm monorepo (`@ios26/tokens`, `@ios26/svelte`, `@ios26/rails`, ...)
+- [x] Token build pipeline (JSON → CSS / JS / Dart)
+- [x] Claude Code AI skill
+- [x] GitHub Actions CI/CD
 - [ ] Dart package on pub.dev
 - [ ] Storybook / Histoire component gallery
 - [ ] Interactive Liquid Glass playground
-- [ ] Figma plugin for token sync
 - [ ] React Native implementation
 - [ ] SwiftUI wrapper components
+- [ ] MCP server for design system queries
 
 ## License
 
