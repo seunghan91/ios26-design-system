@@ -10,6 +10,7 @@
 </p>
 
 <p align="center">
+  <a href="https://seunghan91.github.io/ios26-design-system/demo/">🔴 Live Demo</a> ·
   <a href="./README.ko.md">한국어</a> · <a href="./README.ja.md">日本語</a> · <a href="./README.zh.md">中文</a>
 </p>
 
@@ -333,6 +334,7 @@ Please open an issue to discuss before submitting large PRs.
 - [x] Claude Code AI skill
 - [x] GitHub Actions CI/CD
 - [ ] Dart package on pub.dev
+- [x] [Live demo with dark mode toggle](https://seunghan91.github.io/ios26-design-system/demo/)
 - [ ] Storybook / Histoire component gallery
 - [ ] Interactive Liquid Glass playground
 - [ ] React Native implementation
