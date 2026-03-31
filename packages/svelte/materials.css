@@ -42,25 +42,38 @@
 
 /* Dark mode material adjustments */
 @media (prefers-color-scheme: dark) {
-  .material-chrome {
+  :root:not([data-theme="light"]) .material-chrome {
     background-color: rgba(0, 0, 0, var(--material-chrome-opacity));
   }
-
-  .material-thick {
+  :root:not([data-theme="light"]) .material-thick {
     background-color: rgba(0, 0, 0, var(--material-thick-opacity));
   }
-
-  .material-regular {
+  :root:not([data-theme="light"]) .material-regular {
     background-color: rgba(0, 0, 0, var(--material-regular-opacity));
   }
-
-  .material-thin {
+  :root:not([data-theme="light"]) .material-thin {
     background-color: rgba(0, 0, 0, var(--material-thin-opacity));
   }
-
-  .material-ultrathin {
+  :root:not([data-theme="light"]) .material-ultrathin {
     background-color: rgba(0, 0, 0, var(--material-ultrathin-opacity));
   }
+}
+
+/* Manual dark mode material overrides */
+[data-theme="dark"] .material-chrome {
+  background-color: rgba(0, 0, 0, var(--material-chrome-opacity));
+}
+[data-theme="dark"] .material-thick {
+  background-color: rgba(0, 0, 0, var(--material-thick-opacity));
+}
+[data-theme="dark"] .material-regular {
+  background-color: rgba(0, 0, 0, var(--material-regular-opacity));
+}
+[data-theme="dark"] .material-thin {
+  background-color: rgba(0, 0, 0, var(--material-thin-opacity));
+}
+[data-theme="dark"] .material-ultrathin {
+  background-color: rgba(0, 0, 0, var(--material-ultrathin-opacity));
 }
 
 
@@ -78,12 +91,18 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .liquid-glass-large {
+  :root:not([data-theme="light"]) .liquid-glass-large {
     background-color: var(--glass-large-bg);
     box-shadow:
       0 0 var(--glass-large-shadow-blur) rgba(0, 0, 0, 0.3),
       inset 0 0 0 0.5px rgba(255, 255, 255, 0.06);
   }
+}
+[data-theme="dark"] .liquid-glass-large {
+  background-color: var(--glass-large-bg);
+  box-shadow:
+    0 0 var(--glass-large-shadow-blur) rgba(0, 0, 0, 0.3),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.06);
 }
 
 
@@ -101,12 +120,18 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .liquid-glass-medium {
+  :root:not([data-theme="light"]) .liquid-glass-medium {
     background-color: var(--glass-medium-bg);
     box-shadow:
       0 0 var(--glass-medium-shadow-blur) rgba(0, 0, 0, 0.25),
       inset 0 0 0 0.5px rgba(255, 255, 255, 0.06);
   }
+}
+[data-theme="dark"] .liquid-glass-medium {
+  background-color: var(--glass-medium-bg);
+  box-shadow:
+    0 0 var(--glass-medium-shadow-blur) rgba(0, 0, 0, 0.25),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.06);
 }
 
 
@@ -125,13 +150,20 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .liquid-glass-small {
+  :root:not([data-theme="light"]) .liquid-glass-small {
     background-color: var(--glass-small-bg);
     border-color: var(--glass-small-border);
     box-shadow:
       0 0 var(--glass-small-shadow-blur) rgba(0, 0, 0, 0.2),
       inset 0 0 0 0.5px rgba(255, 255, 255, 0.06);
   }
+}
+[data-theme="dark"] .liquid-glass-small {
+  background-color: var(--glass-small-bg);
+  border-color: var(--glass-small-border);
+  box-shadow:
+    0 0 var(--glass-small-shadow-blur) rgba(0, 0, 0, 0.2),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.06);
 }
 
 
@@ -150,12 +182,18 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .liquid-glass-primary {
+  :root:not([data-theme="light"]) .liquid-glass-primary {
     background-color: var(--glass-primary-bg);
     box-shadow:
       0 0 var(--glass-primary-shadow-blur) rgba(0, 0, 0, 0.3),
       inset 0 0 0 0.5px rgba(255, 255, 255, 0.06);
   }
+}
+[data-theme="dark"] .liquid-glass-primary {
+  background-color: var(--glass-primary-bg);
+  box-shadow:
+    0 0 var(--glass-primary-shadow-blur) rgba(0, 0, 0, 0.3),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.06);
 }
 
 

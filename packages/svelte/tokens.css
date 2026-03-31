@@ -199,7 +199,7 @@
    -------------------------------------------------------------------------- */
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
 
     /* -- System Colors (Dark adjustments) -------------------------------- */
     --color-red: #ff453a;
@@ -274,4 +274,85 @@
     --material-thin-opacity: 0.40;
     --material-ultrathin-opacity: 0.03;
   }
+}
+
+
+/* --------------------------------------------------------------------------
+   Manual Dark Mode Override (data-theme="dark")
+   -------------------------------------------------------------------------- */
+
+:root[data-theme="dark"] {
+
+  /* -- System Colors (Dark adjustments) -------------------------------- */
+  --color-red: #ff453a;
+  --color-orange: #ff9f0a;
+  --color-yellow: #ffd60a;
+  --color-green: #30d158;
+  --color-mint: #63e6e2;
+  --color-teal: #40c8e0;
+  --color-cyan: #64d2ff;
+  --color-blue: #0a84ff;
+  --color-indigo: #5e5ce6;
+  --color-purple: #bf5af2;
+  --color-pink: #ff375f;
+  --color-brown: #ac8e68;
+
+  /* -- Labels (Dark) --------------------------------------------------- */
+  --label-primary: #ffffff;
+  --label-secondary: rgba(235, 235, 245, 0.6);
+  --label-tertiary: rgba(235, 235, 245, 0.3);
+  --label-quaternary: rgba(235, 235, 245, 0.18);
+
+  /* -- Backgrounds (Dark) ---------------------------------------------- */
+  --bg-primary: #000000;
+  --bg-secondary: #1c1c1e;
+  --bg-tertiary: #2c2c2e;
+  --bg-grouped-primary: #000000;
+  --bg-grouped-secondary: #1c1c1e;
+  --bg-grouped-tertiary: #2c2c2e;
+
+  /* -- Fills (Dark) ---------------------------------------------------- */
+  --fill-primary: rgba(120, 120, 128, 0.36);
+  --fill-secondary: rgba(120, 120, 128, 0.32);
+  --fill-tertiary: rgba(118, 118, 128, 0.24);
+  --fill-quaternary: rgba(118, 118, 128, 0.18);
+
+  /* -- Grays (Dark) ---------------------------------------------------- */
+  --black: #000000;
+  --gray: #8e8e93;
+  --gray-2: #636366;
+  --gray-3: #48484a;
+  --gray-4: #3a3a3c;
+  --gray-5: #2c2c2e;
+  --gray-6: #1c1c1e;
+  --white: #ffffff;
+
+  /* -- Separators (Dark) ----------------------------------------------- */
+  --separator-opaque: #38383a;
+  --separator: rgba(84, 84, 88, 0.65);
+
+  /* -- Vibrant Labels (Dark) ------------------------------------------- */
+  --vibrant-label-primary: #ffffff;
+  --vibrant-label-secondary: #999999;
+  --vibrant-label-tertiary: #404040;
+  --vibrant-label-quaternary: #262626;
+
+  /* -- Vibrant Fills (Dark) -------------------------------------------- */
+  --vibrant-fill-primary: #333333;
+  --vibrant-fill-secondary: #1f1f1f;
+  --vibrant-fill-tertiary: #121212;
+
+  /* -- Liquid Glass (Dark) --------------------------------------------- */
+  --glass-large-bg: rgba(0, 0, 0, 0.8);
+  --glass-medium-bg: rgba(0, 0, 0, 0.6);
+  --glass-small-bg: rgba(0, 0, 0, 0.6);
+  --glass-small-border: rgba(255, 255, 255, 0.06);
+  --glass-clear-bg: rgba(255, 255, 255, 0.07);
+
+  /* -- Materials (Dark overlays) --------------------------------------- */
+  --material-chrome-opacity: 0.75;
+  --material-thick-opacity: 0.84;
+  --material-regular-opacity: 0.60;
+  --material-thin-opacity: 0.40;
+  --material-ultrathin-opacity: 0.03;
 }

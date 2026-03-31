@@ -380,7 +380,7 @@
     @media print {
       body { background: white !important; }
       .nav { position: static; backdrop-filter: none; background: var(--bg-primary); }
-      .theme-toggle { display: none; }
+      .theme-toggle { display: none; }  /* hidden in print only */
       .page { padding-top: 0; }
 
       /* backdrop-filter doesn't work in PDF — use solid fallback */
@@ -495,7 +495,23 @@
       background: var(--bg-primary);
       box-shadow: 0 20px 60px rgba(0,0,0,0.2);
     }
-    html.dark .iphone-frame { border-color: #333; }
+    html.dark .iphone-frame, [data-theme="dark"] .iphone-frame { border-color: #333; }
+
+    /* ── Theme Toggle ─────────────────────────────────── */
+    .theme-toggle {
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 12px; border-radius: 9999px;
+      border: 0.5px solid var(--separator-opaque);
+      background: var(--fill-quaternary);
+      font-family: var(--font-family);
+      font-size: var(--text-caption1); font-weight: 600;
+      color: var(--label-primary);
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .theme-toggle:hover { background: var(--fill-tertiary); }
+    .theme-toggle .icon { font-size: 14px; }
     .iphone-screen { padding: 0; min-height: 600px; position: relative; overflow: hidden; }
     .iphone-status-bar {
       display: flex; justify-content: space-between; align-items: center;
@@ -522,6 +538,10 @@
     <a href="#components">Components</a>
     <a href="#animations">Motion</a>
   </div>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <span class="icon" id="themeIcon">☀️</span>
+    <span id="themeLabel">Light</span>
+  </button>
 </nav>
 
 <div class="page">
@@ -994,6 +1014,42 @@ function switchSegment(el) {
   el.closest('.ios-segmented').querySelectorAll('button').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
 }
+
+/* ── Theme Toggle ──────────────────────────────────── */
+(function() {
+  const THEMES = ['system', 'light', 'dark'];
+  const ICONS  = { system: '💻', light: '☀️', dark: '🌙' };
+  const LABELS = { system: 'System', light: 'Light', dark: 'Dark' };
+
+  const btn   = document.getElementById('themeToggle');
+  const icon  = document.getElementById('themeIcon');
+  const label = document.getElementById('themeLabel');
+  const root  = document.documentElement;
+
+  let current = localStorage.getItem('ios26-theme') || 'system';
+
+  function apply(theme) {
+    current = theme;
+    localStorage.setItem('ios26-theme', theme);
+
+    if (theme === 'system') {
+      root.removeAttribute('data-theme');
+    } else {
+      root.setAttribute('data-theme', theme);
+    }
+
+    icon.textContent  = ICONS[theme];
+    label.textContent = LABELS[theme];
+  }
+
+  btn.addEventListener('click', function() {
+    const next = THEMES[(THEMES.indexOf(current) + 1) % THEMES.length];
+    apply(next);
+  });
+
+  // Initialize
+  apply(current);
+})();
 
 </script>
 
