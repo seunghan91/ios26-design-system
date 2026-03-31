@@ -497,6 +497,31 @@
     }
     html.dark .iphone-frame, [data-theme="dark"] .iphone-frame { border-color: #333; }
 
+    /* ── Dark Mode Demo Adjustments ───────────────────── */
+    /* In dark grouped layout: page=#000, cards=#1c1c1e */
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) body { background: var(--bg-primary); }
+      :root:not([data-theme="light"]) .card { background: var(--bg-secondary); }
+      :root:not([data-theme="light"]) .ios-alert .alert-body,
+      :root:not([data-theme="light"]) .ios-alert .alert-actions { background: var(--bg-tertiary); }
+      :root:not([data-theme="light"]) .ios-alert { box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+      :root:not([data-theme="light"]) .ios-notification { background: var(--bg-tertiary); }
+      :root:not([data-theme="light"]) .ios-tabbar { background: var(--bg-tertiary); }
+      :root:not([data-theme="light"]) .ios-list { background: var(--bg-tertiary); }
+      :root:not([data-theme="light"]) .ios-textfield { background: var(--bg-tertiary); }
+      :root:not([data-theme="light"]) .ios-sheet { background: var(--bg-secondary); }
+    }
+    [data-theme="dark"] body { background: var(--bg-primary); }
+    [data-theme="dark"] .card { background: var(--bg-secondary); }
+    [data-theme="dark"] .ios-alert .alert-body,
+    [data-theme="dark"] .ios-alert .alert-actions { background: var(--bg-tertiary); }
+    [data-theme="dark"] .ios-alert { box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+    [data-theme="dark"] .ios-notification { background: var(--bg-tertiary); }
+    [data-theme="dark"] .ios-tabbar { background: var(--bg-tertiary); }
+    [data-theme="dark"] .ios-list { background: var(--bg-tertiary); }
+    [data-theme="dark"] .ios-textfield { background: var(--bg-tertiary); }
+    [data-theme="dark"] .ios-sheet { background: var(--bg-secondary); }
+
     /* ── Theme Toggle ─────────────────────────────────── */
     .theme-toggle {
       display: flex; align-items: center; gap: 6px;
