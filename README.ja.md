@@ -24,103 +24,158 @@
 
 ---
 
+## プレビュー
+
+> 以下のスクリーンショットはすべて、このパッケージの**実際のデザイントークン**でレンダリングされています — モックアップではありません。
+
+### システムカラー
+
+<p align="center">
+  <img src="./docs/images/colors-light.png" width="720" alt="12色のシステムカラーとHEX値" />
+</p>
+
+### タイポグラフィ
+
+<p align="center">
+  <img src="./docs/images/typography-light.png" width="720" alt="SF Pro タイプスケール — 11スタイル" />
+</p>
+
+### Liquid Glass & マテリアル
+
+<p align="center">
+  <img src="./docs/images/liquid-glass-light.png" width="720" alt="写真背景上のLiquid Glass" />
+</p>
+
+### コンポーネント
+
+<p align="center">
+  <img src="./docs/images/components-light.png" width="720" alt="ボタン、コントロール、リスト、アラート" />
+</p>
+
+### スペーシング & レイアウト
+
+<p align="center">
+  <img src="./docs/images/spacing-light.png" width="720" alt="スペーシングスケールと角丸" />
+</p>
+
+### モーション & アニメーション
+
+<p align="center">
+  <img src="./docs/images/animations-light.png" width="720" alt="Springアニメーションカーブ" />
+</p>
+
+---
+
 ## なぜ作ったのか
 
 AppleはWWDC25で**Liquid Glass**と全く新しいデザイン言語を発表しました。デザイナーにはFigmaキットが提供されましたが、**開発者には何も提供されませんでした。**
 
 このプロジェクトはそのギャップを埋めます。すべてのトークン、すべてのコンポーネント仕様、すべてのレイアウトルールを[公式Figma Community Kit](https://www.figma.com/community/file/1527721578857867021)から抽出し、**4つのフレームワーク**で**今すぐ**使えるコードに変換しました。
 
+## インストール
+
+```bash
+# デザイントークン（CSS変数、JS/TS、Dart）
+npm install @ios26_design_system/tokens
+
+# フレームワーク別パッケージ
+npm install @ios26_design_system/svelte          # Svelte 5
+npm install @ios26_design_system/rails           # Rails 8 + Hotwire
+npm install @ios26_design_system/svelte-inertia  # Svelte 5 + Inertia.js
+
+# コンポーネント仕様、ページレシピ（ドキュメント/AIコンテキスト用）
+npm install @ios26_design_system/metadata
+```
+
 ## プロジェクト構成
 
 ```
-ios26-design-system/
-├── tokens/                    # デザイントークン（JSON）
-│   ├── colors.json            # 79変数 × 4モード（Light/Dark/IC-Light/IC-Dark）
-│   ├── typography.json        # 11スタイル × 4バリアント + Dynamic Type（7段階）
-│   ├── materials.json         # Liquid Glass + Background Material + Scroll Edge
-│   ├── spacing.json           # 8ptグリッド、角丸、Safe Area、コンポーネント寸法
-│   └── animations.json        # Springカーブ、デュレーション、Liquid Glassモーフィング
+ios26-design-system/                 # pnpmモノレポ + Turborepo
+├── packages/
+│   ├── tokens/                      # @ios26_design_system/tokens
+│   │   ├── src/                     # ソースJSON（5ファイル）
+│   │   │   ├── colors.json          # 79変数 × 4モード
+│   │   │   ├── typography.json      # 11スタイル × 4バリアント + Dynamic Type
+│   │   │   ├── materials.json       # Liquid Glass + Background Materials
+│   │   │   ├── spacing.json         # 8ptグリッド、角丸、Safe Area
+│   │   │   └── animations.json      # Springカーブ、Liquid Glassモーフィング
+│   │   ├── dist/                    # ビルド出力（自動生成）
+│   │   │   ├── css/                 # CSSカスタムプロパティ
+│   │   │   ├── index.js / .cjs     # JS/TSモジュール
+│   │   │   └── dart/                # Flutter Dartクラス
+│   │   └── build.js                 # トークン変換パイプライン
+│   │
+│   ├── svelte/                      # @ios26_design_system/svelte
+│   ├── rails/                       # @ios26_design_system/rails
+│   ├── svelte-inertia/              # @ios26_design_system/svelte-inertia
+│   ├── flutter/                     # pub.dev: ios26_design
+│   └── metadata/                    # @ios26_design_system/metadata
+│       ├── components/specs/        # 31コンポーネント仕様
+│       ├── templates/               # 5つのレイアウト構成パターン
+│       ├── sections/                # 5つの画面領域仕様
+│       └── pages/                   # 48ページレシピ（iPhone + iPad）
 │
-├── components/specs/          # 31コンポーネント仕様
-│   ├── button.md              # 148バリアント（Content Area + Liquid Glass）
-│   ├── tab-bar.md             # iPhone + iPad、Liquid Glassインジケーター
-│   ├── toolbar.md             # Top/Bottom/Sheet/iPadバリアント
-│   ├── list-row.md            # Row、Swipe、Header、Index Bar
-│   ├── sheet.md               # Detent、Liquid Glassグラバー
-│   ├── alert.md               # 標準 + テキストフィールド
-│   └── ...（25個追加）        # Figmaキットの全コンポーネント
+├── skills/                          # Claude Code / AIスキル
+│   └── ios26-design.md              # トークン + コンポーネント完全リファレンス
 │
-├── templates/                 # 5つのレイアウト構成パターン
-│   ├── standard-screen.md     # Status Bar + ナビゲーション + コンテンツ + Tab Bar
-│   ├── sheet-overlay.md       # Detent 25/50/100%、キーボード回避
-│   ├── navigation-stack.md    # Push/Pop、Large Title折りたたみ
-│   ├── tab-bar-layout.md      # Liquid Glassインジケーターモーフィング
-│   └── alert-modal.md         # 270ptカード、scale + fadeアニメーション
-│
-├── sections/                  # 5つの画面領域仕様
-│   ├── status-bar.md          # 高さ：54pt（iPhone）/ 24pt（iPad）
-│   ├── navigation-region.md   # Standard 44pt / Large Title 96pt
-│   ├── content-region.md      # Safe Area、スクロール動作、セクション間隔
-│   ├── overlay-region.md      # Sheet detent、Alert配置、ディミング
-│   └── system-region.md       # Home Indicator、Dynamic Island、キーボード
-│
-├── pages/                     # 48の完成画面レシピ
-│   ├── iphone-examples/       # 25のiPhone画面
-│   └── ipad-examples/         # 23のiPad画面
-│
-├── svelte/                    # Svelte 5実装
-├── svelte-inertia/            # Svelte 5 + Inertia.js + Rails実装
-├── rails/                     # Rails 8 + Hotwire実装
-└── flutter/                   # Flutter 3.x実装
+├── turbo.json                       # ビルドオーケストレーション
+└── pnpm-workspace.yaml              # モノレポワークスペース
 ```
 
 ## フレームワークサポート
 
-| フレームワーク | トークン | コンポーネント | ステータス |
-|--------------|---------|-------------|----------|
-| **Svelte 5** | CSS Custom Properties | Runesモード（`$props()`） | 利用可能 |
-| **Svelte 5 + Inertia.js** | CSS Custom Properties | Svelte 5 + Railsバックエンド | 利用可能 |
-| **Rails 8 + Hotwire** | CSS + Stimulus | ERBパーシャル + Turbo | 利用可能 |
-| **Flutter 3.x** | Dart定数 | Material + Cupertinoテーマ | 利用可能 |
+| パッケージ | フレームワーク | トークン | コンポーネント | ステータス |
+|-----------|--------------|---------|-------------|----------|
+| `@ios26_design_system/tokens` | すべて | JSON, CSS, JS/TS, Dart | — | `npm install @ios26_design_system/tokens` |
+| `@ios26_design_system/svelte` | Svelte 5 | CSS Custom Properties | Runesモード | `npm install @ios26_design_system/svelte` |
+| `@ios26_design_system/svelte-inertia` | Svelte 5 + Inertia.js | CSS Custom Properties | + Railsレイアウト | `npm install @ios26_design_system/svelte-inertia` |
+| `@ios26_design_system/rails` | Rails 8 + Hotwire | CSS + Stimulus | ERBパーシャル | `npm install @ios26_design_system/rails` |
+| `@ios26_design_system/metadata` | すべて | — | 31仕様 + 48ページ | `npm install @ios26_design_system/metadata` |
+| `ios26_design` | Flutter 3.x | Dart定数 | Material + Cupertino | pub.dev（近日公開） |
 
 ## クイックスタート
 
-### デザイントークン（フレームワーク非依存JSON）
+### トークン（任意のフレームワーク）
 
-すべてのトークンは`tokens/*.json`にあり、あらゆるビルドツールで利用可能です：
+```bash
+npm install @ios26_design_system/tokens
+```
 
-```json
-// tokens/colors.json — Liquid Glassブルーアクセント
-{
-  "accents": {
-    "blue": {
-      "light": "#0088ff",
-      "dark": "#0091ff",
-      "icLight": "#1e6ef4",
-      "icDark": "#5cb8ff"
-    }
-  }
-}
+```js
+// ESモジュール — トークンオブジェクトをインポート
+import { colors, typography, materials } from '@ios26_design_system/tokens';
+
+// CSS — カスタムプロパティとしてインポート
+import '@ios26_design_system/tokens/css';              // カラー
+import '@ios26_design_system/tokens/css/typography';   // タイポグラフィクラス
+import '@ios26_design_system/tokens/css/materials';    // Liquid Glassユーティリティ
+import '@ios26_design_system/tokens/css/animations';   // Springカーブ + デュレーション
+
+// Raw JSON — カスタムビルドパイプライン用
+import colors from '@ios26_design_system/tokens/json/colors';
 ```
 
 ### Svelte 5
 
-```css
-@import 'ios26/tokens.css';
-@import 'ios26/typography.css';
-@import 'ios26/materials.css';
+```bash
+npm install @ios26_design_system/svelte
 ```
 
 ```svelte
-<button class="ios26-button ios26-liquid-glass-sm">
-  完了
-</button>
+<script>
+  import '@ios26_design_system/svelte/tokens.css';
+  import '@ios26_design_system/svelte/typography.css';
+  import '@ios26_design_system/svelte/materials.css';
+</script>
+
+<button class="ios26-button ios26-liquid-glass-sm">完了</button>
 ```
 
 ### Flutter
 
 ```dart
-import 'theme/ios26/ios26.dart';
+// pubspec.yaml: ios26_design: ^1.0.0
+import 'package:ios26_design/ios26_theme.dart';
 
 MaterialApp(
   theme: iOS26Theme.light(),
@@ -131,6 +186,7 @@ MaterialApp(
 ### Rails 8
 
 ```erb
+<%# GemfileまたはImportmap: pin "@ios26_design_system/rails" %>
 <%= stylesheet_link_tag "ios26/tokens" %>
 <%= render "shared/ios26/toolbar", title: "設定" %>
 ```
@@ -158,6 +214,14 @@ MaterialApp(
 | **コントロール** | Segmented Control、Toggle、Slider、Stepper、Text Field、Picker |
 | **ナビゲーション** | Sidebar、Menu、Context Menu、Action Sheet、Popover |
 | **システム** | Keyboard、Widget、App Icon、Face ID、Window、System UI |
+
+## ページレシピ
+
+各ページレシピは、完成画面をテンプレート + コンポーネントに分解します：
+
+**iPhone（25画面）:** ホームフィード、設定、リスト、Sheetフォーム、Alert、通知、キーボード、ウィジェット、ロック画面、コントロールセンターなど。
+
+**iPad（23画面）:** Split View、サイドバー、Popover、マルチタスキング、ウィンドウ、Form Sheetなど。
 
 ## Liquid Glass
 
@@ -209,6 +273,48 @@ Tokens（原子）→ Components（分子）→ Templates（有機体）→ Sect
 
 各レイヤーは下位レイヤーを参照します。コンポーネント仕様はトークン値を参照し、テンプレートはコンポーネントを組み合わせ、ページはテンプレートを使用します。
 
+## AI / バイブコーディング統合
+
+このデザインシステムには**Claude Codeスキル**が同梱されており、AIアシスタントにiOS 26のトークン、コンポーネント寸法、アニメーションパラメータ、レイアウトパターンの完全な知識を提供します。
+
+### スキルのインストール
+
+```bash
+# ダウンロードしてインストール
+curl -LO https://github.com/seunghan91/ios26-design-system/raw/main/skills/ios26-design.skill
+claude install-skill ios26-design.skill
+```
+
+または手動でスキルフォルダをコピー：
+
+```bash
+git clone https://github.com/seunghan91/ios26-design-system.git
+cp -r ios26-design-system/skills/ios26-design ~/.claude/skills/
+```
+
+### スキルの提供内容
+
+| ファイル | 内容 |
+|---------|------|
+| `SKILL.md` | トークンクイックリファレンス、コンポーネント寸法、Liquid Glassパラメータ、アニメーションカーブ |
+| `references/tokens.md` | 79色 × 4モードの完全トークンテーブル |
+| `references/components.md` | 31コンポーネント仕様（高さ、角丸、パディング、バリアント） |
+| `references/layouts.md` | 5テンプレート + 48ページレシピの概要 |
+| `references/frameworks.md` | Svelte 5、Rails 8、Flutter、Inertia.jsのコード例 |
+
+スキルはiOS 26、Liquid Glass、または`@ios26_design_system/*`のインポートを検出すると自動的にアクティベートされます。
+
+### 他のAIツール向け
+
+スキルファイルはプレーンMarkdownです — **Cursor Rules**、**Windsurf**、**GitHub Copilot**、その他のAIコーディングアシスタントのコンテキストとしても利用できます：
+
+```bash
+# Cursor — .cursorrules としてコピー
+cp skills/ios26-design/SKILL.md .cursorrules
+
+# 任意のAIツール — スキルフォルダをコンテキストとして参照
+```
+
 ## コントリビューション
 
 コントリビューションを歓迎します！ヘルプが必要な分野：
@@ -223,13 +329,17 @@ Tokens（原子）→ Components（分子）→ Templates（有機体）→ Sect
 
 ## ロードマップ
 
-- [ ] NPMパッケージ（`@ios26_design_system/tokens`）
+- [x] npmモノレポ（`@ios26_design_system/tokens`、`@ios26_design_system/svelte`、`@ios26_design_system/rails`、...）
+- [x] トークンビルドパイプライン（JSON → CSS / JS / Dart）
+- [x] Claude Code AIスキル
+- [x] GitHub Actions CI/CD
 - [ ] pub.dev Dartパッケージ
+- [x] [ダークモードトグル付きライブデモ](https://seunghan91.github.io/ios26-design-system/demo/)
 - [ ] Storybook / Histoireコンポーネントギャラリー
 - [ ] インタラクティブLiquid Glassプレイグラウンド
-- [ ] トークン同期Figmaプラグイン
 - [ ] React Native実装
 - [ ] SwiftUIラッパーコンポーネント
+- [ ] デザインシステムクエリ用MCPサーバー
 
 ## ライセンス
 
